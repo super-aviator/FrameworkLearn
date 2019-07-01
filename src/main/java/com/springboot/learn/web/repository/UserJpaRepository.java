@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author Aviator
  */
-public interface UserJpaRepository<T> extends JpaRepository<User,Long> {
+public interface UserJpaRepository extends JpaRepository<User, Long> {
     /**
      * 查询所有name的用户
      * @param name 字符串类型
@@ -33,7 +33,7 @@ public interface UserJpaRepository<T> extends JpaRepository<User,Long> {
      * @return 用户列表
      */
     @EntityGraph("UserEntity")
-    List<T> findByName(String name, Class<T> tClass);
+    List<User> findByName(String name, Class<User> tClass);
 
     /**
      * 按名字删除用户

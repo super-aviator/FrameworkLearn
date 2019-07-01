@@ -1,4 +1,4 @@
-package com.springboot.learn.web.bean;
+package com.springboot.learn.web.bean.spring;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

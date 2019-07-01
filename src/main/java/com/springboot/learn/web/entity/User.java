@@ -3,7 +3,7 @@ package com.springboot.learn.web.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.learn.web.common.Gender;
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -27,6 +27,13 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+
+    /**
+     * 使用version字段实现乐观锁，乐观锁的测试代码在OptimisticLockTest类中
+     */
+    @Version
+    @Column(name = "version")
+    private Long version;
 
     @Column(name = "NAME")
     private String name;

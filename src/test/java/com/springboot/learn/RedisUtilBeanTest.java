@@ -1,5 +1,6 @@
 package com.springboot.learn;
 
+import com.springboot.learn.web.bean.redis.RedisUtilBean;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @Slf4j
 public class RedisUtilBeanTest {
     @Autowired
-    com.springboot.learn.web.bean.RedisUtilBean redisUtilBean;
+    RedisUtilBean redisUtilBean;
 
     @Test
     public void redisTest(){

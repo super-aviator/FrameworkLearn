@@ -1,4 +1,4 @@
-package com.springboot.learn.web.bean;
+package com.springboot.learn.web.bean.redis;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class RedisUtilBean implements DisposableBean {
     }
 
     @Override
-    public void destroy() throws Exception {
+    public void destroy() {
         redisConnection.close();
     }
 }
