@@ -8,6 +8,7 @@ spring:
     location: banner.txt
   jpa:
     show-sql: true
+    generate-ddl: true
     properties:
       hibernate:
         enable_lazy_load_no_trans: true #解决缺少session的问题
@@ -25,5 +26,9 @@ server:
 
 logging:
   level:
-    rog.springframeword: debug
-    root: debug
+    root: info
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
