@@ -25,5 +25,9 @@ server:
 
 logging:
   level:
-    #    rog.springframeword: debug
     root: info
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true

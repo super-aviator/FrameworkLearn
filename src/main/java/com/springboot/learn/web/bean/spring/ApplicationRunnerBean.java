@@ -6,6 +6,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 /**
+ * ApplicationArguments对象中，封装了启动参数args以及--debug类似的参数
+ *
  * @author Aviator
  */
 @Component
