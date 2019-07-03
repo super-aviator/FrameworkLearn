@@ -25,5 +25,5 @@ server:
 
 logging:
   level:
-    rog.springframeword: debug
-    root: debug
+    #    rog.springframeword: debug
+    root: info

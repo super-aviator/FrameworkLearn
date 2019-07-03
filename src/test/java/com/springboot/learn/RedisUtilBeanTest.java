@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 @Slf4j
 public class RedisUtilBeanTest {
-    @Autowired
+    @Autowired(required = false)
     RedisUtilBean redisUtilBean;
 
     @Test

@@ -5,14 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
 /**
  * @author Aviator
  */
-@Component
+//@Component
 public class RedisUtilBean implements DisposableBean {
     private final
     StringRedisTemplate stringRedisTemplate;
@@ -24,6 +23,7 @@ public class RedisUtilBean implements DisposableBean {
     RedisConnectionFactory redisConnectionFactory;
 
     private final RedisConnection redisConnection;
+
 
     @Autowired
     public RedisUtilBean(StringRedisTemplate stringRedisTemplate, RedisConnectionFactory redisConnectionFactory) {
