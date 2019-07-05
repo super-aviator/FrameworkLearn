@@ -4,7 +4,6 @@ package com.springboot.learn.web.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.learn.web.common.Gender;
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Set;

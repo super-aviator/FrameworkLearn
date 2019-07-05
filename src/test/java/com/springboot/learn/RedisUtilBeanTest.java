@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 @Slf4j
 public class RedisUtilBeanTest {
-
     @Autowired
     RedisUtilBean redisUtilBean;
 
