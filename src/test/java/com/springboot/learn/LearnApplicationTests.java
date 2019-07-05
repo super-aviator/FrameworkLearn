@@ -24,5 +24,4 @@ public class LearnApplicationTests {
         log.info(Arrays.toString(environment.getDefaultProfiles()));
         log.info(environment.getProperty("spring.datasource.url"));
     }
-
 }

@@ -22,7 +22,7 @@ spring:
     port: 6379
 
 server:
-  port: 8081
+  port: 888
 
 logging:
   level:
@@ -32,3 +32,7 @@ management:
   endpoint:
     shutdown:
       enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: [health,info,shutdown]
