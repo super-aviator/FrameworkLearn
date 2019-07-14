@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class YxbExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Response handlerBadRequestException(){
-        return new Response(404,"bad_request");
+        return new Response(404, "INTERNAL_SERVER_ERROR");
     }
 }

@@ -1,6 +1,6 @@
 package com.springboot.learn.web.repository;
 
-import com.springboot.learn.web.dto.UserDTO;
+import com.springboot.learn.web.dto.UserProjectionDTO;
 import com.springboot.learn.web.entity.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +16,7 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
      * @param name 字符串类型
      * @return projection，查询特定字段的值
      */
-    List<UserDTO> findByName(String name);
+    List<UserProjectionDTO> findByName(String name);
 
     /**
      * 使用模糊查询

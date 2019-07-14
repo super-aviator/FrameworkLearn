@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @author Aviator
@@ -33,7 +34,11 @@ public class LearnApplication {
     public RedisTemplate<String, User> getRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, User> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
-        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(User.class));
+        //设置key的序列化器，非常重要
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        //设置value的序列化器
+//        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(User.class));
+        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
         return redisTemplate;
     }
 }
