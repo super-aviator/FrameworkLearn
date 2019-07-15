@@ -6,6 +6,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Set;
+
 /**
  * 使用ApplicationArguments接口获取main方法中的args参数
  *
@@ -17,15 +20,17 @@ public class ApplicationArgumentsController {
     @Autowired ApplicationArguments applicationArguments;
 
     @GetMapping("/args")
-    public Response handlerArgs(){
-        Response response=new Response();
+    public Response<Set<String>> handlerArgs() {
+        Response<Set<String>> response = new Response<>();
+        //获取不同参数
         response.setData(applicationArguments.getOptionNames());
         return response;
     }
 
     @GetMapping("/non-args")
-    public Response handlerNonArgs(){
-        Response response=new Response();
+    public Response<List<String>> handlerNonArgs() {
+        Response<List<String>> response = new Response<>();
+        //获取
         response.setData(applicationArguments.getNonOptionArgs());
         return response;
     }

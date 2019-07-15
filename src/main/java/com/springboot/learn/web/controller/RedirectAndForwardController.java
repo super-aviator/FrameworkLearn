@@ -10,10 +10,10 @@ import java.util.List;
 
 /**
  * 测试重定向和转发的Controller
- * 重定向中客户端会发送两条http请求
- * 转发中客户端只会发送一条请求，服务端发送一条请求
+ * 重定向中客户端会向服务端发送两条http请求，服务端发送两条响应
+ * 转发中客户端只会发送一条请求，服务端发送一条响应
  *
- * alt+鼠标左键可以竖着复制文字，拷贝doc中的文字非常方便
+ * alt+鼠标左键可以竖着复制文字，拷贝doc中的文字非常方便，直接用滚轮也可以哈
  *
  * @author Aviator
  */
@@ -31,8 +31,8 @@ public class RedirectAndForwardController {
     }
 
     /**
-     * forward跳转的返回值类型没有限制
-     * @return
+     * forward跳转前的返回值与跳转后的返回值可以不相同,没有限制
+     * @return 字符串
      */
     @GetMapping("/forward")
     public String forward(){
