@@ -1,0 +1,41 @@
+spring:
+  kafka: #kafka中，需要配置kafka的启动配置文件中的：advertised.listeners=PLAINTEXT://localhost:9092，然后才能配置broker地址
+    consumer:
+      client-id: Springboot-consumer  #指定id
+      enable-auto-commit: true #开启自动提交
+      auto-commit-interval: 5s  #自动提交的时间间隔
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer #指定消费者接收到的value的反序列化器
+      auto-offset-reset: latest #当消费者发现偏移量无效时，选择从最早的数据开始读或者只读最新的数据，或者直接抛出以异常
+      #      fetch-min-size: 1048576  #指定消费者每次可获得的最小字节数，默认1MB
+      #      fetch-max-wait: 1000 #指定从broker获取数据的等待时间，默认为500ms,和fetch-min-size配合使用
+      #      max-poll-records: 10  #call方法能够返回的记录数量
+      properties:
+        spring.json.trusted.packages: "*" #将需要序列化的类所属的包添加到kafka信任的包路径下，否则Kafka反序列化会失败的！！！！！！！！！！
+    #        max.partition.fetch.bytes: 1048576‬  #服务器从每个分区返回给消费者的最大字节数，默认1MB
+    #        receive.buffer.bytes: #指定TCP接收数据缓冲区大小，为-1使用系统默认值
+    #        send.buffer.bytes: #指定TCP发送数据缓冲区大小，为-1使用系统默认值
+    #        partition.assignment.strategy: Range,RoundRobin # 指定分区策略类
+
+    producer:
+      client-id: springboot-producer #随意配置，用于日志
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer #指定生产者发送的value的序列化器
+      acks: 1 #0,all    为1：只要集群的首领收到就算发送成功、为0：不管收没收到都算成功，为all：必须所有参与复制的节点都收到才算发送成功
+      buffer-memory: 1048576 #发送者的缓冲区
+      #      compression-type: snappy #gzip,lz4   设置压缩的算法，snappy算法cpu占用少，压缩比小，gzip算法cpu占用多，压缩比大
+      retries: 3  #如果大于0，则开启发送失败后的重试,数字为重试的次数
+      batch-size: 1048576  #发送同一分区的数据的缓存大小，设大一点不会造成延时，设小了会有额外开销
+      properties: #自定义属性
+        #        partitioner.class: com.springboot.learn.kafka.config.KafkaPartitioner #配置自定义分区器，指定分区器的包路径
+        retry.backoff.ms: 200 #每次发送失败之后的等待时间。和retries配合使用
+        linger.ms: 200 #发送数据之前的等待时间，当发送数据时，如果缓存没满，继续等待更多数据加入缓冲区
+        max.in.flight.requests.per.connection: 10 #生产者接收到响应之前可以发送的消息数量，为1可以保证数据接收是按照发送的顺序来的(顺序要求严格)
+  #        max.block.ms: 5000 #配置了在调用send方法或使用partitionsFor方法能获取元数据时生产者的阻塞时间。
+  #        max.request.size: 201400 #生产者一次能发送消息的最大值，最好与broker的配置匹配
+  #        receive.buffer.bytes: #指定TCP接收数据缓冲区大小，为-1使用系统默认值
+  #        send.buffer.bytes: #指定TCP发送数据缓冲区大小，为-1使用系统默认值
+
+  #broker地址列表，不需要包含所有的broker地址，生产者会从给定的 broker查找到其他broker的信息。
+  bootstrap-servers: localhost:9092 #不必要全部列举出来，但建议至少要提供两个broker的信息，一且其中一个若机，生产者仍然能够连接到集群上。
+
+  template:
+    default-topic: test #template默认的topic

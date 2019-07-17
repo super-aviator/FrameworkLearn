@@ -9,27 +9,12 @@ spring:
     location: banner.txt  #指定banner的文件位置
 
   jpa:
-    show-sql: true
+    show-sql: true #打印jpa的sql语句
     properties:
       hibernate:
         enable_lazy_load_no_trans: true #解决懒加载时，缺少session的问题
-        format_sql: true
-        ddl_auto: true
-
-  redis:
-    host: 127.0.0.1
-    database: 0
-    ssl: false
-    port: 7000
-    cluster:
-      # redis集群的ip和端口
-      nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
-      max-redirects: 1 #集群最大跳转次数
-    jedis:
-      pool:
-        max-active: 8 #线程池中最大线程数
-        min-idle: 2 #最大空闲线程数
-    timeout: 5000ms
+        format_sql: true #格式化sql语句
+        ddl_auto: true #生成数据库定义语句
 
 server:
   port: 888 #服务的端口
@@ -42,7 +27,8 @@ management:
   endpoint:
     shutdown:
       enabled: true #开启actuator的shutdown端点
+
   endpoints:
     web:
       exposure:
-        include: [health,info,shutdown]
+        include: [health,info] #设置开启的Actuator节点
