@@ -5,6 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 
 /**
+ * The type User friend.
+ *
  * @author Aviator
  */
 @Entity

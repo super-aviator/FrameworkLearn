@@ -5,6 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 
 /**
+ * The type Teacher user relation.
+ *
  * @author Aviator
  */
 @Entity

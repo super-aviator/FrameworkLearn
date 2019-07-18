@@ -7,6 +7,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
+ * The type Second application runner bean.
+ *
  * @author Aviator
  */
 @Slf4j

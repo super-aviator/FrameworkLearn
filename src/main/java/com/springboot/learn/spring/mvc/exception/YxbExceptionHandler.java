@@ -8,11 +8,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * 异常处理类,异常匹配是从上到下一次搜索的。
+ *
  * @author Aviator
  */
 @RestControllerAdvice
 public class YxbExceptionHandler {
 
+    /**
+     * Handler bad request exception response.
+     *
+     * @return the response
+     */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Response handlerBadRequestException(){

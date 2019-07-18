@@ -12,19 +12,35 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
+ * The type Teacher controller.
+ *
  * @author Aviator
  */
 @RestController
 @RequestMapping(value = "/teacher")
 public class TeacherController {
+    /**
+     * The Teacher repository.
+     */
     @Autowired
     TeacherJpaRepository teacherRepository;
 
+    /**
+     * Gets teacher.
+     *
+     * @param teacher the teacher
+     * @return the teacher
+     */
     @GetMapping(value = "/get")
     public List<Teacher> getTeacher(@RequestParam("name") String teacher) {
         return teacherRepository.findByName(teacher);
     }
 
+    /**
+     * Delete teacher.
+     *
+     * @param teacher the teacher
+     */
     @Transactional(rollbackFor = Exception.class)
     @GetMapping(value = "/delete")
     public void deleteTeacher(@RequestParam("name") String teacher) {

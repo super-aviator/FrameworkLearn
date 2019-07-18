@@ -36,6 +36,9 @@ public class RedisClusterTest {
     private StringRedisTemplate stringRedisTemplate;
 
 
+    /**
+     * Test redis temp with object.
+     */
     @Test
     public void testRedisTempWithObject() {
         redisTemplate.opsForValue().set("iamsb", "yes");
@@ -50,6 +53,9 @@ public class RedisClusterTest {
         Assert.assertEquals(user.toString(), Objects.requireNonNull(userRedisTemplate.opsForValue().get("user:xqk")).toString());
     }
 
+    /**
+     * Test redis temp with string.
+     */
     @Test
     public void testRedisTempWithString() {
         BoundZSetOperations<String, String> opt = redisTemplate.boundZSetOps("user");

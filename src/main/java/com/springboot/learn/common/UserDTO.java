@@ -7,9 +7,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
+ * The type User dto.
+ *
  * @author 熊乾坤
  */
-
 @Data
 public class UserDTO {
 

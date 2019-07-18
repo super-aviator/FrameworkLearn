@@ -5,6 +5,8 @@ import lombok.ToString;
 
 
 /**
+ * The type User projection dto.
+ *
  * @author Aviator
  */
 @Getter
@@ -15,6 +17,12 @@ public class UserProjectionDTO {
      */
     private final String name, email;
 
+    /**
+     * Instantiates a new User projection dto.
+     *
+     * @param name  the name
+     * @param email the email
+     */
     public UserProjectionDTO(String name, String email) {
         this.name = name;
         this.email = email;

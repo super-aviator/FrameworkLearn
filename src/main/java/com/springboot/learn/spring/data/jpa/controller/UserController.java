@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * The type User controller.
+ *
  * @author Aviator
  */
 @RestController
@@ -21,13 +23,16 @@ import java.util.Objects;
 @Slf4j
 public class UserController {
 
+    /**
+     * The User repository.
+     */
     @Autowired
     UserJpaRepository userRepository;
 
     /**
      * 使用Projections获取部分属性
      *
-     * @return list
+     * @return list all user
      */
     @GetMapping("/all")
     public List getAllUser() {
@@ -37,7 +42,7 @@ public class UserController {
     /**
      * 模糊查询，containing会在Mysql的查询语句中LIKE的参数前后插入%
      *
-     * @return list
+     * @return list containing user
      */
     @GetMapping(value = "/containing")
     public List getContainingUser() {
@@ -47,7 +52,7 @@ public class UserController {
     /**
      * 动态的Projection,第二个参数即为想要返回的结果的类型
      *
-     * @return list
+     * @return list dynamic user
      */
     @GetMapping("/dynamic")
     public List getDynamicUser() {
@@ -65,6 +70,13 @@ public class UserController {
         userRepository.removeByName(username);
     }
 
+    /**
+     * Post user string.
+     *
+     * @param userDTO the user dto
+     * @param errors  the errors
+     * @return the string
+     */
     @PostMapping("/add")
     public String postUser(@Validated UserProjectionDTO userDTO, Errors errors) {
         if (errors.hasErrors()) {

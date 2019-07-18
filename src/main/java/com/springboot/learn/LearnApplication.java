@@ -15,12 +15,19 @@ import java.util.Collections;
 import java.util.HashSet;
 
 /**
+ * The type Learn application.
+ *
  * @author Aviator
  */
 //@EnableWebSecurity
 @SpringBootApplication
 public class LearnApplication {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
 //        最常规的启动方式，使用静态方法的方式
@@ -44,7 +51,8 @@ public class LearnApplication {
      * 特定类型的RedisTemplate需要自己创建相应的bean进行配置。
      * 值得注意的时，设置key的序列化器非常重要，否则可能存在取出的键和存入的键不想等的情况
      *
-     * @return RedisTemplate
+     * @param redisConnectionFactory the redis connection factory
+     * @return RedisTemplate redis template
      */
     @Bean
     @Profile("redis")

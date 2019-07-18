@@ -9,14 +9,22 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 /**
+ * The type Redis util bean.
+ *
  * @author Aviator
  */
 @Component
 @Profile("redis")
 public class RedisUtilBean {
+    /**
+     * The String redis template.
+     */
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * The Redis template.
+     */
     @Autowired
     RedisTemplate<String, User> redisTemplate;
 
@@ -26,6 +34,9 @@ public class RedisUtilBean {
     @Autowired
     RedisConnectionFactory redisConnectionFactory;
 
+    /**
+     * Test.
+     */
     public void test() {
     }
 }

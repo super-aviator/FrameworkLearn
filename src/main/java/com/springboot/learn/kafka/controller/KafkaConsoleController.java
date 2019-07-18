@@ -9,9 +9,9 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author 熊乾坤
- * <p>
- * 注意，@Profile注解也可以用在Controller层，如果该profile未激活时，Controller路径不会映射出来。
+ * The type Kafka console controller.
+ *
+ * @author 熊乾坤 <p> 注意，@Profile注解也可以用在Controller层，如果该profile未激活时，Controller路径不会映射出来。
  */
 @RestController
 @RequestMapping("/kafka")
@@ -22,6 +22,12 @@ public class KafkaConsoleController {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
+    /**
+     * Instantiates a new Kafka console controller.
+     *
+     * @param kafkaProducerBean the kafka producer bean
+     * @param kafkaTemplate     the kafka template
+     */
     @Autowired(required = false)
     public KafkaConsoleController(KafkaProducer kafkaProducerBean, KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaProducerBean = kafkaProducerBean;
@@ -36,6 +42,7 @@ public class KafkaConsoleController {
      * Try with @ModelAttribute annotation.
      *
      * @param topic 指定的topic
+     * @param key   the key
      * @param user  发送的user对象
      */
     @PostMapping("/send-user")
@@ -45,6 +52,13 @@ public class KafkaConsoleController {
     }
 
 
+    /**
+     * Send str.
+     *
+     * @param topic the topic
+     * @param key   the key
+     * @param data  the data
+     */
     @PostMapping("/send-str")
     public void sendStr(@RequestParam("topic") String topic, String key, String data) {
         log.info("Get a Post request---topic: " + topic + "---msg: " + data);
@@ -55,7 +69,7 @@ public class KafkaConsoleController {
      * 查询topic的分区信息
      *
      * @param topic 分区
-     * @return 分区列表
+     * @return 分区列表 string
      */
     @GetMapping("/partition/{topic}")
     public String partitionInfo(@PathVariable("topic") String topic) {

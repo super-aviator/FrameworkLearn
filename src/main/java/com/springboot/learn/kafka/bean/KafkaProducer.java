@@ -12,9 +12,9 @@ import org.springframework.util.concurrent.ListenableFuture;
 import java.util.Objects;
 
 /**
- * @author 熊乾坤
- * <p>
- * Kafka生产者。
+ * The type Kafka producer.
+ *
+ * @author 熊乾坤 <p> Kafka生产者。
  */
 @Component
 @Slf4j
@@ -24,12 +24,25 @@ public class KafkaProducer {
 
     private final KafkaTemplate<String, String> strTemplate;
 
+    /**
+     * Instantiates a new Kafka producer.
+     *
+     * @param template    the template
+     * @param strTemplate the str template
+     */
     @Autowired(required = false)
     public KafkaProducer(KafkaTemplate<String, UserDTO> template, KafkaTemplate<String, String> strTemplate) {
         this.template = template;
         this.strTemplate = strTemplate;
     }
 
+    /**
+     * Produce.
+     *
+     * @param topic the topic
+     * @param key   the key
+     * @param user  the user
+     */
     public void produce(String topic, String key, UserDTO user) {
         log.info("Produce a UserDTO msg:{} to topic:{} key is {}", user.toString(), topic, key);
         if (Objects.isNull(key)) {
@@ -40,6 +53,13 @@ public class KafkaProducer {
         template.flush();
     }
 
+    /**
+     * Produce str.
+     *
+     * @param topic the topic
+     * @param key   the key
+     * @param data  the data
+     */
     public void produceStr(String topic, String key, String data) {
         log.info("Produce a string msg:{} to topic:{} key is {}", data, topic, key);
         if (Objects.isNull(key)) {

@@ -19,11 +19,21 @@ import java.util.List;
  */
 @Controller
 public class RedirectAndForwardController {
+    /**
+     * Redirect before string.
+     *
+     * @return the string
+     */
     @GetMapping("/redirect")
     public String redirectBefore() {
         return "redirect:/redirect-handler";
     }
 
+    /**
+     * Redirect string.
+     *
+     * @return the string
+     */
     @GetMapping("/redirect-handler")
     @ResponseBody
     public String redirect() {
@@ -33,19 +43,29 @@ public class RedirectAndForwardController {
     /**
      * forward跳转前的返回值与跳转后的返回值可以不相同,没有限制
      *
-     * @return 字符串
+     * @return 字符串 string
      */
     @GetMapping("/forward")
     public String forward() {
         return "forward:/forward-list";
     }
 
+    /**
+     * Forward handler string.
+     *
+     * @return the string
+     */
     @GetMapping("/forward-string")
     @ResponseBody
     public String forwardHandler() {
         return "forward success";
     }
 
+    /**
+     * Forward handler return list list.
+     *
+     * @return the list
+     */
     @GetMapping("/forward-list")
     @ResponseBody
     public List forwardHandlerReturnList() {

@@ -14,10 +14,16 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * The type Redis util bean test.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @Slf4j
 public class RedisUtilBeanTest {
+    /**
+     * The Redis util bean.
+     */
     @Autowired
     RedisUtilBean redisUtilBean;
 
@@ -27,12 +33,21 @@ public class RedisUtilBeanTest {
     @Autowired
     RedisConnectionFactory redisConnectionFactory;
 
+    /**
+     * The String redis template.
+     */
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * The Redis template.
+     */
     @Autowired
     RedisTemplate<String, User> redisTemplate;
 
+    /**
+     * Redis test.
+     */
     @Test
     public void redisTest(){
         User user = new User();

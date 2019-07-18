@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
+ * The type User detail.
+ *
  * @author Aviator
  */
 @Entity

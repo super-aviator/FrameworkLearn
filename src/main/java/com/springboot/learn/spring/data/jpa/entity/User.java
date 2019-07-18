@@ -9,9 +9,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
+ * The type User.
+ *
  * @author Aviator
  */
-
 @Data
 @Entity
 @Table(name = "USER")

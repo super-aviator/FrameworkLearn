@@ -5,11 +5,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * The type Log test.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
 public class LogTest {
 
 
+    /**
+     * Log test.
+     */
     @Test
     public void logTest() {
 

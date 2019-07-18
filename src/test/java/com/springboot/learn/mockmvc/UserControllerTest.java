@@ -12,17 +12,28 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+/**
+ * The type User controller test.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @Slf4j
 public class UserControllerTest {
     private MockMvc mockMVC;
 
+    /**
+     * Before.
+     */
     @Before
     public void before() {
         mockMVC = MockMvcBuilders.standaloneSetup(new UserController()).build();
     }
 
+    /**
+     * Test.
+     *
+     * @throws Exception the exception
+     */
     @Test
     public void test() throws Exception {
         log.info("****" + mockMVC.perform(MockMvcRequestBuilders.get("user/all")

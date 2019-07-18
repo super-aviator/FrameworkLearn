@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
+ * The type Teacher.
+ *
  * @author Aviator
  */
 @Entity
