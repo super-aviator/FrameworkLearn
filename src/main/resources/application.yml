@@ -21,7 +21,7 @@ server:
 
 logging:
   level:
-    root: info  #日志的打印级别
+    root: error  #日志的打印级别
 
 management:
   endpoint:

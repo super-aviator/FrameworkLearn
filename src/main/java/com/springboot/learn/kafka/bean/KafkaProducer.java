@@ -8,6 +8,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.Objects;
 
@@ -44,13 +45,25 @@ public class KafkaProducer {
      * @param user  the user
      */
     public void produce(String topic, String key, UserDTO user) {
+        ListenableFuture<SendResult<String, UserDTO>> listenableFuture;
         log.info("Produce a UserDTO msg:{} to topic:{} key is {}", user.toString(), topic, key);
         if (Objects.isNull(key)) {
-            ListenableFuture<SendResult<String, UserDTO>> listenableFuture = template.send(topic, user);
+            listenableFuture = template.send(topic, user);
         } else {
-            template.send(topic, key, user);
+            listenableFuture = template.send(topic, key, user);
         }
         template.flush();
+        listenableFuture.addCallback(new ListenableFutureCallback<SendResult<String, UserDTO>>() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                log.info("发送失败------>{}", throwable.getMessage());
+            }
+
+            @Override
+            public void onSuccess(SendResult<String, UserDTO> stringUserDTOSendResult) {
+                log.info("发送成功------>{}", stringUserDTOSendResult.getProducerRecord().value());
+            }
+        });
     }
 
     /**
