@@ -5,6 +5,7 @@ import com.springboot.learn.spring.data.jpa.entity.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -46,4 +47,23 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
      * @param username 用户名
      */
     void removeByName(String username);
+
+    /**
+     * 测试查询参数为null
+     *
+     * @param username 用户名
+     * @param address  地址
+     * @return list
+     */
+    List<User> findByNameAndAddress(String username, String address);
+
+    /**
+     * 测试查询参数为null
+     *
+     * @param username 用户名
+     * @param adds     地址列表
+     * @return list
+     */
+    List<User> findByNameAndAddressIn(String username, String[] adds);
+
 }

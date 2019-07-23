@@ -3,6 +3,7 @@ package com.springboot.learn.kafka.config;
 import org.apache.kafka.clients.producer.Partitioner;
 import org.apache.kafka.common.Cluster;
 import org.apache.kafka.common.PartitionInfo;
+import org.springframework.context.annotation.Profile;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Random;
  * @author 熊乾坤
  */
 //@Component
-
+@Profile("kafka")
 public class KafkaPartitioner implements Partitioner {
     private static final String VERY_IMPORTANT_KEY = "xqk";
     private static final Random RAND = new Random();

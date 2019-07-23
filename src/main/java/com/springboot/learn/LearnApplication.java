@@ -31,18 +31,18 @@ public class LearnApplication {
     public static void main(String[] args) {
 
 //        最常规的启动方式，使用静态方法的方式
-//        SpringApplication.run(LearnApplication.class, args);
+        SpringApplication.run(LearnApplication.class, args);
 
 
 //        以编程的方式激活profile，
-        SpringApplication application = new SpringApplication();
+//        SpringApplication application = new SpringApplication();
 //        以变成的方式激活profile
-        application.setAdditionalProfiles("kafka");
+//        application.setAdditionalProfiles("kafka");
 //        以编程的方式关闭Banner
-        application.setBannerMode(Banner.Mode.OFF);
+//        application.setBannerMode(Banner.Mode.OFF);
 //        Source为项目中需要指定包的路径（Source不能为空）
-        application.setSources(new HashSet<>(Collections.singletonList("com.springboot.learn")));
-        application.run(args);
+//        application.setSources(new HashSet<>(Collections.singletonList("com.springboot.learn")));
+//        application.run(args);
 
     }
 

@@ -5,6 +5,7 @@ import com.springboot.learn.common.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
 @KafkaListener(topics = "test", groupId = "test-listener2")
 @Component
 @Slf4j
+@Profile("kafka")
 public class KafkaListenerHandlerAnnotation {
     /**
      * 只接受UserDTO类型的消息,并且设置为默认处理器

@@ -3,6 +3,7 @@ package com.springboot.learn.kafka.bean;
 import com.springboot.learn.common.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
+@Profile("kafka")
 public class KafkaListenerSendToAnnotation {
 
     /**

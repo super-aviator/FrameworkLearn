@@ -87,4 +87,14 @@ public class UserController {
             return "验证通过";
         }
     }
+
+    @GetMapping("/param-with-null")
+    public List<User> getUsers() {
+        return userRepository.findByNameAndAddress("熊乾坤", null);
+    }
+
+    @GetMapping("/get-user-in")
+    public List<User> getUsersIn() {
+        return userRepository.findByNameAndAddressIn("熊乾坤", new String[]{"湖北宜昌", "湖北武汉"});
+    }
 }
