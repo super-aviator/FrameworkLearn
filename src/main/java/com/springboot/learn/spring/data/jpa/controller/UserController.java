@@ -10,6 +10,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -96,5 +98,12 @@ public class UserController {
     @GetMapping("/get-user-in")
     public List<User> getUsersIn() {
         return userRepository.findByNameAndAddressIn("熊乾坤", new String[]{"湖北宜昌", "湖北武汉"});
+    }
+
+    @GetMapping("/group-by")
+    public List<Object> getUserGroupBy(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "email", required = false) String email) {
+        List<String> list = email == null ? new ArrayList<>() : Arrays.asList(email.split(","));
+
+        return userRepository.getUserGroupByGender(name, list);
     }
 }

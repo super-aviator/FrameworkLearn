@@ -4,8 +4,9 @@ import com.springboot.learn.spring.data.jpa.dto.UserProjectionDTO;
 import com.springboot.learn.spring.data.jpa.entity.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -66,4 +67,10 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
      */
     List<User> findByNameAndAddressIn(String username, String[] adds);
 
+    @Query(value = "SELECT ADDRESS ,COUNT(*) FROM user " +
+            " WHERE IF(:name !='', NAME LIKE :name,1=1)" +
+            " AND (coalesce (:list,null) is null or EMAIL IN :list)" +
+            " GROUP BY ADDRESS"
+            , nativeQuery = true)
+    List<Object> getUserGroupByGender(@Param("name") String name, @Param("list") List<String> list);
 }
