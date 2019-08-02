@@ -1,6 +1,6 @@
 package com.springboot.learn.mockmvc;
 
-import com.springboot.learn.spring.data.jpa.controller.UserController;
+import com.springboot.learn.data.jpa.controller.UserController;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;

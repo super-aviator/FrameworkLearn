@@ -1,7 +1,6 @@
 package com.springboot.learn;
 
-import com.springboot.learn.spring.data.jpa.entity.User;
-import org.springframework.boot.Banner;
+import com.springboot.learn.data.jpa.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -10,9 +9,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-
-import java.util.Collections;
-import java.util.HashSet;
 
 /**
  * The type Learn application.
