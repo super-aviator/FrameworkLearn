@@ -69,8 +69,6 @@ public class User {
      * joinColumns中的name和inverseJoinColumns中的name可以填关系表TEACHER_USER_RELATION的实体的字段名
      * 如果关系表TEACHER_USER_RELATION的实体中的字段使用了@Column(name)，那么需要填写注解中指定的名字，即表字段名。
      * referencedColumnName填写的是本实体类中的关联的字段。
-     *
-     *
      */
     @JsonIgnoreProperties(value = { "users" })
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)

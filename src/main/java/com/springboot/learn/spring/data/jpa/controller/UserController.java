@@ -102,7 +102,7 @@ public class UserController {
 
     @GetMapping("/group-by")
     public List<Object> getUserGroupBy(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "email", required = false) String email) {
-        List<String> list = email == null ? new ArrayList<>() : Arrays.asList(email.split(","));
+        List<String> list = email == null ? null : Arrays.asList(email.split(","));
 
         return userRepository.getUserGroupByGender(name, list);
     }

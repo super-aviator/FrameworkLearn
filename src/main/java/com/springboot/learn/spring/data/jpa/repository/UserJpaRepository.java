@@ -67,10 +67,9 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
      */
     List<User> findByNameAndAddressIn(String username, String[] adds);
 
-    @Query(value = "SELECT ADDRESS ,COUNT(*) FROM user " +
-            " WHERE IF(:name !='', NAME LIKE :name,1=1)" +
-            " AND (coalesce (:list,null) is null or EMAIL IN :list)" +
-            " GROUP BY ADDRESS"
-            , nativeQuery = true)
+    @Query(value = "SELECT t.address ,COUNT(t) FROM User AS t " +
+            " WHERE t.name LIKE :name" +
+            " AND (coalesce (:list,null) is null or t.email IN :list)" +
+            " GROUP BY t.address")
     List<Object> getUserGroupByGender(@Param("name") String name, @Param("list") List<String> list);
 }

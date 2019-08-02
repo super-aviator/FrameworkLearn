@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import scala.collection.immutable.Stream;
+
+import java.util.stream.IntStream;
 
 /**
  * The type Log test.
@@ -41,7 +44,11 @@ public class LogTest {
      */
     @Test
     public void LogWithClassTest() {
-        log.info("Log With Class Test", LogTest.class);
-        log.info("Log With Class Test");
+//        log.info("Log With Class Test", LogTest.class);
+//        log.info("Log With Class Test");
+
+        for (int i : IntStream.range(1, 10).toArray()) {
+            log.info(String.valueOf(i));
+        }
     }
 }

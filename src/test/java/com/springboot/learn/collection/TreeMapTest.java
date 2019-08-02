@@ -103,4 +103,48 @@ public class TreeMapTest {
 
         log.info(hash.toString());
     }
+
+    @Test
+    public void alertTest() {
+        Map<String, Long> hash = new ConcurrentHashMap<>();
+        hash.put("熊乾坤", 10L);
+        hash.put("杨小毛", 8L);
+        hash.put("曹睿", 15L);
+        hash.put("扬天", 1L);
+
+        TreeMap<String, Long> tree = new TreeMap<>();
+        LinkedHashMap linkedHashMap = new LinkedHashMap();
+        tree.putAll(hash);
+        tree.put("杨小毛", 200L);
+        tree.remove("扬天");
+        log.info(hash.toString());
+        log.info(tree.toString());
+    }
+
+    @Test
+    public void forEachTest() {
+        List list = new ArrayList();
+        list.addAll(Arrays.asList("熊乾坤", "杨小毛", "曹睿"));
+        list.forEach(t -> {
+            if (t.equals("杨小毛")) {
+                return;
+            }
+            log.info(t.toString());
+        });
+    }
+
+    @Test
+    public void test1() {
+//        log.info(String.format("%d-%d年",100,3));
+//        log.info(System.getProperty("file.separator"));
+//        Calendar calendar1=Calendar.getInstance();
+//        Calendar calendar2=Calendar.getInstance();
+//
+//        calendar1.set(2019,11,31);
+//        calendar2.set(2020,0,3);
+//        log.info(String.valueOf(calendar2.get(Calendar.DAY_OF_MONTH)-calendar1.get(Calendar.DAY_OF_MONTH)));
+
+        log.info(Arrays.toString("\"\"".split(",")));
+    }
+
 }
