@@ -9,13 +9,14 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 /**
  * The type Learn application.
  *
  * @author Aviator
  */
-//@EnableWebSecurity
+@EnableWebSecurity
 @SpringBootApplication
 public class LearnApplication {
 
@@ -32,7 +33,7 @@ public class LearnApplication {
 
 //        以编程的方式激活profile，
 //        SpringApplication application = new SpringApplication();
-//        以变成的方式激活profile
+//        以编程的方式激活profile
 //        application.setAdditionalProfiles("kafka");
 //        以编程的方式关闭Banner
 //        application.setBannerMode(Banner.Mode.OFF);

@@ -20,7 +20,7 @@ public class ProduceAndConsumers {
      *
      * @return the response entity
      */
-    @GetMapping(produces = "text/plain", consumes = "application/json")
+    @GetMapping(value = "path1", produces = "text/plain", consumes = "application/json")
     public ResponseEntity<String> produceAndConsumer() {
         return new ResponseEntity<>("我接收到你的请求了，你收到我的响应了吗，弟弟萌？", HttpStatus.OK);
     }
@@ -30,7 +30,7 @@ public class ProduceAndConsumers {
      *
      * @return the response entity
      */
-    @GetMapping(produces = "text/plain", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "path2", produces = "text/plain", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<String> produceAndConsumerWithMediaType() {
         return new ResponseEntity<>("我接收到你的请求了，你收到我的响应了吗，弟弟萌？", HttpStatus.OK);
     }
@@ -40,7 +40,7 @@ public class ProduceAndConsumers {
      *
      * @return the response entity
      */
-    @GetMapping(produces = "text/plain", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "path3", produces = "text/plain", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> produceAndConsumerWithInverter() {
         return new ResponseEntity<>("我接收到你的请求了，你收到我的响应了吗，弟弟萌？", HttpStatus.OK);
     }

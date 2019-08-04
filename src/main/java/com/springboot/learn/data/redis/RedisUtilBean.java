@@ -1,4 +1,4 @@
-package com.springboot.learn.data.redis.redis.bean;
+package com.springboot.learn.data.redis;
 
 import com.springboot.learn.data.jpa.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;

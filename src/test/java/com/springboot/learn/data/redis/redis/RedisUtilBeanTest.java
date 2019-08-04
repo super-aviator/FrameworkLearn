@@ -1,8 +1,8 @@
 package com.springboot.learn.data.redis.redis;
 
-import com.springboot.learn.data.redis.redis.bean.RedisUtilBean;
 import com.springboot.learn.data.jpa.common.Gender;
 import com.springboot.learn.data.jpa.entity.User;
+import com.springboot.learn.data.redis.RedisUtilBean;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
