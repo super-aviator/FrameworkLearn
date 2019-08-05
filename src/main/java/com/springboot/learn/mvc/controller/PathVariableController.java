@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-@RequestMapping("/path-variable")
+@RequestMapping("/pathVariable")
 public class PathVariableController {
     @GetMapping("/{var}")
     public void test1(@PathVariable String var) {
