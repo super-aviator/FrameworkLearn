@@ -8,9 +8,17 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.FileNotFoundException;
 
+/**
+ * The type Resource test.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
 public class ResourceTest {
+    /**
+     * Test.
+     *
+     * @throws FileNotFoundException the file not found exception
+     */
     @Test
     public void test() throws FileNotFoundException {
         log.info(ResourceUtils.getURL("classpath:").toString());

@@ -54,7 +54,7 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
      *
      * @param username 用户名
      * @param address  地址
-     * @return list
+     * @return list list
      */
     List<User> findByNameAndAddress(String username, String address);
 
@@ -63,10 +63,17 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
      *
      * @param username 用户名
      * @param adds     地址列表
-     * @return list
+     * @return list list
      */
     List<User> findByNameAndAddressIn(String username, String[] adds);
 
+    /**
+     * Gets user group by gender.
+     *
+     * @param name the name
+     * @param list the list
+     * @return the user group by gender
+     */
     @Query(value = "SELECT t.address ,COUNT(t) FROM User AS t " +
             " WHERE t.name LIKE :name" +
             " AND (coalesce (:list,null) is null or t.email IN :list)" +

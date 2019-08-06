@@ -89,16 +89,33 @@ public class UserController {
         }
     }
 
+    /**
+     * Gets users.
+     *
+     * @return the users
+     */
     @GetMapping("/param-with-null")
     public List<User> getUsers() {
         return userRepository.findByNameAndAddress("熊乾坤", null);
     }
 
+    /**
+     * Gets users in.
+     *
+     * @return the users in
+     */
     @GetMapping("/get-user-in")
     public List<User> getUsersIn() {
         return userRepository.findByNameAndAddressIn("熊乾坤", new String[]{"湖北宜昌", "湖北武汉"});
     }
 
+    /**
+     * Gets user group by.
+     *
+     * @param name  the name
+     * @param email the email
+     * @return the user group by
+     */
     @GetMapping("/group-by")
     public List<Object> getUserGroupBy(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "email", required = false) String email) {
         List<String> list = email == null ? null : Arrays.asList(email.split(","));

@@ -5,8 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Arrays;
-
 /**
  * The type Simple test.
  */
@@ -28,6 +26,11 @@ public class SimpleTest {
         System.out.println(i2);
     }
 
+    /**
+     * Test split.
+     *
+     * @throws InterruptedException the interrupted exception
+     */
     @Test
     public void testSplit() throws InterruptedException {
         long start = System.currentTimeMillis();

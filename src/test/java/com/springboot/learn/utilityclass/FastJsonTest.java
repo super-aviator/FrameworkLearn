@@ -8,9 +8,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+/**
+ * The type Fast json test.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
 public class FastJsonTest {
+    /**
+     * Test.
+     */
     @Test
     public void test() {
         String str = "{\"data\":[{\"type\":\"非机动车\",\"count\":10},{\"type\":\"非机动车\",\"count\":10}],\"file\":123}";

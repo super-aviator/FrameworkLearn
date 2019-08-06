@@ -3,7 +3,6 @@ package com.springboot.learn.kafka.bean;
 
 import com.springboot.learn.common.UserDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaHandler;
@@ -24,6 +23,7 @@ public class KafkaListenerHandlerAnnotation {
      * 只接受UserDTO类型的消息,并且设置为默认处理器
      *
      * @param userDTO 消息
+     * @param record  the record
      */
     @KafkaHandler(isDefault = true)
     public void consume2Partition1(UserDTO userDTO, ConsumerRecord<String, UserDTO> record) {
@@ -33,7 +33,8 @@ public class KafkaListenerHandlerAnnotation {
     /**
      * 只接受类型为String的消息
      *
-     * @param data 消息
+     * @param data   消息
+     * @param record the record
      */
     @KafkaHandler
     public void consume2Partition2(String data, ConsumerRecord<String, UserDTO> record) {

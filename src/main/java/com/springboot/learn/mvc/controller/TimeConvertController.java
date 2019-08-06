@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 /**
+ * The type Time convert controller.
+ *
  * @author 熊乾坤
  */
-
 @RestController
 @RequestMapping("/time")
 @Slf4j
@@ -43,7 +44,7 @@ public class TimeConvertController {
     /**
      * 在实体类上使用@JsonFormat(pattern = "yyyy@MM@dd")定义返回的JSON数据的格式
      *
-     * @return 返回的json对象
+     * @return 返回的json对象 return time dto
      */
     @GetMapping(value = "/return-date")
     public ReturnTimeDTO returnDate() {

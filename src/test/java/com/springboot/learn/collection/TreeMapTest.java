@@ -8,10 +8,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * The type Tree map test.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
 public class TreeMapTest {
 
+    /**
+     * Test.
+     */
     @Test
     public void test() {
         TreeMap<Long, String> map = new TreeMap<>();
@@ -86,6 +92,9 @@ public class TreeMapTest {
 
     }
 
+    /**
+     * Test fast fail.
+     */
     @Test
     public void testFastFail() {
         Map<String, Long> hash = new ConcurrentHashMap<>();
@@ -104,6 +113,9 @@ public class TreeMapTest {
         log.info(hash.toString());
     }
 
+    /**
+     * Alert test.
+     */
     @Test
     public void alertTest() {
         Map<String, Long> hash = new ConcurrentHashMap<>();
@@ -121,6 +133,9 @@ public class TreeMapTest {
         log.info(tree.toString());
     }
 
+    /**
+     * For each test.
+     */
     @Test
     public void forEachTest() {
         List list = new ArrayList();
@@ -133,6 +148,9 @@ public class TreeMapTest {
         });
     }
 
+    /**
+     * Test 1.
+     */
     @Test
     public void test1() {
 //        log.info(String.format("%d-%d年",100,3));

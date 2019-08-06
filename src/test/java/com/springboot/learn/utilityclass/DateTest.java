@@ -9,9 +9,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * The type Date test.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
 public class DateTest {
+    /**
+     * Equals test.
+     */
     @Test
     public void equalsTest() {
         Date date1 = new Date(2019, 11, 2);
@@ -19,6 +25,9 @@ public class DateTest {
         log.info(String.valueOf(date1.equals(date2)));
     }
 
+    /**
+     * Equal date.
+     */
     @Test
     public void equalDate() {
         Calendar startDate = Calendar.getInstance();
@@ -33,6 +42,9 @@ public class DateTest {
         }
     }
 
+    /**
+     * Date format.
+     */
     @Test
     public void dateFormat() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/M/d");

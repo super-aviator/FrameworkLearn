@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * The type Produce and consumers.
  *
- * @author 熊乾坤  <p> GetMapping注解中，produces元素的值必须匹配请求的Accept头部 consumers元素的值必须匹配请求的Content-Type头部 可以在postman中进行测试。
- *
- * prduces和consumers可以在类级别使用，但是会被方法级别的覆盖,同时还可以在类型前面加上！表示除了该类型
+ * @author 熊乾坤 <p> GetMapping注解中，produces元素的值必须匹配请求的Accept头部 consumers元素的值必须匹配请求的Content-Type头部 可以在postman中进行测试。 prduces和consumers可以在类级别使用，但是会被方法级别的覆盖,同时还可以在类型前面加上！表示除了该类型
  */
 @RestController("/produce-and-consumers")
 public class ProduceAndConsumers {

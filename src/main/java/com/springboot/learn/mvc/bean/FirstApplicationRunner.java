@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Order(1)
 @Component
-public class FirstApplicationRunnerBean implements ApplicationRunner {
+public class FirstApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         log.info("在SpringBoot启动成功之前，执行了ApplicationRunnerBean中run方法的代码------1");

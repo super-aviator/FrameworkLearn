@@ -13,6 +13,8 @@ import static com.springboot.learn.common.SpringBootLearnCommon.CONTINER;
 import static com.springboot.learn.common.SpringBootLearnCommon.EXECUTOR;
 
 /**
+ * The type Async return result controller.
+ *
  * @author 熊乾坤
  */
 @RestController
@@ -23,7 +25,7 @@ public class AsyncReturnResultController {
     /**
      * 返回的Callable对象会在Spring管理的线程中异步执行
      *
-     * @return Callable对象
+     * @return Callable对象 callable
      */
     @GetMapping("/callable")
     public Callable<String> asyncReturnString() {
@@ -36,7 +38,7 @@ public class AsyncReturnResultController {
     /**
      * 返回的Callable对象如果想要进行超时操作，需要将其包装在WebAsyncTask中。
      *
-     * @return Callable对象
+     * @return Callable对象 web async task
      */
     @GetMapping("/callableTimeOut")
     public WebAsyncTask<String> asyncReturnStringWithTimeOut() {
@@ -59,12 +61,13 @@ public class AsyncReturnResultController {
      * 返回的DeferredResult对象不在Spring管理的线程中异步执行
      * 和返回Callable的区别仅在于应用可以通过任何线程来计算返回一个结果
      *
-     * @return DeferredResult
+     * @return DeferredResult deferred result
      */
     @GetMapping("/deferredResult")
     @SuppressWarnings("unchecked")
     public DeferredResult<String> asyncResultString() {
-        DeferredResult<String> deferredResult = new DeferredResult<>();
+        //为DeferredResult设置500毫秒超时
+        DeferredResult<String> deferredResult = new DeferredResult<>(500L);
         //将deferredResult存起来，供以后使用
         CONTINER.put("result", deferredResult);
 
