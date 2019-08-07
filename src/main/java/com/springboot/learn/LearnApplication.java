@@ -33,14 +33,13 @@ public class LearnApplication {
 
 //        以编程的方式激活profile，
 //        SpringApplication application = new SpringApplication();
-//        以编程的方式激活profile
+//        激活指定的profile
 //        application.setAdditionalProfiles("kafka");
-//        以编程的方式关闭Banner
+//        关闭Banner显示
 //        application.setBannerMode(Banner.Mode.OFF);
 //        Source为项目中需要指定包的路径（Source不能为空）
 //        application.setSources(new HashSet<>(Collections.singletonList("com.springboot.learn")));
 //        application.run(args);
-
     }
 
 

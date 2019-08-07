@@ -16,6 +16,14 @@ spring:
         format_sql: true #格式化sql语句
         ddl_auto: true #生成数据库定义语句
 
+  #Multipart文件上传配置
+  servlet:
+    multipart:
+      file-size-threshold: 1MB #当文件达到阀值时进行存储
+      max-file-size: 10MB #最大文件大小
+      max-request-size: 11MB #最大请求大小
+      location: E:\\MultipartFileTemp\\ #文件存放未知
+
 server:
   port: 8080 #服务的端口
 

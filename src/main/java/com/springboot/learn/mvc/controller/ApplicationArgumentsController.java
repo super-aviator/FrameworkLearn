@@ -23,15 +23,20 @@ public class ApplicationArgumentsController {
     /**
      * The Application arguments.
      */
-    @Autowired
+    private final
     ApplicationArguments applicationArguments;
+
+    @Autowired
+    public ApplicationArgumentsController(ApplicationArguments applicationArguments) {
+        this.applicationArguments = applicationArguments;
+    }
 
     /**
      * 获取--开头的参数，例如--server.port
      *
      * @return 服务器响应 response
      */
-    @GetMapping("/args")
+    @GetMapping("/optionArgs")
     public Response<Set<String>> handlerArgs() {
         Response<Set<String>> response = new Response<>();
         response.setData(applicationArguments.getOptionNames());
@@ -44,7 +49,7 @@ public class ApplicationArgumentsController {
      *
      * @return 服务器响应 response
      */
-    @GetMapping("/non-args")
+    @GetMapping("/nonOptionArgs")
     public Response<List<String>> handlerNonArgs() {
         Response<List<String>> response = new Response<>();
         response.setData(applicationArguments.getNonOptionArgs());

@@ -1,8 +1,7 @@
 package com.springboot.learn.mvc.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +16,7 @@ import java.util.List;
  *
  * @author Aviator
  */
-@Controller
+@RestController
 public class RedirectAndForwardController {
     /**
      * Redirect before string.
@@ -35,7 +34,6 @@ public class RedirectAndForwardController {
      * @return the string
      */
     @GetMapping("/redirect-handler")
-    @ResponseBody
     public String redirect() {
         return "redirect success";
     }
@@ -56,7 +54,6 @@ public class RedirectAndForwardController {
      * @return the string
      */
     @GetMapping("/forward-string")
-    @ResponseBody
     public String forwardHandler() {
         return "forward success";
     }
@@ -67,7 +64,6 @@ public class RedirectAndForwardController {
      * @return the list
      */
     @GetMapping("/forward-list")
-    @ResponseBody
     public List forwardHandlerReturnList() {
         return new ArrayList<>(Arrays.asList("forward", "success"));
     }

@@ -51,6 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/all/**").access("hasRole('ADMIN') or hasRole('USER')")
 //                其它任何没有进行匹配的URLs只需要用户认证过即可访问。
                 .anyRequest().authenticated().and()
+//                关闭CSRF保护，否则POST请求必须带CSRF参数,不带的话请求会报403
+                .csrf().disable()
                 .formLogin().and()
                 .httpBasic();
 

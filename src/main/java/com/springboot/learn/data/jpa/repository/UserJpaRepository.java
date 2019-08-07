@@ -2,6 +2,8 @@ package com.springboot.learn.data.jpa.repository;
 
 import com.springboot.learn.data.jpa.dto.UserProjectionDTO;
 import com.springboot.learn.data.jpa.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -33,7 +35,7 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
     List<User> findByNameContaining(String name);
 
     /**
-     * 使用模糊查询
+     * 通过姓名查询用户列表
      *
      * @param name   字符串类型
      * @param tClass 类型信息
@@ -41,6 +43,15 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
      */
     @EntityGraph("UserEntity")
     List<User> findByName(String name, Class<User> tClass);
+
+    /**
+     * 通过姓名查询用户列表
+     *
+     * @param name     字符串类型
+     * @param pageable 分页信息
+     * @return 用户列表 list
+     */
+    Page<User> findByName(String name, Pageable pageable);
 
     /**
      * 按名字删除用户

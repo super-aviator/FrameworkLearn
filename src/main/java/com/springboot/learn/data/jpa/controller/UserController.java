@@ -5,6 +5,9 @@ import com.springboot.learn.data.jpa.entity.User;
 import com.springboot.learn.data.jpa.repository.UserJpaRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -38,6 +41,11 @@ public class UserController {
     @GetMapping("/all")
     public List getAllUser() {
         return userRepository.findByName("熊乾坤");
+    }
+
+    @GetMapping("/allWithPage")
+    public Page<User> getAllUserWithPage(int page, int size) {
+        return userRepository.findByName("熊乾坤", PageRequest.of(page, size, Sort.Direction.DESC, "id"));
     }
 
     /**
