@@ -1,6 +1,7 @@
 package com.springboot.learn.data.jpa.controller;
 
 import com.springboot.learn.data.jpa.dto.UserProjectionDTO;
+import com.springboot.learn.data.jpa.dto.UserScoreDTO;
 import com.springboot.learn.data.jpa.entity.User;
 import com.springboot.learn.data.jpa.repository.UserJpaRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
+import org.springframework.http.HttpEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -129,5 +132,17 @@ public class UserController {
         List<String> list = email == null ? null : Arrays.asList(email.split(","));
 
         return userRepository.getUserGroupByGender(name, list);
+    }
+
+    /**
+     * getUserScoreAvg
+     *
+     * @param name name
+     * @return HttpEntity
+     */
+    @RequestMapping("/avg")
+    public HttpEntity<List<UserScoreDTO>> getUserScoreAvg(@RequestParam("name") String name) {
+//        return new HttpEntity<>(userRepository.getUserScoreAvg(name,new PageRequest(0,20, JpaSort.unsafe(Sort.Direction.DESC,"AVG(score)"))));
+        return new HttpEntity<>(userRepository.getUserScoreAvg(name, PageRequest.of(0, 20, JpaSort.unsafe(Sort.Direction.DESC, "AVG(score)"))));
     }
 }
