@@ -1,6 +1,6 @@
 package com.xqk.learn.springboot.kafka.controller;
 
-import com.xqk.learn.springboot.common.UserDTO;
+import com.xqk.learn.springboot.data.jpa.dto.UserDTO;
 import com.xqk.learn.springboot.kafka.bean.KafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

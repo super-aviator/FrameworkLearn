@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.data.redis.redis;
+package com.xqk.learn.springboot.data.redis;
 
 import com.xqk.learn.springboot.data.jpa.common.Gender;
 import com.xqk.learn.springboot.data.jpa.entity.User;

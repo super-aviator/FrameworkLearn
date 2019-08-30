@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.mockmvc;
+package com.xqk.learn.springboot.mvc.mockmvc;
 
 import com.xqk.learn.springboot.data.jpa.controller.UserController;
 import lombok.extern.slf4j.Slf4j;

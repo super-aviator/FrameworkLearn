@@ -53,7 +53,7 @@ public class UserController {
      *
      * @return list containing user
      */
-    @GetMapping(value = "/containing")
+    @GetMapping("/containing")
     public List getContainingUser() {
         return userRepository.findByNameContaining("熊");
     }
@@ -98,33 +98,33 @@ public class UserController {
     }
 
     /**
-     * Gets users.
+     * 当查询参数为Null时，会查询该字段为值为null的数据，在这个接口中，数据为空。
      *
      * @return the users
      */
-    @GetMapping("/param-with-null")
+    @GetMapping("/paramWithNull")
     public List<User> getUsers() {
         return userRepository.findByNameAndAddress("熊乾坤", null);
     }
 
     /**
-     * Gets users in.
+     * 使用In关键字，查找某个范围的数据
      *
      * @return the users in
      */
-    @GetMapping("/get-user-in")
+    @GetMapping("/getUserIn")
     public List<User> getUsersIn() {
         return userRepository.findByNameAndAddressIn("熊乾坤", new String[]{"湖北宜昌", "湖北武汉"});
     }
 
     /**
-     * Gets user group by.
+     * 使用GroupBy关键字
      *
      * @param name  the name
      * @param email the email
      * @return the user group by
      */
-    @GetMapping("/group-by")
+    @GetMapping("/groupBy")
     public List<Object> getUserGroupBy(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "email", required = false) String email) {
         List<String> list = email == null ? null : Arrays.asList(email.split(","));
 

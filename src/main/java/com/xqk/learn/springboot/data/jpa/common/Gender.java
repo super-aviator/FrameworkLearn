@@ -10,15 +10,18 @@ public enum Gender {
      * Male gender.
      */
 //男性
-    MALE("男性"),
+    MALE("男性", 1),
     /**
      * Female gender.
      */
 //女性
-    FEMALE("女性");
+    FEMALE("女性", 2);
 
-    private String value;
-    Gender(String str){
-        value=str;
+    private String str;
+    private int value;
+
+    Gender(String str, int value) {
+        this.str = str;
+        this.value = value;
     }
 }

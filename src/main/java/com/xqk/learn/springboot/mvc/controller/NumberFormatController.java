@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 @RestController
 @RequestMapping("/numberFormat")
 public class NumberFormatController {
-    static DecimalFormat decimalFormat = new DecimalFormat("#.#");
+    private static DecimalFormat decimalFormat = new DecimalFormat("#.#");
 
     @GetMapping("/double")
     public HttpEntity<ContainNumber> getNumber() {
@@ -35,7 +35,7 @@ public class NumberFormatController {
         @JSONField(name = "number")
         private String numberStr;
 
-        public ContainNumber(String str) {
+        ContainNumber(String str) {
             this.numberStr = str;
         }
     }

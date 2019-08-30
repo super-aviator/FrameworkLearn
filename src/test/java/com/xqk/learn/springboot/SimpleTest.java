@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * The type Simple test.
+ * 开发过程中的简单的测试类
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j

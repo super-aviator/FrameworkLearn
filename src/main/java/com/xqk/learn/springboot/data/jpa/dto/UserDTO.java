@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.common;
+package com.xqk.learn.springboot.data.jpa.dto;
 
 import lombok.Data;
 

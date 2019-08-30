@@ -1,8 +1,7 @@
-package com.xqk.learn.springboot.data.redis.redis;
+package com.xqk.learn.springboot.data.redis;
 
 import com.xqk.learn.springboot.data.jpa.common.Gender;
 import com.xqk.learn.springboot.data.jpa.entity.User;
-import com.xqk.learn.springboot.data.redis.RedisUtilBean;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

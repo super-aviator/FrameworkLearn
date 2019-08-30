@@ -20,7 +20,7 @@ public interface TeacherJpaRepository extends JpaRepository<Teacher,Long> {
     List<Teacher> findByName(String name);
 
     /**
-     * Delete by name.
+     * 按名称删除老师
      *
      * @param name the name
      */
