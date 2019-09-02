@@ -43,4 +43,12 @@ public class SimpleTest {
     public void test() {
         log.info(String.valueOf(Double.parseDouble("200")));
     }
+
+    @Test
+    public void testBoolean() {
+        Boolean isNull = null;
+        if (isNull) {
+            log.info(isNull + "");
+        }
+    }
 }
