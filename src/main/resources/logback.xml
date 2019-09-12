@@ -1,0 +1,66 @@
+<!--在configuration元素后加上debug属性，用于打印内部状态信息-->
+<!--scan属性用于动态扫描配置文件，默认每个一分钟扫描一次，如果更改后的配置文件有语法错误，则会回退到之前的配置文件。-->
+<!--scanPeriod属性设置扫描周期，扫描周期的时间单位可以是毫秒、秒、分钟或者小时。如果没有指定时间单位，则默认为毫秒-->
+<!--packagingData用于打印日志时，展示完整的包路径，一般用于包冲突检查，代价很昂贵-->
+<configuration debug="false" scan="true" scanPeriod="30 seconds" packagingData="false">
+    <!--设置contextName，只能设置一次（早期版本使用的是属性替换而不是变量替换）-->
+    <contextName>myAppName</contextName>
+
+    <!--设置 debug="true" 与配置 OnConsoleStatusListener 的效果完全一样。-->
+    <!--<statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener" />-->
+
+    <!--appender元素必须要有一个name和class属性-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} --- %msg%n</pattern>
+
+            <!--outputPatternAsHeader属性将字符串%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -\-\- %msg%n插入到日志文件的顶部-->
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+
+        <!--layout元素强制一个 class 属性去指定一个类的全限定名-->
+
+        <!--是否立即刷新，如果开启能确保日志文件不丢失，默认为false-->
+        <immediateFlush>false</immediateFlush>
+        <!--是否使用jansi对控制台的输出进行颜色渲染，win下需要jansi依赖，但是尝试了一下没有成功，默认false-->
+        <withJansi>false</withJansi>
+    </appender>
+
+    <!--定义一个FileAppender，将日志输出到指定的文件中去-->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <!--encoder不能共享，所以一个appender对应一个encoder，而Appender可以共享-->
+        <encoder>
+            <pattern>%msg%n</pattern>
+
+            <!--outputPatternAsHeader属性将字符串%msg%n插入到日志文件的顶部-->
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+
+        <!--指定日志文件的位置，默认位置为项目的根目录,在windows平台上，需要使用双斜线进行转义-->
+        <file>E:\\springbootLearn.log</file>
+
+        <!--prudent,严格模式，使用写入日志时使用偏向锁（可能造成其他进程饥饿死锁）的方式对日志进行写入，性能会有损耗，默认为false
+        一般用于多个JVM向一个日志文件打印日志-->
+        <prudent>false</prudent>
+
+        <!--是否立即刷新，如果开启能确保日志文件不丢失，如果关闭能提高两倍的吞吐量，默认为false-->
+        <immediateFlush>false</immediateFlush>
+
+        <!--写入日志时是否进行追加，默认为true-->
+        <append>false</append>
+    </appender>
+
+    <!--定义一个轮转的Appender，RollingFileAppender继承自FileAppender-->
+    <appender name="DAILY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+    </appender>
+
+    <!--将spring的日志有效等级设置为error-->
+    <logger name="org.springframework" level="ERROR"/>
+
+    <!--root元素有且只能有一个，并且只有一个level属性 ，level 属性的值可以为：TRACE、DEBUG、INFO、WARN、ERROR、ALL、OFF-->
+    <root level="ERROR">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
