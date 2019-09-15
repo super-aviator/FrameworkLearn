@@ -20,6 +20,7 @@
         <org.apache.poi.version>3.17</org.apache.poi.version>
         <com.alibaba.fastjson.version>1.2.47</com.alibaba.fastjson.version>
         <net.sourceforge.jexcelapi.version>2.6.12</net.sourceforge.jexcelapi.version>
+        <org.junit.jupiter>4.12</org.junit.jupiter>
     </properties>
 
     <dependencies>
@@ -125,6 +126,8 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>${org.junit.jupiter}</version>
+            <scope>test</scope>
         </dependency>
 
         <!--logback依赖-->

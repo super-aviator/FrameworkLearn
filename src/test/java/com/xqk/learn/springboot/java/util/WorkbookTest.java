@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.util;
+package com.xqk.learn.springboot.java.util;
 
 import jxl.Workbook;
 import jxl.write.Label;

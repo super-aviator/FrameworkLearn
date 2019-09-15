@@ -46,9 +46,10 @@ public class SimpleTest {
 
     @Test
     public void testBoolean() {
-        Boolean isNull = null;
-        if (isNull) {
-            log.info(isNull + "");
-        }
+//        Boolean isNull = null;
+//        if (isNull) {
+//            log.info(isNull + "");
+//        }
+        System.out.println(1 + 1.1);
     }
 }
