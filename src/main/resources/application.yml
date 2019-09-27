@@ -19,9 +19,9 @@ spring:
   #Multipart文件上传配置
   servlet:
     multipart:
-      file-size-threshold: 1MB #当文件达到阀值时进行存储
-      max-file-size: 10MB #最大文件大小
-      max-request-size: 11MB #最大请求大小
+      file-size-threshold: 0MB #当文件达到阀值时进行存储
+      max-file-size: 200MB #最大文件大小
+      max-request-size: 200MB #最大请求大小
       location: E:\\MultipartFileTemp\\ #文件存放位置
 
 server:

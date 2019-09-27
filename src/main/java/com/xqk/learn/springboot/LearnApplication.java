@@ -3,6 +3,7 @@ package com.xqk.learn.springboot;
 import com.xqk.learn.springboot.data.jpa.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -17,7 +18,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
  * @author Aviator
  */
 @EnableWebSecurity
-@SpringBootApplication
+@SpringBootApplication(exclude = {RedisAutoConfiguration.class})
 public class LearnApplication {
 
     /**
