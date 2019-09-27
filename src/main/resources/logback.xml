@@ -27,28 +27,28 @@
     </appender>
 
     <!--定义一个FileAppender，将日志输出到指定的文件中去-->
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <!--encoder不能共享，所以一个appender对应一个encoder，而Appender可以共享-->
-        <encoder>
-            <pattern>%msg%n</pattern>
+    <!--    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+            &lt;!&ndash;encoder不能共享，所以一个appender对应一个encoder，而Appender可以共享&ndash;&gt;
+            <encoder>
+                <pattern>%msg%n</pattern>
 
-            <!--outputPatternAsHeader属性将字符串%msg%n插入到日志文件的顶部-->
-            <outputPatternAsHeader>true</outputPatternAsHeader>
-        </encoder>
+                &lt;!&ndash;outputPatternAsHeader属性将字符串%msg%n插入到日志文件的顶部&ndash;&gt;
+                <outputPatternAsHeader>true</outputPatternAsHeader>
+            </encoder>
 
-        <!--指定日志文件的位置，默认位置为项目的根目录,在windows平台上，需要使用双斜线进行转义-->
-        <file>E:\\springbootLearn.log</file>
+            &lt;!&ndash;指定日志文件的位置，默认位置为项目的根目录,在windows平台上，需要使用双斜线进行转义&ndash;&gt;
+            <file>E:\\springbootLearn.log</file>
 
-        <!--prudent,严格模式，使用写入日志时使用偏向锁（可能造成其他进程饥饿死锁）的方式对日志进行写入，性能会有损耗，默认为false
-        一般用于多个JVM向一个日志文件打印日志-->
-        <prudent>false</prudent>
+            &lt;!&ndash;prudent,严格模式，使用写入日志时使用偏向锁（可能造成其他进程饥饿死锁）的方式对日志进行写入，性能会有损耗，默认为false
+            一般用于多个JVM向一个日志文件打印日志&ndash;&gt;
+            <prudent>false</prudent>
 
-        <!--是否立即刷新，如果开启能确保日志文件不丢失，如果关闭能提高两倍的吞吐量，默认为false-->
-        <immediateFlush>false</immediateFlush>
+            &lt;!&ndash;是否立即刷新，如果开启能确保日志文件不丢失，如果关闭能提高两倍的吞吐量，默认为false&ndash;&gt;
+            <immediateFlush>false</immediateFlush>
 
-        <!--写入日志时是否进行追加，默认为true-->
-        <append>false</append>
-    </appender>
+            &lt;!&ndash;写入日志时是否进行追加，默认为true&ndash;&gt;
+            <append>false</append>
+        </appender>-->
 
     <!--定义一个轮转的Appender，RollingFileAppender继承自FileAppender-->
     <appender name="DAILY" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -56,11 +56,11 @@
     </appender>
 
     <!--将spring的日志有效等级设置为error-->
-    <logger name="org.springframework" level="ERROR"/>
+    <!--<logger name="org.springframework" level="ERROR"/>-->
 
     <!--root元素有且只能有一个，并且只有一个level属性 ，level 属性的值可以为：TRACE、DEBUG、INFO、WARN、ERROR、ALL、OFF-->
     <root level="ERROR">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="FILE"/>
+        <!--<appender-ref ref="FILE"/>-->
     </root>
 </configuration>

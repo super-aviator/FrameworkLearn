@@ -43,6 +43,13 @@ public class UserController {
         return userRepository.findByName("熊乾坤");
     }
 
+    /**
+     * 对结果集进行分页
+     *
+     * @param page 当前页，从0开始
+     * @param size 每页显示的大小
+     * @return 分页结果
+     */
     @GetMapping("/allWithPage")
     public Page<User> getAllUserWithPage(int page, int size) {
         return userRepository.findByName("熊乾坤", PageRequest.of(page, size, Sort.Direction.DESC, "id"));
@@ -69,7 +76,7 @@ public class UserController {
     }
 
     /**
-     * 删除需要在Service层使用@Transactional注解，没有Service层就写在Controller层算了吧
+     * 删除需要在Service层使用@Transactional注解，由于没有Service层，就写在Controller层算了吧
      *
      * @param username 用户名
      */
@@ -98,7 +105,7 @@ public class UserController {
     }
 
     /**
-     * 当查询参数为Null时，会查询该字段为值为null的数据，在这个接口中，数据为空。
+     * 当查询参数为Null时，会查询对应该字段为值为null的数据。
      *
      * @return the users
      */
@@ -118,7 +125,7 @@ public class UserController {
     }
 
     /**
-     * 使用GroupBy关键字
+     * 使用GroupBy关键字对结果进行分组
      *
      * @param name  the name
      * @param email the email
@@ -129,5 +136,16 @@ public class UserController {
         List<String> list = email == null ? null : Arrays.asList(email.split(","));
 
         return userRepository.getUserGroupByGender(name, list);
+    }
+
+    @GetMapping("/DynamicSql")
+    public List<User> getUserByDynamicSql(String name) {
+        return userRepository.getUserWithDynamicSql(name);
+    }
+
+    @CrossOrigin(origins = {"http://123.123.23.1:9000", "null"})
+    @GetMapping("/DynamicSqlWithArgsArr")
+    public List<User> getUserByDynamicSqlWithArgsArr(String[] name) {
+        return userRepository.getUserWithDynamicSql(Objects.isNull(name) ? null : Arrays.asList(name));
     }
 }

@@ -41,3 +41,7 @@ management:
     web:
       exposure:
         include: [health,info] #设置开启的Actuator节点
+#
+#      cors:
+#        allowed-origins: http://101.37.172.37:8080 #配置允许访问的地址
+#        allowed-methods: GET,POST,DELETE,PUT #允许的Http方法

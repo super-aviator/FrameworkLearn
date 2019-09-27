@@ -90,4 +90,26 @@ public interface UserJpaRepository extends JpaRepository<User, Long> {
             " AND (coalesce (:list,null) is null or t.email IN :list)" +
             " GROUP BY t.address")
     List<Object> getUserGroupByGender(@Param("name") String name, @Param("list") List<String> list);
+
+    /**
+     * 是否IS NULL OR 构建动态SQL语句
+     *
+     * @param name 姓名
+     * @return User列表
+     */
+    @Query(value = "SELECT t FROM User AS t " +
+            "WHERE ?1 IS NULL OR t.name=?1 ")
+    @EntityGraph("UserEntity")
+    List<User> getUserWithDynamicSql(String name);
+
+    /**
+     * 是否IS NULL OR 构建动态SQL语句
+     *
+     * @param name 姓名
+     * @return User列表
+     */
+    @Query(value = "SELECT t FROM User AS t " +
+            "WHERE COALESCE(?1,NULL) IS NULL OR t.name IN ?1 ")
+    @EntityGraph("UserEntity")
+    List<User> getUserWithDynamicSql(List<String> name);
 }

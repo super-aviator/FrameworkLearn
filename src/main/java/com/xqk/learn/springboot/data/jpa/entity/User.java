@@ -49,6 +49,9 @@ public class User {
     @Column(name = "GENDER")
     private Gender gender;
 
+    @Column(name = "SCORE")
+    private Integer score;
+
     /**
      * 一对一
      */
