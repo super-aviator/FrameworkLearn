@@ -1,3 +1,4 @@
+/*
 package com.xqk.learn.springboot.security.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -5,14 +6,17 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+*/
 /**
  * The type Web security config.
  *
  * @author Aviator
- */
-@Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Override
+ *//*
+
+//@Configuration
+//     extends WebSecurityConfigurerAdapter
+public class WebSecurityConfig {
+    //@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 //5.x版本的SpringSecurity需要自定义密码解码器
@@ -31,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .dataSource();
     }
 
-    @Override
+    //@Override
     protected void configure(HttpSecurity http) throws Exception {
 //         常规的安全认证
 //        http.authorizeRequests()
@@ -58,3 +62,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 }
+*/

@@ -22,7 +22,10 @@ spring:
       file-size-threshold: 0MB #当文件达到阀值时进行存储
       max-file-size: 200MB #最大文件大小
       max-request-size: 200MB #最大请求大小
-      location: E:\\MultipartFileTemp\\ #文件存放位置
+      location: C:\\Users\\Public\\Downloads\\ #文件存放位置
+
+  application:
+    name: microservice-springbootlearn
 
 server:
   port: 8080 #服务的端口
@@ -41,7 +44,8 @@ management:
     web:
       exposure:
         include: [health,info] #设置开启的Actuator节点
-#
+#        include: * #设置开启所有的Actuator节点
+
 #      cors:
 #        allowed-origins: http://101.37.172.37:8080 #配置允许访问的地址
 #        allowed-methods: GET,POST,DELETE,PUT #允许的Http方法

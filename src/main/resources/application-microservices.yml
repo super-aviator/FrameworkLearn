@@ -1,0 +1,13 @@
+server:
+  port: 10003
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer2:8082/eureka/ #注册另外一个注册中心
+
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+    prefer-ip-address: false

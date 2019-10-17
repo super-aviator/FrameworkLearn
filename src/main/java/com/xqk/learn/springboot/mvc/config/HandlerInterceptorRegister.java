@@ -1,5 +1,6 @@
 package com.xqk.learn.springboot.mvc.config;
 
+import com.xqk.learn.springboot.mvc.bean.BaseHandlerInterceptor;
 import com.xqk.learn.springboot.mvc.bean.MyHandlerInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +18,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 public class HandlerInterceptorRegister extends WebMvcConfigurationSupport {
 
     private final MyHandlerInterceptor myHandlerInterceptor;
+    private final BaseHandlerInterceptor baseHandlerInterceptor;
 
     @Autowired
-    public HandlerInterceptorRegister(MyHandlerInterceptor myHandlerInterceptor) {
+    public HandlerInterceptorRegister(MyHandlerInterceptor myHandlerInterceptor, BaseHandlerInterceptor baseHandlerInterceptor) {
         this.myHandlerInterceptor = myHandlerInterceptor;
+        this.baseHandlerInterceptor = baseHandlerInterceptor;
     }
 
     @Override
@@ -30,5 +33,9 @@ public class HandlerInterceptorRegister extends WebMvcConfigurationSupport {
         registration.addPathPatterns("/time/**");
         //新增非拦截路径
         registration.excludePathPatterns("/user/**");
+
+        registration = registry.addInterceptor(baseHandlerInterceptor);
+        //新增拦截路径
+        registration.addPathPatterns("/**");
     }
 }

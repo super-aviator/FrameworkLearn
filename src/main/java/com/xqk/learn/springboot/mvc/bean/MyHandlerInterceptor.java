@@ -1,5 +1,6 @@
 package com.xqk.learn.springboot.mvc.bean;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -15,6 +16,7 @@ import java.util.Calendar;
  * @author 熊乾坤
  */
 @Component
+@Slf4j
 public class MyHandlerInterceptor extends HandlerInterceptorAdapter {
     private int beginHourOfDay = 8;
     private int endHourOfDay = 9;
@@ -43,6 +45,8 @@ public class MyHandlerInterceptor extends HandlerInterceptorAdapter {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
+        log.info("interceptor request ,url: {}", request.getRequestURI());
+        log.info("interceptor request ,headers: {}", request.getHeaderNames().toString());
         response.setCharacterEncoding("utf-8");
         Calendar calendar = Calendar.getInstance();
         int currentTime = calendar.get(Calendar.HOUR_OF_DAY);

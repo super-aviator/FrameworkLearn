@@ -36,6 +36,11 @@ public class TeacherController {
         return teacherRepository.findByName(teacher);
     }
 
+    @GetMapping(value = "/all")
+    public List<Teacher> getTeachers() {
+        return teacherRepository.findAll();
+    }
+
     /**
      * Delete teacher.
      *

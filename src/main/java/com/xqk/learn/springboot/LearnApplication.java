@@ -2,16 +2,19 @@ package com.xqk.learn.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * The type Learn application.
  * 排除定时任务的包
+ * 排除redis自动配置类
+ * 排除spring security配置类
  *
  * @author Aviator
  */
-@EnableWebSecurity
-@SpringBootApplication
+//@EnableWebSecurity
+@SpringBootApplication(exclude = {org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration.class, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
+@EnableDiscoveryClient
 public class LearnApplication {
 
     /**
@@ -23,7 +26,6 @@ public class LearnApplication {
 
         //最常规的启动方式，使用静态方法的方式
         SpringApplication.run(LearnApplication.class, args);
-
 
         /*
         //以编程的方式激活profile，
