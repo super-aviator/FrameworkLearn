@@ -1,6 +1,6 @@
 package com.xqk.learn.springboot.mvc.controller;
 
-import com.xqk.learn.springboot.common.Response;
+import com.xqk.learn.springboot.common.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.http.HttpStatus;
@@ -37,11 +37,8 @@ public class ApplicationArgumentsController {
      * @return 服务器响应 response
      */
     @GetMapping("/optionArgs")
-    public Response<Set<String>> handlerArgs() {
-        Response<Set<String>> response = new Response<>();
-        response.setData(applicationArguments.getOptionNames());
-        response.setCode(HttpStatus.OK.value());
-        return response;
+    public ResponseMessage<Set<String>> handlerArgs() {
+        return ResponseMessage.generic(HttpStatus.OK.value(), applicationArguments.getOptionNames());
     }
 
     /**
@@ -50,10 +47,7 @@ public class ApplicationArgumentsController {
      * @return 服务器响应 response
      */
     @GetMapping("/nonOptionArgs")
-    public Response<List<String>> handlerNonArgs() {
-        Response<List<String>> response = new Response<>();
-        response.setData(applicationArguments.getNonOptionArgs());
-        response.setCode(HttpStatus.OK.value());
-        return response;
+    public ResponseMessage<List<String>> handlerNonArgs() {
+        return ResponseMessage.generic(HttpStatus.OK.value(), applicationArguments.getNonOptionArgs());
     }
 }

@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.kafka.bean;
+package com.xqk.learn.springboot.data.kafka.bean;
 
 /**
  * The type Kafka config.

@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.kafka.config;
+package com.xqk.learn.springboot.data.kafka.config;
 
 import org.apache.kafka.clients.producer.Partitioner;
 import org.apache.kafka.common.Cluster;

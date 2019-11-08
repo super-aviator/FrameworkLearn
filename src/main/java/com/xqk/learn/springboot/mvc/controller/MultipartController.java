@@ -1,6 +1,6 @@
 package com.xqk.learn.springboot.mvc.controller;
 
-import com.xqk.learn.springboot.common.Response;
+import com.xqk.learn.springboot.common.ResponseMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,10 +47,10 @@ public class MultipartController {
     }
 
     @PostMapping("/batchFileUpload")
-    public Response batchFileUpload(@RequestParam("file") MultipartFile[] file) {
+    public ResponseMessage batchFileUpload(@RequestParam("file") MultipartFile[] file) {
         for (MultipartFile f : file) {
             log.info("后台接收到文件：{}", f.getOriginalFilename());
         }
-        return new Response(1, "接收完成");
+        return ResponseMessage.ok("接收完成");
     }
 }

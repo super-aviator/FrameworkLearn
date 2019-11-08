@@ -1,7 +1,7 @@
 package com.xqk.learn.springboot.mvc.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xqk.learn.springboot.common.Response;
+import com.xqk.learn.springboot.common.ResponseMessage;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,11 +70,11 @@ public class HttpMethodController {
      * @return HttpEntity
      */
     @DeleteMapping(value = "/delete")
-    public Response<JSONObject> deleteMethod(@RequestParam("name") String name, @RequestParam("friendId") List<String> friends) {
+    public ResponseMessage<JSONObject> deleteMethod(@RequestParam("name") String name, @RequestParam("friendId") List<String> friends) {
         JSONObject json = new JSONObject();
         json.put("name", name);
         json.put("friendId", friends);
 
-        return new Response<>(1, "成功", json);
+        return ResponseMessage.ok(json);
     }
 }

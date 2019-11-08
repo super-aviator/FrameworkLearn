@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.kafka.bean;
+package com.xqk.learn.springboot.data.kafka.bean;
 
 import com.xqk.learn.springboot.data.jpa.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;

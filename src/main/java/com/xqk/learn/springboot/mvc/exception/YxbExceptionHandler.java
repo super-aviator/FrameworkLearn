@@ -1,6 +1,6 @@
 package com.xqk.learn.springboot.mvc.exception;
 
-import com.xqk.learn.springboot.common.Response;
+import com.xqk.learn.springboot.common.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,7 +21,7 @@ public class YxbExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public Response handlerBadRequestException(){
-        return new Response(404, "INTERNAL_SERVER_ERROR");
+    public ResponseMessage handlerBadRequestException() {
+        return ResponseMessage.error("INTERNAL_SERVER_ERROR");
     }
 }
