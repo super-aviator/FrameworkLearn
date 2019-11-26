@@ -81,4 +81,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "TeacherId",referencedColumnName = "id")
     )
     private Set<Teacher> teachers;
+
+    @Transient
+    private UserDetail userDetailDup;
 }
