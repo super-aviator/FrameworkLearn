@@ -35,7 +35,7 @@ spring:
   #        send.buffer.bytes: #指定TCP发送数据缓冲区大小，为-1使用系统默认值
 
   #broker地址列表，不需要包含所有的broker地址，生产者会从给定的 broker查找到其他broker的信息。
-  bootstrap-servers: localhost:9092 #不必要全部列举出来，但建议至少要提供两个broker的信息，一且其中一个若机，生产者仍然能够连接到集群上。
+    bootstrap-servers: localhost:9092 #不必要全部列举出来，但建议至少要提供两个broker的信息，一且其中一个若机，生产者仍然能够连接到集群上。
 
-  template:
-    default-topic: test #template默认的topic
+    template:
+      default-topic: test #template默认的topic
