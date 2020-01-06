@@ -50,6 +50,6 @@ public class SimpleTest {
 //        if (isNull) {
 //            log.info(isNull + "");
 //        }
-        System.out.println(1 + 1.1);
+//        System.out.println(1 + 1.1);
     }
 }

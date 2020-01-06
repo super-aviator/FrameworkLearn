@@ -1,10 +1,26 @@
+server:
+  port: 8080 #服务的端口
+
+
 spring:
+  #数据源配置
   datasource:
-    url: jdbc:mysql://localhost:3306/jpa?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     #    url: jdbc:mysql://172.16.160.105:3306/jpa?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     name: jpa
+
+    #数据库脚本初始化
+    data: classpath:SpringBootLearnDML.sql
+    #    data-username: '' #执行DML时的用户名
+    #    data-password: '' #执行DML时的密码
+    schema: classpath:SpringBootLearnDDL.sql
+    #    schema-username: '' # 执行DDL时的用户名
+    #    schema-password: '' # 执行DML时的密码 # always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化
+    continue-on-error: true
+    separator: ;
+    initialization-mode: never
 
   banner:
     location: banner.txt  #指定banner的文件位置
@@ -29,12 +45,14 @@ spring:
   application:
     name: microservice-springbootlearn
 
-server:
-  port: 8080 #服务的端口
+  #flyway开光，相关配置在plugin中指定
+  flyway:
+    enabled: true
+    locations: db/migration
 
 logging:
   level:
-    root: debug  #日志的打印级别
+    root: info  #日志的打印级别
     org.springframework: info
 
 management:

@@ -151,13 +151,26 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-common</artifactId>
             <version>2.22.2</version>
         </dependency>
+
+        <!--flyway数据库版本管理-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+
+        <!-- oracle数据库连接 -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.1.0</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -177,6 +190,19 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <!--这里配置flyway相关的信息-->
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/springbootlearn?serverTimezone=Asia/Shanghai&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8</url>
+                    <user>root</user>
+                    <password>123456</password>
+                    <schemas>
+                        <schema>springbootlearn</schema>
+                    </schemas>
+                </configuration>
             </plugin>
         </plugins>
     </build>
