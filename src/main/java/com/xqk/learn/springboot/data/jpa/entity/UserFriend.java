@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 /**
- * The type User friend.
+ * The type DatasourceUser friend.
  *
  * @author Aviator
  */

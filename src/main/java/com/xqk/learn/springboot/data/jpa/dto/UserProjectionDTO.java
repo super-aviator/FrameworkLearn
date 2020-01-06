@@ -5,7 +5,7 @@ import lombok.ToString;
 
 
 /**
- * The type User projection dto.
+ * The type DatasourceUser projection dto.
  *
  * @author Aviator
  */
@@ -18,7 +18,7 @@ public class UserProjectionDTO {
     private final String name, email;
 
     /**
-     * Instantiates a new User projection dto.
+     * Instantiates a new DatasourceUser projection dto.
      *
      * @param name  the name
      * @param email the email

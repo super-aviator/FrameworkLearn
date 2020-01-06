@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * The type User detail.
+ * The type DatasourceUser detail.
  *
  * @author Aviator
  */

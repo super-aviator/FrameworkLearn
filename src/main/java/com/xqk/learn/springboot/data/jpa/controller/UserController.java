@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The type User controller.
+ * The type DatasourceUser controller.
  *
  * @author Aviator
  */
@@ -28,7 +28,7 @@ import java.util.Objects;
 public class UserController {
 
     /**
-     * The User repository.
+     * The DatasourceUser repository.
      */
     @Autowired
     UserJpaRepository userRepository;

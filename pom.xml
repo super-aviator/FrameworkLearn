@@ -165,6 +165,8 @@
         </dependency>
 
         <!-- oracle数据库连接 -->
+        <!--mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.1.0 -Dpackaging=jar -Dfile=C:\Users\Public\Documents\Oracle\product\11.2.0\dbhome_1\jdbc\lib\ojdbc6.jar-->
+        <!--将本地jar包安装到本地maven仓库-->
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
@@ -197,7 +199,7 @@
                 <!--这里配置flyway相关的信息-->
                 <configuration>
                     <url>jdbc:mysql://localhost:3306/springbootlearn?serverTimezone=Asia/Shanghai&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8</url>
-                    <user>root</user>
+                    <datasourceUser>root</datasourceUser>
                     <password>123456</password>
                     <schemas>
                         <schema>springbootlearn</schema>

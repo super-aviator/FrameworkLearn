@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * The type User.
+ * The type DatasourceUser.
  *
  * @author Aviator
  */

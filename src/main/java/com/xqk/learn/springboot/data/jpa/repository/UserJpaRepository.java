@@ -13,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 /**
- * The interface User jpa repository.
+ * The interface DatasourceUser jpa repository.
  *
  * @author Aviator
  */

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserSecurityController {
     /**
-     * User path 1 string.
+     * DatasourceUser path 1 string.
      *
      * @return the string
      */
@@ -21,7 +21,7 @@ public class UserSecurityController {
     }
 
     /**
-     * User path 2 string.
+     * DatasourceUser path 2 string.
      *
      * @return the string
      */

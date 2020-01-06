@@ -13,12 +13,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 /**
- * The type User controller test.
+ * The type DatasourceUser controller test.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @Slf4j
-public class UserControllerTest {
+public class DatasourceDatasourceUserControllerTest {
     private MockMvc mockMVC;
 
     /**

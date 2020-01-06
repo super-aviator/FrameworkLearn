@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
- * The type User dto.
+ * The type DatasourceUser dto.
  *
  * @author 熊乾坤
  */

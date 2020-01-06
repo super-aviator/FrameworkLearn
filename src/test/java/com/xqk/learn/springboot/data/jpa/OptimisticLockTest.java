@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 public class OptimisticLockTest {
     /**
-     * The User jpa repository.
+     * The DatasourceUser jpa repository.
      */
     @Autowired
     UserJpaRepository userJpaRepository;

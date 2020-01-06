@@ -6,6 +6,7 @@ import com.xqk.learn.springboot.data.jpa.entity.UserDetail;
 import com.xqk.learn.springboot.data.jpa.repository.UserJpaRepository;
 import com.xqk.learn.springboot.data.jpa.vo.UserRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ import java.util.Optional;
  */
 @Slf4j
 @RestController
+@Profile("default")
 @RequestMapping("/spec")
 @Transactional(rollbackFor = Exception.class)
 public class SpecificationController {

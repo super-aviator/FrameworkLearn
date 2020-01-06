@@ -5,11 +5,12 @@ server:
 spring:
   #数据源配置
   datasource:
-    url: jdbc:mysql://localhost:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    jdbc-url: jdbc:mysql://localhost:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     #    url: jdbc:mysql://172.16.160.105:3306/jpa?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
-    name: jpa
+    #    name: jpa
+    driver-class-name: com.mysql.jdbc.Driver
 
     #数据库脚本初始化
     data: classpath:SpringBootLearnDML.sql
@@ -45,14 +46,15 @@ spring:
   application:
     name: microservice-springbootlearn
 
-  #flyway开光，相关配置在plugin中指定
+  #flyway开关，相关配置在plugin中指定
   flyway:
     enabled: true
-    locations: db/migration
+    #需要加classpath惹
+    locations: classpath:db/migration
 
 logging:
   level:
-    root: info  #日志的打印级别
+    root: debug  #日志的打印级别
     org.springframework: info
 
 management:
