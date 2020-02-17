@@ -173,6 +173,12 @@
             <version>11.2.0.1.0</version>
         </dependency>
 
+        <!--quartz-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>

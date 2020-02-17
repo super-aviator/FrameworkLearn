@@ -49,7 +49,7 @@ class TwoDatasourceConfiguration {
     @Primary
     @Bean("mysqlEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean getMysqlEntityManagerFactory(EntityManagerFactoryBuilder builder) {
-        return builder.dataSource(getOracleDataSource())
+        return builder.dataSource(getMysqlDataSource())
                 .packages("com.xqk.learn.springboot.data.jpa.entity")
                 .persistenceUnit("mysql")
                 .build();

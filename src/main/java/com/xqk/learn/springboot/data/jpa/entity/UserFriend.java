@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Data
-@Table(name = "USER_FRIEND")
+@Table(name = "user_friend")
 public class UserFriend {
     @Id
     @GeneratedValue

@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Entity
 @Data
-@Table(name = "USER_DETAIL")
+@Table(name = "user_detail")
 public class UserDetail {
     @Id
     @GeneratedValue

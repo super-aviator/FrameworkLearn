@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.UUID;
+
 /**
  * 开发过程中的简单的测试类
  */
@@ -18,13 +20,15 @@ public class SimpleTest {
      */
     @Test
     public void testCastNull() {
-        log.info((String) null);
+        //log.info((String) null);
+        //
+        //Integer i = (Integer) null;
+        //System.out.println(i);
+        //
+        //int i2 = (Integer) null;
+        //System.out.println(i2);
 
-        Integer i = (Integer) null;
-        System.out.println(i);
-
-        int i2 = (Integer) null;
-        System.out.println(i2);
+        System.out.println(UUID.randomUUID().toString());
     }
 
     /**

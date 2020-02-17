@@ -11,16 +11,16 @@ import javax.persistence.*;
  */
 @Entity
 @Data
-@Table(name = "TEACHER_USER_RELATION")
+@Table(name = "teacher_user_relation")
 public class TeacherUserRelation {
     @Id
     @GeneratedValue
     @Column(name = "ID")
     private Long id;
 
-//    @Column(name = "USER_ID")
+    //@Column(name = "USER_ID")
     private Long userId;
 
-//    @Column(name = "FRIEND_ID")
+    //@Column(name = "FRIEND_ID")
     private Long friendId;
 }

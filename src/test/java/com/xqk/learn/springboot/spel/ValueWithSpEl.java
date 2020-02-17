@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.spring.spel;
+package com.xqk.learn.springboot.spel;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

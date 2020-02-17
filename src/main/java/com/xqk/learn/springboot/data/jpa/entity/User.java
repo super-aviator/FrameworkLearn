@@ -6,6 +6,7 @@ import com.xqk.learn.springboot.data.jpa.common.Gender;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "USER")
+@Table(name = "user")
 @NamedEntityGraph(
         name = "UserEntity",
         attributeNodes = {
@@ -33,7 +34,7 @@ public class User {
      * 使用version字段实现乐观锁，乐观锁的测试代码在OptimisticLockTest类中
      */
     @Version
-    @Column(name = "version")
+    @Column(name = "VERSION")
     private Long version;
 
     @Column(name = "NAME")
@@ -52,18 +53,21 @@ public class User {
     @Column(name = "SCORE")
     private Integer score;
 
+    @Column(name = "BIRTHDAY")
+    private Date birthday;
+
     /**
      * 一对一
      */
-    @JoinColumn(name = "id",referencedColumnName = "id")
+    @JoinColumn(name = "id", referencedColumnName = "id")
     @OneToOne(cascade = {CascadeType.ALL})
     private UserDetail userDetail;
 
     /**
      * 一对多
      */
-    @OneToMany(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId",referencedColumnName = "id")
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     @OrderBy("friend_id ASC")
     private Set<UserFriend> userFriends;
 
@@ -73,12 +77,12 @@ public class User {
      * 如果关系表TEACHER_USER_RELATION的实体中的字段使用了@Column(name)，那么需要填写注解中指定的名字，即表字段名。
      * referencedColumnName填写的是本实体类中的关联的字段。
      */
-    @JsonIgnoreProperties(value = { "users" })
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"users"})
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "TEACHER_USER_RELATION",
-            joinColumns = @JoinColumn(name = "UserId",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "TeacherId",referencedColumnName = "id")
+            name = "teacher_user_relation",
+            joinColumns = @JoinColumn(name = "UserId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "TeacherId", referencedColumnName = "id")
     )
     private Set<Teacher> teachers;
 
