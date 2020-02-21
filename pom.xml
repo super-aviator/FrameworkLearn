@@ -174,9 +174,22 @@
         </dependency>
 
         <!--quartz-->
+        <!--<dependency>-->
+        <!--<groupId>org.quartz-scheduler</groupId>-->
+        <!--<artifactId>quartz</artifactId>-->
+        <!--</dependency>-->
+
+        <!--spring with quartz-->
         <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+
+        <!--apache http client-->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.9</version>
         </dependency>
 
     </dependencies>
@@ -205,7 +218,7 @@
                 <!--这里配置flyway相关的信息-->
                 <configuration>
                     <url>jdbc:mysql://localhost:3306/springbootlearn?serverTimezone=Asia/Shanghai&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8</url>
-                    <datasourceUser>root</datasourceUser>
+                    <user>root</user>
                     <password>123456</password>
                     <schemas>
                         <schema>springbootlearn</schema>

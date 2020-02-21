@@ -1,6 +1,10 @@
 server:
   port: 8080 #服务的端口
 
+logging:
+  level:
+    root: info  #日志的打印级别
+    org.springframework: info
 
 spring:
   #数据源配置
@@ -52,10 +56,33 @@ spring:
     #需要加classpath惹
     locations: classpath:db/migration
 
-logging:
-  level:
-    root: debug  #日志的打印级别
-    org.springframework: info
+  #quartz配置
+  quartz:
+    startup-delay: 1s
+    job-store-type: memory
+    jdbc:
+      initialize-schema: never
+    properties:
+      org:
+        quartz:
+          #          scheduler:
+          #            instanceName: clusteredScheduler
+          #            instanceId: AUTO
+          #          jobStore:
+          #            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+          #            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+          #            tablePrefix: QRTZ_
+          #            isClustered: false
+          #            clusterCheckinInterval: 10000
+          #            #  org.quartz.jobStore.useProperties配置参数可以设置为“true”（默认为false），为了通知JDBCJobStore
+          #            # 所有在JobDataMaps的值都会为String类型，因此可以作为键值对存储，而不是在BLOB列中存储序列化的对象。
+          #            # 这从长远看来更安全，例如你可以避免将非String类对象序列化到BLOB中导致的类版本问题。
+          #            useProperties: false
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 5
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
 
 management:
   endpoint:

@@ -3,23 +3,30 @@ package com.xqk.learn.springboot;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.sql.DataSource;
 import java.util.UUID;
 
 /**
  * 开发过程中的简单的测试类
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 @Slf4j
 public class SimpleTest {
 
+    @Autowired
+    DataSource dataSource;
 
     /**
      * null也是对象，可以对null进行强转，结果为null,但是不能将其赋值给基本类型的变量;
      */
     @Test
     public void testCastNull() {
+        log.info(dataSource.toString());
         //log.info((String) null);
         //
         //Integer i = (Integer) null;
