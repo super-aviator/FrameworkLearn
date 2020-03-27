@@ -192,6 +192,19 @@
             <version>4.5.9</version>
         </dependency>
 
+        <!--spring-data-jpa 支持JSON数据格式-->
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-52</artifactId>
+            <version>2.9.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.0.4</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
