@@ -59,7 +59,7 @@
     <!--<logger name="org.springframework" level="ERROR"/>-->
 
     <!--root元素有且只能有一个，并且只有一个level属性 ，level 属性的值可以为：TRACE、DEBUG、INFO、WARN、ERROR、ALL、OFF-->
-    <root level="ERROR">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
         <!--<appender-ref ref="FILE"/>-->
     </root>

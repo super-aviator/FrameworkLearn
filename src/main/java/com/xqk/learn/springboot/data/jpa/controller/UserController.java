@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The type DatasourceUser controller.
@@ -41,6 +42,12 @@ public class UserController {
     @GetMapping("/all")
     public List getAllUser() {
         return userRepository.findByName("熊乾坤");
+    }
+
+    @GetMapping("/findById")
+    public User findById(Long id) {
+        Optional<User> op = userRepository.findById(id);
+        return op.orElseGet(User::new);
     }
 
     /**

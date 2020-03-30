@@ -2,19 +2,18 @@ package com.xqk.learn.springboot;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.sql.DataSource;
-import java.util.UUID;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * 开发过程中的简单的测试类
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest
 @Slf4j
 public class SimpleTest {
 
@@ -26,7 +25,7 @@ public class SimpleTest {
      */
     @Test
     public void testCastNull() {
-        log.info(dataSource.toString());
+        //log.info(dataSource.toString());
         //log.info((String) null);
         //
         //Integer i = (Integer) null;
@@ -35,9 +34,23 @@ public class SimpleTest {
         //int i2 = (Integer) null;
         //System.out.println(i2);
 
-        System.out.println(UUID.randomUUID().toString());
-    }
+        //System.out.println(UUID.randomUUID().toString());
+        //List<String> list1=Arrays.asList(null,"12.0",null,"10.5",null,"30.5","20.4");
+        List<String> list1 = Arrays.asList("1");
+        Optional optional = list1.stream()
+                .reduce((val1, val2) -> {
+                    if (val1 == null) {
+                        return val2;
+                    }
 
+                    if (val2 == null) {
+                        return val1;
+                    }
+
+                    return Double.valueOf(val1).compareTo(Double.valueOf(val2)) > 0 ? val1 : val2;
+                });
+        optional.ifPresent(System.out::println);
+    }
     /**
      * Test split.
      *

@@ -23,6 +23,7 @@ public class Teacher {
     @Column(name = "NAME")
     private String name;
 
+    //@JsonIgnoreProperties(value = {"users"})
     @ManyToMany(mappedBy = "teachers")
     private List<User> users;
 }

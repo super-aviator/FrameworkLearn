@@ -1,7 +1,5 @@
-package com.xqk.learn.springboot.mvc.config;
+package com.xqk.learn.springboot.mvc.interceptor;
 
-import com.xqk.learn.springboot.mvc.bean.BaseHandlerInterceptor;
-import com.xqk.learn.springboot.mvc.bean.MyHandlerInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @author Aviator
  */
 @RestControllerAdvice
-public class YxbExceptionHandler {
+public class SpringBootLearnExceptionHandler {
 
     /**
      * Handler bad request exception response.

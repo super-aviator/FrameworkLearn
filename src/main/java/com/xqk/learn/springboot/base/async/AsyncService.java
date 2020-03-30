@@ -28,14 +28,14 @@ public class AsyncService {
 
     @Async()
     public CompletableFuture<String> getHtmlText() throws IOException {
-        log.info("async start");
+        log.info("async task start");
 
         CloseableHttpClient client = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("https://www.zhihu.com");
         try (CloseableHttpResponse response = client.execute(httpGet)) {
             HttpEntity entity = response.getEntity();
             BufferedReader br = new BufferedReader(new InputStreamReader(entity.getContent()));
-            log.info("async end");
+            log.info("async task end");
             return CompletableFuture.completedFuture(br.lines().collect(Collectors.joining()));
         }
     }

@@ -15,7 +15,7 @@ import java.util.Date;
 @Table(name = "user_detail")
 public class UserDetail {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
@@ -25,6 +25,7 @@ public class UserDetail {
     @Column(name = "ENROLLMENT_DATE")
     private Date enrollmentDate;
 
-    @Column(name = "USER_ID")
-    private Long userId;
+    //@Column(name = "USER_ID")
+    @OneToOne(mappedBy = "userDetail")
+    private User user;
 }

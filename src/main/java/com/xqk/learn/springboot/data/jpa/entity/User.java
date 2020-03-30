@@ -20,14 +20,14 @@ import java.util.Set;
 @NamedEntityGraph(
         name = "UserEntity",
         attributeNodes = {
-                @NamedAttributeNode("userDetail"),
+                //@NamedAttributeNode("userDetail"),
                 @NamedAttributeNode("userFriends"),
                 @NamedAttributeNode("teachers"),
         }
 )
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -56,11 +56,15 @@ public class User {
     @Column(name = "BIRTHDAY")
     private Date birthday;
 
+    //@Column(name = "USER_DETAIL_ID")
+    //private Long userDetailId;
+
     /**
      * 一对一
      */
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    @OneToOne(cascade = {CascadeType.ALL})
+    @JsonIgnoreProperties(value = {"user"})
+    @JoinColumn(name = "USER_DETAIL_ID")
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private UserDetail userDetail;
 
     /**

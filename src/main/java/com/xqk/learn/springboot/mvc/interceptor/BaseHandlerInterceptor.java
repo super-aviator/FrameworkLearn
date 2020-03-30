@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.mvc.bean;
+package com.xqk.learn.springboot.mvc.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
