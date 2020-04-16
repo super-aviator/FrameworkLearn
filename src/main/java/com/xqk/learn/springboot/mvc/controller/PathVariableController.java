@@ -1,13 +1,13 @@
 package com.xqk.learn.springboot.mvc.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
- * The type Path variable controller.
+ * 路径参数测试
+ * 1. 对于路径参数/{var}和路径参数/var/{var}，相互之间不会干扰
+ * 2. 对于路径参数/{var}，请求路径"/ "会后端无法识别
+ *
  *
  * @author 熊乾坤
  */
@@ -20,8 +20,16 @@ public class PathVariableController {
      *
      * @param var the var
      */
-    @GetMapping("/{var}")
+    @DeleteMapping("/{var}")
     public void test1(@PathVariable String var) {
+        log.info(var);
+    }
+
+    /**
+     * @param var 参数
+     */
+    @DeleteMapping("/var/{var}")
+    public void test11(@PathVariable String var) {
         log.info(var);
     }
 
