@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
@@ -26,7 +28,13 @@ import java.util.stream.Collectors;
 @Component
 public class AsyncService {
 
-    @Async()
+    public static void main(String[] args) {
+        Map<String, Double> maxSpeedMap = new HashMap<>(16);
+        maxSpeedMap.put("123", null);
+        System.out.println(maxSpeedMap.containsKey("123"));
+    }
+
+    @Async
     public CompletableFuture<String> getHtmlText() throws IOException {
         log.info("async task start");
 
@@ -38,5 +46,22 @@ public class AsyncService {
             log.info("async task end");
             return CompletableFuture.completedFuture(br.lines().collect(Collectors.joining()));
         }
+    }
+
+    @Async
+    public void simpleAsyncMethod() {
+        log.info("simple async method executing!");
+    }
+
+    @Async
+    public void asyncMethod() {
+        log.info("async method executing ,will invoke simple async method!");
+        //同一个类中调用@Async方法，不是异步执行的
+        simpleAsyncMethod();
+    }
+
+    @Async
+    public void throwExceptionAsyncMethod() {
+        throw new RuntimeException();
     }
 }

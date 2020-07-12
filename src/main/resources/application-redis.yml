@@ -1,23 +1,18 @@
-server:
-  port: 999
-
-#激活一个profile的同时，也激活另外一个profile
 spring:
-  profiles:
-    include:
-  #      - prod
-
   redis:
-    host: 127.0.0.1
+    host: 101.37.172.37
     database: 0
     ssl: false
-    port: 7000
-    cluster:
-      # redis集群的ip和端口列表
-      #      nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
-      max-redirects: 1 #集群中重定向时最大跳转的次数
+    port: 6379
+    timeout: 1000ms #链接超时时间
+    password: 123456
+    #    cluster:
+    #      # redis集群的ip和端口列表
+    #      nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
+    #      max-redirects: 1 #集群中重定向时最大跳转的次数
     jedis:
       pool:
         max-active: 8 #线程池中最大线程数
-        min-idle: 2 #最大空闲线程数
-    timeout: 5000ms #链接超时时间
+        min-idle: 2 #最小空闲线程数
+        max-idle: 8 #最大空闲线程数
+        max-wait: 1000ms #最大空闲时间

@@ -1,5 +1,8 @@
+host:
+  101.37.172.37
+###########################################################################################################
 server:
-  port: 8080 #服务的端口
+  port: 8000 #服务的端口
 
 logging:
   level:
@@ -26,6 +29,13 @@ spring:
     separator: ;
     initialization-mode: never
 
+  #使用一个profile时，同时也使用另外一个profile
+  profiles:
+    include:
+      - kafka
+      - redis
+      - elasticsearch
+
   banner:
     location: banner.txt  #指定banner的文件位置
 
@@ -36,7 +46,7 @@ spring:
         dialect: com.xqk.learn.springboot.data.jpa.config.MyDialect
         enable_lazy_load_no_trans: true #解决懒加载时，缺少session的问题
         format_sql: true #格式化sql语句
-        ddl_auto: true #生成数据库定义语句
+        ddl_auto: false #生成数据库定义语句
 
 
 
@@ -67,7 +77,7 @@ spring:
         quartz:
           #          scheduler:
           #            instanceName: clusteredScheduler
-          #            instanceId: AUTO
+          #           jisua instanceId: AUTO
           #          jobStore:
           #            class: org.quartz.impl.jdbcjobstore.JobStoreTX
           #            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
@@ -85,26 +95,29 @@ spring:
             threadsInheritContextClassLoaderOfInitializingThread: true
 
   task:
-    #ThreadPoolTaskExecutor配置（@EnableAsync注解开启）TaskExecutionProperties
-    execution:
-      pool:
-        core-size: 8  #核心线程数量
-        max-size: 8 #当等待队列填满时，线程池可以扩大的数量
-        queue-capacity: 1000 #等待的队列长度
-        keep-alive: 50s #线程的最大空闲等待时长
-        allow-core-thread-timeout: true #是否允许核心线程超时，可以实现线程池的动态增长和萎缩
-      thread-name-prefix: aviator-task #自定义TaskExecutor线程名称
+  #ThreadPoolTaskExecutor配置（@EnableAsync注解开启）TaskExecutionProperties
+  #    execution:
+  #      pool:
+  #        core-size: 8  #核心线程数量
+  #        max-size: 8 #当等待队列填满时，线程池可以扩大的数量
+  #        queue-capacity: 1000 #等待的队列长度
+  #        keep-alive: 50s #线程的最大空闲等待时长
+  #        allow-core-thread-timeout: true #是否允许核心线程超时，可以实现线程池的动态增长和萎缩
+  #      thread-name-prefix: aviator-task #自定义TaskExecutor线程名称
 
-    #ThreadPoolScheduleExecutor配置（@EnableScheduling注解开启）TaskExecutionProperties
-    scheduling:
-      pool:
-        size: 8 #允许的最大线程个数
-      thread-name-prefix: aviator-scheduling #自定义TaskScheduling线程名称
+  #ThreadPoolScheduleExecutor配置（@EnableScheduling注解开启）TaskExecutionProperties
+
+#    scheduling:
+#      pool:
+#        size: 8 #允许的最大线程个数
+#      thread-name-prefix: aviator-scheduling #自定义TaskScheduling线程名称
 
 hibernate:
-  types:
-    print:
-      banner: false #关闭hibernate-type的banner打印
+  properties:
+    hibernate:
+      types:
+        print:
+          banner: false #关闭hibernate-type的banner打印
 
 ##############################################微服务####################################
 

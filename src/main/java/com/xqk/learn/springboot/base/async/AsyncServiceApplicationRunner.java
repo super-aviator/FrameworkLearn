@@ -3,7 +3,6 @@ package com.xqk.learn.springboot.base.async;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -12,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
  * @date 2020-02-21 16:59
  */
 @Slf4j
-@Component
+//@Component
 public class AsyncServiceApplicationRunner implements ApplicationRunner {
     private final AsyncService asyncService;
 
@@ -35,5 +34,9 @@ public class AsyncServiceApplicationRunner implements ApplicationRunner {
         log.info("async3 运行结果：{}", future3.get());
         log.info("async4 运行结果：{}", future4.get());
         log.info("async5 运行结果：{}", future5.get());
+
+        asyncService.asyncMethod();
+        //测试抛出异常
+        asyncService.throwExceptionAsyncMethod();
     }
 }

@@ -1,7 +1,7 @@
 package com.xqk.learn.springboot.data.jpa.controller;
 
-import com.xqk.learn.springboot.data.jpa.entity.LazyFetchTestEntity;
-import com.xqk.learn.springboot.data.jpa.repository.LazyFetchTestRepository;
+import com.xqk.learn.springboot.data.jpa.entity.TestColumnEntity;
+import com.xqk.learn.springboot.data.jpa.repository.TestColumnRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,15 +17,15 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/lazy-fetch")
 public class LazyFetchTestController {
-    private final LazyFetchTestRepository repository;
+    private final TestColumnRepository repository;
 
-    public LazyFetchTestController(LazyFetchTestRepository repository) {
+    public LazyFetchTestController(TestColumnRepository repository) {
         this.repository = repository;
     }
 
     @RequestMapping("/{id}")
     public Map<String, String> getLazyFetchField1(@PathVariable(name = "id") Long id) {
-        Optional<LazyFetchTestEntity> result = repository.findById(id);
+        Optional<TestColumnEntity> result = repository.findById(id);
         Map<String, String> map = new HashMap<>(5);
         result.ifPresent(t -> map.put(t.getDesc(), t.getAddress()));
         return map;
@@ -33,11 +33,11 @@ public class LazyFetchTestController {
 
     @RequestMapping("/fall")
     public Map<String, String> getLazyFetchField2() {
-        LazyFetchTestEntity lazyFetchTestEntity = new LazyFetchTestEntity();
-        lazyFetchTestEntity.setId(1L);
-        lazyFetchTestEntity.setName("xqk");
+        TestColumnEntity testColumnEntity = new TestColumnEntity();
+        testColumnEntity.setId(1L);
+        testColumnEntity.setName("xqk");
         Map<String, String> map = new HashMap<>(5);
-        map.put(lazyFetchTestEntity.getDesc(), lazyFetchTestEntity.getAddress());
+        map.put(testColumnEntity.getDesc(), testColumnEntity.getAddress());
         return map;
     }
 }

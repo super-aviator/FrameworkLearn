@@ -1,0 +1,8 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes: ${host}:9300
+      cluster-name: docker-cluster
+  elasticsearch:
+    rest:
+      uris: ${host}:9200

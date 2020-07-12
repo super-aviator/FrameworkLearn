@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,7 +25,7 @@ public class KafkaListenerAnnotation {
      * @return the user dto
      */
     @KafkaListener(topics = "test", groupId = "test-listener1")
-    @SendTo("sendto")
+    //@SendTo("sendto")
     public UserDTO consume1Partition2(UserDTO user, ConsumerRecord<String, UserDTO> record) {
         log.info("group:test-listener1 partition:{} consume a UserDTO msg:{} from topic:test and then send to topic :{}", record.partition(), user.toString(), "sendto");
         return user;
