@@ -1,7 +1,6 @@
 package com.xqk.learn.springboot.data.jpa;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xqk.learn.springboot.data.jpa.common.Gender;
 import com.xqk.learn.springboot.data.jpa.entity.User;
 import com.xqk.learn.springboot.data.jpa.entity.UserDetail;
 import com.xqk.learn.springboot.data.jpa.repository.UserDetailJpaRepository;
@@ -39,10 +38,11 @@ public class UserEntityCascadePersistTest {
         user.setName("测试级联插入");
         user.setAddress("秭归");
         user.setBirthday(new Date());
-        user.setGender(Gender.MALE);
         user.setUserDetail(userDetail);
         User savedUser = userJpaRepository.save(user);
-        log.info(savedUser.toString());
+        userJpaRepository.flush();
+        Optional<User> userOptional = userJpaRepository.findById(savedUser.getId());
+        log.info(userOptional.get().toString());
     }
 
     @Test

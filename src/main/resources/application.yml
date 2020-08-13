@@ -29,13 +29,6 @@ spring:
     separator: ;
     initialization-mode: never
 
-  #使用一个profile时，同时也使用另外一个profile
-  profiles:
-    include:
-      - kafka
-      - redis
-      - elasticsearch
-
   banner:
     location: banner.txt  #指定banner的文件位置
 
@@ -63,8 +56,16 @@ spring:
 
   #flyway开关，相关配置在plugin中指定
   flyway:
-    enabled: true #是否开启flyway
+    enabled: false #是否开启flyway
     locations: classpath:db/migration #sql脚本的位置，需要加classpath惹
+
+  #使用一个profile时，同时也使用另外一个profile
+  profiles:
+    include:
+      - kafka
+      - redis
+      - elasticsearch
+      - rabbitmq
 
   #quartz配置
   quartz:
