@@ -62,10 +62,10 @@ spring:
   #使用一个profile时，同时也使用另外一个profile
   profiles:
     include:
-      - kafka
+      #      - kafka
       - redis
-      - elasticsearch
-      - rabbitmq
+  #      - elasticsearch
+  #      - rabbitmq
 
   #quartz配置
   quartz:

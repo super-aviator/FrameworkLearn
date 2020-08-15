@@ -3,6 +3,7 @@ package com.xqk.learn.springboot.data.rabbit.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
+@Profile("rabbitmq")
 public class RabbitReceiveService {
     @RabbitHandler
     @RabbitListener(queues = "queue1")

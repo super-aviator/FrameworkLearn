@@ -1,9 +1,7 @@
 package com.xqk.learn.springboot;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 /**
  * The type Learn application.
@@ -29,7 +27,7 @@ public class LearnApplication {
     public static void main(String[] args) {
 
         //最常规的启动方式，使用静态方法的方式
-        //SpringApplication.run(LearnApplication.class, args);
+        SpringApplication.run(LearnApplication.class, args);
 
         /*
         //以编程的方式激活profile，
@@ -42,9 +40,5 @@ public class LearnApplication {
         application.setSources(new HashSet<>(Collections.singletonList("com.springboot.learn")));
         application.run(args);
         */
-        Double d = Double.valueOf("1123.12300923");
-        DecimalFormat df = new DecimalFormat(".0000000000");
-        df.setRoundingMode(RoundingMode.FLOOR);
-        System.out.println(df.format(d));
     }
 }

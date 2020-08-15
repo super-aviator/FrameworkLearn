@@ -3,12 +3,14 @@ package com.xqk.learn.springboot.data.rabbit.config;
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * @author 熊乾坤
  * @date 2020-08-03 9:18
  */
 @Configuration
+@Profile("rabbitmq")
 public class RabbitConfig {
     @Bean
     public Queue getQueue1() {
