@@ -26,7 +26,7 @@ public class MySTOMPWebSocketConfigurer implements WebSocketMessageBrokerConfigu
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         //指定所有Broker的前缀
         registry.setApplicationDestinationPrefixes("/web-socket")
-                //开启一个broker
-                .enableSimpleBroker("/topic");
+                //开启一个broker消息代理（如果不开启消息代理，则无法使用broker，消息将无法转发）
+                .enableSimpleBroker("/topic", "/web-socket/subscribe");
     }
 }
