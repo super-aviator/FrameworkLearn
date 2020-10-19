@@ -1,7 +1,7 @@
 package com.xqk.learn.springboot.elasticsearch.highlevel.contorller;
 
 import com.xqk.learn.springboot.common.ResponseMessage;
-import com.xqk.learn.springboot.elasticsearch.highlevel.operation.get.GetService;
+import com.xqk.learn.springboot.elasticsearch.highlevel.operation.GetService;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;

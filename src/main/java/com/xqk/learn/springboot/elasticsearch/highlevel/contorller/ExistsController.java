@@ -1,7 +1,7 @@
 package com.xqk.learn.springboot.elasticsearch.highlevel.contorller;
 
 import com.xqk.learn.springboot.common.ResponseMessage;
-import com.xqk.learn.springboot.elasticsearch.highlevel.operation.exists.ExistsService;
+import com.xqk.learn.springboot.elasticsearch.highlevel.operation.ExistsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

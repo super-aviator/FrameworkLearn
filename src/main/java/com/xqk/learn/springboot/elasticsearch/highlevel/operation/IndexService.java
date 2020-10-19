@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.elasticsearch.highlevel.operation.index;
+package com.xqk.learn.springboot.elasticsearch.highlevel.operation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xqk.learn.springboot.common.ResponseMessage;
@@ -35,7 +35,7 @@ public class IndexService {
     }
 
     public ResponseMessage<String> indexEmployee(Employee employee) throws IOException {
-        IndexRequest request = new IndexRequest("megecrop", "employee", employee.getId());
+        IndexRequest request = new IndexRequest("megecrop2222", "employee", employee.getId());
         //需要手动指定ContentType
         request.source(objectMapper.writeValueAsString(employee), XContentType.JSON);
         //设置Request参数
@@ -50,8 +50,9 @@ public class IndexService {
             IndexResponse response = client.index(request, RequestOptions.DEFAULT);
             return ResponseMessage.ok("操作结果：" + response.getResult().toString());
         } catch (ElasticsearchException e) {
+            log.error("文档索引异常", e);
             if (e.status() == RestStatus.CONFLICT) {
-                log.error("保存数据时冲突", e);
+                log.error("保存数据时冲突");
             }
             return ResponseMessage.error(e.status().toString());
         }

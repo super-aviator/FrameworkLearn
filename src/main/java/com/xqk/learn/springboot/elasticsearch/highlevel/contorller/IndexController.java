@@ -2,7 +2,7 @@ package com.xqk.learn.springboot.elasticsearch.highlevel.contorller;
 
 import com.xqk.learn.springboot.common.ResponseMessage;
 import com.xqk.learn.springboot.elasticsearch.highlevel.dto.Employee;
-import com.xqk.learn.springboot.elasticsearch.highlevel.operation.index.IndexService;
+import com.xqk.learn.springboot.elasticsearch.highlevel.operation.IndexService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

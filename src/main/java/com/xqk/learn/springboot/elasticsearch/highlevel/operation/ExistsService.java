@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.elasticsearch.highlevel.operation.exists;
+package com.xqk.learn.springboot.elasticsearch.highlevel.operation;
 
 import com.xqk.learn.springboot.common.ResponseMessage;
 import lombok.extern.slf4j.Slf4j;

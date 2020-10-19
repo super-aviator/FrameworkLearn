@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.elasticsearch.highlevel.operation.get;
+package com.xqk.learn.springboot.elasticsearch.highlevel.operation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xqk.learn.springboot.common.ResponseMessage;
@@ -30,7 +30,7 @@ public class GetService {
     }
 
     public ResponseMessage getEmployeeById(String id, Long version) throws IOException {
-        GetRequest getRequest = new GetRequest("megecrop", "employee", id);
+        GetRequest getRequest = new GetRequest("megecrop111", "employee", id);
         //指定version
         if (version != null) {
             getRequest.version(version);

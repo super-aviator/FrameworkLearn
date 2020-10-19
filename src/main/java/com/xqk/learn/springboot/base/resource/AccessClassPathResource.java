@@ -16,7 +16,7 @@ import java.io.*;
  */
 public class AccessClassPathResource {
     public static void main(String[] args) throws IOException {
-        String classPath = "application.yml";
+        String classPath = "application-";
         ClassPathResource classPathResource = new ClassPathResource(classPath);
         InputStreamReader reader = new InputStreamReader(classPathResource.getInputStream());
         int i;

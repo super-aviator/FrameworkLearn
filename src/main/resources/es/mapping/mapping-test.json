@@ -1,0 +1,15 @@
+{
+  "mappings": {
+    "doc": {
+      "properties": {
+        "username": {
+          "type": "keyword",
+          "store": true
+        },
+        "age": {
+          "type": "short"
+        }
+      }
+    }
+  }
+}
