@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.data.kafka.bean;
+package com.xqk.learn.springboot.data.kafka.service;
 
 import lombok.Data;
 
