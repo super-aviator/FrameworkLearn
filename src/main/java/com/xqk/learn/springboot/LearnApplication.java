@@ -1,5 +1,6 @@
 package com.xqk.learn.springboot;
 
+import com.xqk.learn.springboot.cloud.openfeign.config.MyFeignConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -12,7 +13,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  *
  * @author Aviator
  */
-@EnableFeignClients
+//开启Feign，并指定默认配置（也可以再配置文件中指定，配置文件的优先级更高）
+@EnableFeignClients(defaultConfiguration = MyFeignConfiguration.class)
 //@EnableScheduling
 //@EnableWebSecurity
 //@SpringBootApplication(exclude = {org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration.class,
