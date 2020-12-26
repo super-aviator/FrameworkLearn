@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.base.spel.bean;
+package com.xqk.learn.springboot.core.spel.bean;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

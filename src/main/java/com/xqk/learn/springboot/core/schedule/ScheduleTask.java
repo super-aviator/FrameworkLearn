@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.base.schedule;
+package com.xqk.learn.springboot.core.schedule;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;

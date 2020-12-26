@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.base.ioc.circularreference;
+package com.xqk.learn.springboot.core.ioc.circularreference;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

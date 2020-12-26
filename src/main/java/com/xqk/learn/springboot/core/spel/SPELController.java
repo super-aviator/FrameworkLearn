@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.base.spel;
+package com.xqk.learn.springboot.core.spel;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.expression.Expression;

@@ -1,8 +1,8 @@
-package com.xqk.learn.springboot.base.async;
+package com.xqk.learn.springboot.core.async;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
@@ -12,8 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author 熊乾坤
  * @date 2020-02-21 17:06
  */
-@EnableAsync
-//@Configuration
+@Configuration
 public class MyAsyncConfiguration implements AsyncConfigurer {
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {

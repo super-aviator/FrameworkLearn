@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.base.schedule;
+package com.xqk.learn.springboot.core.schedule;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

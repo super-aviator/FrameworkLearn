@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.base.resource;
+package com.xqk.learn.springboot.core.resource;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;

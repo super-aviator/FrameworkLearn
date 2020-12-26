@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.base.ioc;
+package com.xqk.learn.springboot.core.ioc;
 
 import lombok.Data;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

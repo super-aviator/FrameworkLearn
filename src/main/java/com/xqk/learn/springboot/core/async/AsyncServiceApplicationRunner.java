@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.base.async;
+package com.xqk.learn.springboot.core.async;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
