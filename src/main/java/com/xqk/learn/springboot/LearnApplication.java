@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  *
  * @author Aviator
  */
-//开启Feign，并指定默认配置（也可以再配置文件中指定，配置文件的优先级更高）
+//开启Feign，并指定默认配置（也可以在配置文件中指定，配置文件的优先级更高）
 @EnableFeignClients(defaultConfiguration = MyFeignConfiguration.class)
 @EnableScheduling
 @EnableAsync
