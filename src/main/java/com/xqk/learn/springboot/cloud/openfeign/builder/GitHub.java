@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.cloud.openfeign.builderapi;
+package com.xqk.learn.springboot.cloud.openfeign.builder;
 
 import cn.hutool.core.io.IoUtil;
 import com.alibaba.fastjson.JSONObject;

@@ -43,8 +43,6 @@ spring:
         format_sql: true #格式化sql语句
         ddl_auto: false #生成数据库定义语句
 
-
-
   #Multipart文件上传配置
   servlet:
     multipart:
@@ -64,10 +62,11 @@ spring:
   #使用一个profile时，同时也使用另外一个profile
   profiles:
     include:
-      - kafka
-      - redis
-  #      - elasticsearch
-  #      - rabbitmq
+#      - kafka
+      #      - redis
+      #      - elasticsearch
+      #      - rabbitmq
+      - feign
 
   #quartz配置
   quartz:

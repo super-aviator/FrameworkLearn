@@ -3,6 +3,7 @@ package com.xqk.learn.springboot.elasticsearch.component;
 import com.xqk.learn.springboot.elasticsearch.lowlevel.service.ElasticsearchSearchService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
+@Profile("elasticsearch")
 public class ESMappingCheckRunner implements CommandLineRunner {
     private final ElasticsearchSearchService elasticsearchSearchService;
 
