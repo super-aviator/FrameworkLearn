@@ -12,6 +12,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * 排除定时任务的包
  * 排除redis自动配置类
  * 排除spring security配置类
+ * <p>
+ * 注解：
+ * 1. @SpringBootApplication 相当于@Configuration+@EnableAutoConfiguration+@ComponentScan
  *
  * @author Aviator
  */
@@ -36,8 +39,8 @@ public class LearnApplication {
         //最常规的启动方式，使用静态方法的方式
         SpringApplication.run(LearnApplication.class, args);
 
-        /*
         //以编程的方式激活profile，
+        /*
         SpringApplication application = new SpringApplication();
         //激活指定的profile
         application.setAdditionalProfiles("kafka");
