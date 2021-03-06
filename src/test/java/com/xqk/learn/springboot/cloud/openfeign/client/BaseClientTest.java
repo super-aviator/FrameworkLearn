@@ -1,6 +1,5 @@
-package com.xqk.learn.springboot.mvc.controller;
+package com.xqk.learn.springboot.cloud.openfeign.client;
 
-import com.xqk.learn.springboot.cloud.openfeign.client.BaseClient;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -12,13 +11,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author 熊乾坤
- * @since 2020-12-27 22:15
+ * @since 2021-02-21 17:07
  */
 @Slf4j
 @SpringBootTest
 @Profile("default")
 @RunWith(SpringRunner.class)
-public class BaseControllerTest extends TestCase {
+public class BaseClientTest extends TestCase {
     @Autowired
     BaseClient baseClient;
 

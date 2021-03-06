@@ -1,3 +1,7 @@
+logging:
+  level:
+    com.xqk.learn.springboot.cloud.openfeign.client: DEBUG
+
 feign:
   #使用OkHttpClient
   okhttp.enabled: false

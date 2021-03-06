@@ -1,11 +1,10 @@
 package com.xqk.learn.springboot;
 
-import com.xqk.learn.springboot.cloud.openfeign.config.MyFeignConfiguration;
+import com.xqk.learn.springboot.cloud.openfeign.config.BaseClientConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * The type Learn application.
@@ -19,8 +18,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @author Aviator
  */
 //开启Feign，并指定默认配置（也可以在配置文件中指定，配置文件的优先级更高）
-@EnableFeignClients(defaultConfiguration = MyFeignConfiguration.class)
-@EnableScheduling
+@EnableFeignClients(defaultConfiguration = BaseClientConfiguration.class)
+//@EnableScheduling
 @EnableAsync
 //@EnableWebSecurity
 //@SpringBootApplication(exclude = {org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration.class,

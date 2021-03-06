@@ -19,13 +19,13 @@ spring:
     producer:
       client-id: springboot-producer #随意配置，用于日志
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer #指定生产者发送的value的序列化器
-      acks: 1 #0,all    为1：只要集群的首领收到就算发送成功、为0：不管收没收到都算成功，为all：必须所有参与复制的节点都收到才算发送成功
+      acks: 1 #0,all    为1：只要集群的首领收到就算发送成功、为0：不管收没收到都算成功，为all（或者-1）：必须所有参与复制的节点都收到才算发送成功
       buffer-memory: 1048576 #发送者的缓冲区
       #      compression-type: snappy #gzip,lz4   设置压缩的算法，snappy算法cpu占用少，压缩比小，gzip算法cpu占用多，压缩比大
       retries: 3  #如果大于0，则开启发送失败后的重试,数字为重试的次数
       batch-size: 1048576  #发送同一分区的数据的缓存大小，设大一点不会造成延时，设小了会有额外开销
       properties: #自定义属性
-#        partitioner.class: KafkaPartitioner #配置自定义分区器，指定分区器的包路径
+        #        partitioner.class: KafkaPartitioner #配置自定义分区器，指定分区器的包路径
         retry.backoff.ms: 200 #每次发送失败之后的等待时间。和retries配合使用
         linger.ms: 200 #发送数据之前的等待时间，当发送数据时，如果缓存没满，继续等待更多数据加入缓冲区
         max.in.flight.requests.per.connection: 10 #生产者接收到响应之前可以发送的消息数量，为1可以保证数据接收是按照发送的顺序来的(顺序要求严格)
