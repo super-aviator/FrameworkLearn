@@ -15,6 +15,9 @@ import org.springframework.stereotype.Component;
 @Order(3)
 @Component
 public class ThirdCommandLineRunner implements CommandLineRunner {
+    public static void main(String[] args) {
+
+    }
 
     @Override
     public void run(String... args) {

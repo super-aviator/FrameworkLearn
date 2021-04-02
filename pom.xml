@@ -242,8 +242,14 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
-        <!--redisson整合-->
+        <!--config-server依赖-->
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+
+        <!--redisson整合-->
+        <!--<dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
             <version>3.15.0</version>
@@ -259,6 +265,7 @@
             <artifactId>redisson-spring-data-21</artifactId>
             <version>3.15.0</version>
         </dependency>
+-->
     </dependencies>
 
     <dependencyManagement>

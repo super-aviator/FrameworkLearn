@@ -3,7 +3,6 @@ package com.xqk.learn.springboot.core.base;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
@@ -15,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 2021-02-25 12:19
  */
 @Slf4j
-@Component
+//@Component
 public class MyApplicationRunner implements ApplicationRunner {
     /** 保存转换后的Map */
     private static final ConcurrentHashMap<String, String> CONVERTED_MAP = new ConcurrentHashMap<>(4);

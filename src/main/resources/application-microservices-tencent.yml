@@ -14,3 +14,5 @@ eureka:
     instance-id: ${spring.application.name}:${random.int(10)}
     metadata-map:
       zone: shanghai #指定实例的zone，用于Ribbon的区域亲和策略
+    ip-address: 49.235.67.7 #服务部署主机的外网ip地址（确保其他服务能访问到）
+    non-secure-port: 18081 #服务部署主机的外网端口（确保其他服务能够访问到）
