@@ -5,7 +5,7 @@ spring:
       enable-auto-commit: true #开启自动提交
       auto-commit-interval: 5s  #自动提交的时间间隔（默认为5秒）
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer #指定消费者接收到的value的反序列化器
-      auto-offset-reset: latest #当消费者发现偏移量无效时，选择从最早的数据开始读（earliest）或者只读最新的数据(latest)，或者直接抛出以异常(none)
+      auto-offset-reset: latest #当消费者发现偏移量无效或者seek方法找不到下标时，选择从最早的数据开始读（earliest）或者只读最新的数据(latest)，或者直接抛出以异常(none)
       fetch-min-size: 1B  #（原始配置:fetch-min-bytes）指定消费者每次可获得的最小字节数，默认1字节（增大此配置提交吞吐量，会增大延迟）
       fetch-max-wait: 1000ms #指定从broker获取数据的等待时间，默认为500ms,和fetch-min-size配合使用（调小此值可以减小延迟）
       max-poll-records: 500  #pall方法能够返回的最大记录数量，默认为500条（如果消息的大小都比较小，则可以增大该值提升消费速度）
@@ -22,12 +22,12 @@ spring:
         reconnect.backoff.ms: 50 #配置尝试重新连接指定主机之前的等待时间避免频繁地连接主机（默认为50ms）
         retry.backoff.ms: 100 #指定重新发送失败的请求到指定的主题分区之前等待时间（默认100ms）
         isolation.level: read_uncommitted #事务隔离级别
-    #        partition.assignment.strategy: Range,RoundRobin # 指定分区策略类
+        partition.assignment.strategy: org.apache.kafka.clients.consumer.RangeAssignor,org.apache.kafka.clients.consumer.RoundRobinAssignor,org.apache.kafka.clients.consumer.StickyAssignor # 指定分区策略类
 
     producer:
       client-id: springboot-producer #随意配置，用于日志
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer #指定生产者发送的value的序列化器
-      acks: 1 #0,all    为1：只要集群的首领收到就算发送成功、为0：不管收没收到都算成功，为all（或者-1）：必须所有参与复制的节点都收到才算发送成功
+      acks: 1 #0,all    为1：只要分区的首领收到就算发送成功、为0：不管收没收到都算成功，为all（或者-1）：必须所有参与复制的节点都收到才算发送成功
       buffer-memory: 33554432 #发送者的缓冲区大小（默认为33554432B:32MB）
       compression-type: snappy #gzip,lz4   设置压缩的算法，snappy算法cpu占用少，压缩比小，gzip算法cpu占用多，压缩比大(如果对延迟有一定的要求，则不推荐压缩)
       retries: 3  #如果大于0，则开启发送失败后的重试,数字为重试的次数

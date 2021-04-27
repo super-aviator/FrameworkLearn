@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      profile: microservices
+      label: master
+      uri: http://localhost:60000/
+      #     uri: file://C:\Users\Public\Documents\SpringCloudLearn\ConfigServer\src\main\resources
+      name: ${spring.application.name}
+      request-read-timeout: 10000 #读取配置超时时间
+      fail-fast: true #启动时是否检测配置可用
+      enabled: false
