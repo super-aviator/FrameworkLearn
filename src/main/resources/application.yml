@@ -32,6 +32,7 @@ spring:
     continue-on-error: true
     separator: ;
     initialization-mode: never   # always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   banner:
     location: banner.txt  #指定banner的文件位置

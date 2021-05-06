@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
@@ -27,7 +28,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 //        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
 //@EnableDiscoveryClient
 //开启AOP,proxyTargetClass表示是否使用基于cglib的代理,否则使用JDK基于接口的代理
-@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
+@EnableAspectJAutoProxy(exposeProxy = true)
+//开启JPA Repository
+@EnableJpaRepositories
 @SpringBootApplication
 public class LearnApplication {
 
