@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.core.async;
+package com.xqk.learn.springboot.core.scheduling;
 
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Configuration;
