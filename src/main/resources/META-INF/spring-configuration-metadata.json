@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "spring.kafka.broker",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "Description for spring.kafka.broker."
+    }
+  ]
+}
