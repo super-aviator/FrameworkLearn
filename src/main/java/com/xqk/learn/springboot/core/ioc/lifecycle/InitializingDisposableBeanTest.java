@@ -120,7 +120,7 @@ public class InitializingDisposableBeanTest implements BeanNameAware, BeanClassL
             //如果需要包含多个配置类，可以使用register的方式来进行配置
             annotationConfigApplicationContext.register(MyBeanPostProcessor.class);
             annotationConfigApplicationContext.register(InitializingDisposableBeanTest.class);
-            //注意！！！要显示的调用refresh来引用注册的配置类
+            //注意！！！要显示的调用refresh来引用注册的配置类（在refresh()方法中它们所有的@Bean方法都会被处理，在容器中注册成为bean）
             annotationConfigApplicationContext.refresh();
             initializingDisposableBeanTest = annotationConfigApplicationContext.getBean(InitializingDisposableBeanTest.class);
             annotationConfigApplicationContext.close();

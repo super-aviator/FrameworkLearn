@@ -191,11 +191,11 @@
         <!-- oracle数据库连接 -->
         <!--mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.1.0 -Dpackaging=jar -Dfile=C:\Users\Public\Documents\Oracle\product\11.2.0\dbhome_1\jdbc\lib\ojdbc6.jar-->
         <!--将本地jar包安装到本地maven仓库-->
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>${com.oracle.ojdbc6.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.oracle</groupId>-->
+<!--            <artifactId>ojdbc6</artifactId>-->
+<!--            <version>${com.oracle.ojdbc6.version}</version>-->
+<!--        </dependency>-->
 
         <!--quartz-->
         <!--<dependency>-->
@@ -249,7 +249,7 @@
         </dependency>
 
         <!--redisson整合-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
             <version>3.15.0</version>
@@ -260,12 +260,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson-spring-data-21</artifactId>
-            <version>3.15.0</version>
-        </dependency>
--->
+<!--        <dependency>-->
+<!--            <groupId>org.redisson</groupId>-->
+<!--            <artifactId>redisson-spring-data-21</artifactId>-->
+<!--            <version>3.15.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <dependencyManagement>

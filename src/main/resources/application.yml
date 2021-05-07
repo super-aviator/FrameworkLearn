@@ -46,6 +46,11 @@ spring:
         format_sql: true #格式化sql语句
         ddl_auto: false #生成数据库定义语句
 
+  mvc:
+    servlet:
+      #mvc是否懒加载
+      load-on-startup: 1
+
   #Multipart文件上传配置
   servlet:
     multipart:
