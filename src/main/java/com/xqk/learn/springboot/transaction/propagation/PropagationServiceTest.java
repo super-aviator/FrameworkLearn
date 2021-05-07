@@ -5,6 +5,8 @@ import com.xqk.learn.springboot.transaction.dao.InsideDAO;
 import com.xqk.learn.springboot.transaction.dao.OutsideDAO;
 import com.xqk.learn.springboot.transaction.entity.InsideEntity;
 import com.xqk.learn.springboot.transaction.entity.OutsideEntity;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +19,7 @@ import org.springframework.util.Assert;
  * @author 熊乾坤
  * @since 2021-05-06 19:49
  */
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LearnApplication.class)
 public class PropagationServiceTest {
@@ -38,14 +41,18 @@ public class PropagationServiceTest {
         insideDAO.deleteAll();
     }
 
+    @After
+    public void findResult() {
+        log.info("outside: [{}]", outsideDAO.findAll());
+        log.info("inside: [{}]", insideDAO.findAll());
+    }
+
     @Test
     public void supportsTest() {
-        propagationService.outSideNotTInsideWith_SUPPORT(outsideEntity, insideEntity, true);
+        propagationService.outSideNotTInsideWith_SUPPORT(outsideEntity, insideEntity, true, false);
         Assert.isTrue(outsideDAO.findById(1L)
                                 .isPresent(), "outsideEntity 不存在");
-        ;
         Assert.isTrue(!insideDAO.findById(1L)
                                 .isPresent(), "insideEntity 存在");
-        ;
     }
 }

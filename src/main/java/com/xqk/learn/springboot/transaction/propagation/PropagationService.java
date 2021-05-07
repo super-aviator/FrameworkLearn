@@ -29,14 +29,25 @@ public class PropagationService {
         this.insideDAO = insideDAO;
     }
 
-    public void outSideNotT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean exception) {
+    /* ------------------------------------- OUTSIDE -------------------------------- */
+
+    public void outSideNotT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.insideNotT(insideEntity, exception);
+        propagationService.insideNotT(insideEntity, insideException);
+        if (outsideException) {
+            throw new RuntimeException();
+        }
     }
 
-    public void outSideNotTInsideWith_SUPPORT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean exception) {
+    public void outSideNotTInsideWith_SUPPORT(OutsideEntity outsideEntity,
+                                              InsideEntity insideEntity,
+                                              boolean insideException,
+                                              boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_SUPPORTS(insideEntity, exception);
+        propagationService.inside_SUPPORTS(insideEntity, insideException);
+        if (outsideException) {
+            throw new RuntimeException();
+        }
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
