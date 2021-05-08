@@ -5,6 +5,8 @@ import com.xqk.learn.springboot.transaction.dao.InsideDAO;
 import com.xqk.learn.springboot.transaction.dao.OutsideDAO;
 import com.xqk.learn.springboot.transaction.entity.InsideEntity;
 import com.xqk.learn.springboot.transaction.entity.OutsideEntity;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +19,7 @@ import org.springframework.util.Assert;
  * @author 熊乾坤
  * @since 2021-05-06 19:49
  */
+@Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LearnApplication.class)
 public class PropagationServiceTest {
@@ -38,14 +41,33 @@ public class PropagationServiceTest {
         insideDAO.deleteAll();
     }
 
+    @After
+    public void search(){
+        outsideDAO.findAll().forEach(e->log.info("outside：[{}]",e.getId()));
+        insideDAO.findAll().forEach(e->log.info("inside：[{}]",e.getId()));
+    }
+
     @Test
     public void supportsTest() {
-        propagationService.outSideNotTInsideWith_SUPPORT(outsideEntity, insideEntity, true);
-        Assert.isTrue(outsideDAO.findById(1L)
-                                .isPresent(), "outsideEntity 不存在");
-        ;
-        Assert.isTrue(!insideDAO.findById(1L)
-                                .isPresent(), "insideEntity 存在");
-        ;
+        // propagationService.outSideNotTInsideWith_SUPPORT(outsideEntity, insideEntity, true,false);
+        propagationService.outSideWithTInsideWith_SUPPORTS(outsideEntity, insideEntity, true,false);
+    }
+
+    @Test
+    public void notSupportsTest() {
+        // propagationService.outSideNotTInsideWith_SUPPORT(outsideEntity, insideEntity, true,false);
+        // propagationService.outSideWithTInsideWith_NOT_SUPPORTED(outsideEntity, insideEntity, true,false);
+        propagationService.outSideWithoutTInsideWith_NOT_SUPPORTED(outsideEntity, insideEntity, false,false);
+
+    }
+
+    @Test
+    public void requiredTest(){
+        propagationService.outSideWithTInsideWith_REQUIRED(outsideEntity, insideEntity, true, false);
+    }
+
+    @Test
+    public void requiresNewTest(){
+        propagationService.outSideWithoutTInsideWith_REQUIRES_NEW(outsideEntity, insideEntity, true, false);
     }
 }

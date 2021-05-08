@@ -29,25 +29,87 @@ public class PropagationService {
         this.insideDAO = insideDAO;
     }
 
-    public void outSideNotT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean exception) {
+    /* ------------------------------------- OUTSIDE -------------------------------- */
+
+    public void outSideWithoutT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException,boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.insideNotT(insideEntity, exception);
+        propagationService.insideWithoutT(insideEntity, insideException);
+        if(outsideException){
+            throw new RuntimeException();
+        }
     }
 
-    public void outSideNotTInsideWith_SUPPORT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean exception) {
+    public void outSideWithoutTInsideWith_SUPPORT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_SUPPORTS(insideEntity, exception);
+        propagationService.inside_SUPPORTS(insideEntity, insideException);
+        if(outsideException){
+            throw new RuntimeException();
+        }
+    }
+
+    public void outSideWithoutTInsideWith_REQUIRES_NEW(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
+        outsideDAO.save(outsideEntity);
+        propagationService.inside_REQUIRES_NEW(insideEntity, insideException);
+        if(outsideException){
+            throw new RuntimeException();
+        }
+    }
+
+    public void outSideWithoutTInsideWith_REQUIRED(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
+        outsideDAO.save(outsideEntity);
+        propagationService.inside_REQUIRED(insideEntity, insideException);
+        if(outsideException){
+            throw new RuntimeException();
+        }
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void outSideWithT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean exception) {
+    public void outSideWithTInsideWith_SUPPORTS(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.insideNotT(insideEntity, exception);
+        propagationService.inside_SUPPORTS(insideEntity, insideException);
+        if(outsideException){
+            throw new RuntimeException();
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void outSideWithTInsideWith_NOT_SUPPORTED(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
+        outsideDAO.save(outsideEntity);
+        propagationService.inside_NOT_SUPPORTED(insideEntity, insideException);
+        if (outsideException) {
+            throw new RuntimeException();
+        }
+    }
+
+    public void outSideWithoutTInsideWith_NOT_SUPPORTED(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
+        outsideDAO.save(outsideEntity);
+        propagationService.inside_NOT_SUPPORTED(insideEntity, insideException);
+        if(outsideException){
+            throw new RuntimeException();
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void outSideWithTInsideWith_REQUIRED(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
+        outsideDAO.save(outsideEntity);
+        propagationService.inside_REQUIRED(insideEntity, insideException);
+        if(outsideException){
+            throw new RuntimeException();
+        }
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void outSideWithT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
+        outsideDAO.save(outsideEntity);
+        propagationService.insideWithoutT(insideEntity, insideException);
+        if(outsideException){
+            throw new RuntimeException();
+        }
     }
 
     /* ------------------------------------- INSIDE -------------------------------- */
 
-    public void insideNotT(InsideEntity entity, boolean exception) {
+    public void insideWithoutT(InsideEntity entity, boolean exception) {
         if (exception) {
             throw new RuntimeException();
         }
