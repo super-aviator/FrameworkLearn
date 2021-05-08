@@ -1,6 +1,9 @@
 package com.xqk.learn.springboot.transaction.entity;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -9,6 +12,9 @@ import javax.persistence.*;
  * @since 2021-05-06 19:18
  */
 @Entity
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @Table(name = "transaction_propagation_inside")
 public class InsideEntity {

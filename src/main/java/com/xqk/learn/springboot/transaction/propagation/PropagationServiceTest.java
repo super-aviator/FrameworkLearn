@@ -42,17 +42,32 @@ public class PropagationServiceTest {
     }
 
     @After
-    public void findResult() {
-        log.info("outside: [{}]", outsideDAO.findAll());
-        log.info("inside: [{}]", insideDAO.findAll());
+    public void search(){
+        outsideDAO.findAll().forEach(e->log.info("outside：[{}]",e.getId()));
+        insideDAO.findAll().forEach(e->log.info("inside：[{}]",e.getId()));
     }
 
     @Test
     public void supportsTest() {
-        propagationService.outSideNotTInsideWith_SUPPORT(outsideEntity, insideEntity, true, false);
-        Assert.isTrue(outsideDAO.findById(1L)
-                                .isPresent(), "outsideEntity 不存在");
-        Assert.isTrue(!insideDAO.findById(1L)
-                                .isPresent(), "insideEntity 存在");
+        // propagationService.outSideNotTInsideWith_SUPPORT(outsideEntity, insideEntity, true,false);
+        propagationService.outSideWithTInsideWith_SUPPORTS(outsideEntity, insideEntity, true,false);
+    }
+
+    @Test
+    public void notSupportsTest() {
+        // propagationService.outSideNotTInsideWith_SUPPORT(outsideEntity, insideEntity, true,false);
+        // propagationService.outSideWithTInsideWith_NOT_SUPPORTED(outsideEntity, insideEntity, true,false);
+        propagationService.outSideWithoutTInsideWith_NOT_SUPPORTED(outsideEntity, insideEntity, false,false);
+
+    }
+
+    @Test
+    public void requiredTest(){
+        propagationService.outSideWithTInsideWith_REQUIRED(outsideEntity, insideEntity, true, false);
+    }
+
+    @Test
+    public void requiresNewTest(){
+        propagationService.outSideWithoutTInsideWith_REQUIRES_NEW(outsideEntity, insideEntity, true, false);
     }
 }
