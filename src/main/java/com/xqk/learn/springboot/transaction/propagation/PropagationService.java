@@ -4,6 +4,7 @@ import com.xqk.learn.springboot.transaction.dao.InsideDAO;
 import com.xqk.learn.springboot.transaction.dao.OutsideDAO;
 import com.xqk.learn.springboot.transaction.entity.InsideEntity;
 import com.xqk.learn.springboot.transaction.entity.OutsideEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author 熊乾坤
  * @since 2021-05-06 19:33
  */
+@Slf4j
 @Component
 public class PropagationService {
 
@@ -236,7 +238,8 @@ public class PropagationService {
         if (captureInsideException) {
             try {
                 propagationService.insideWith_NESTED(insideEntity, insideException);
-            } catch (Exception ignored) {
+            } catch (Exception e) {
+                log.error("", e);
             }
         } else {
             propagationService.insideWith_NESTED(insideEntity, insideException);

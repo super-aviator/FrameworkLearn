@@ -86,8 +86,8 @@ public class PropagationServiceTest {
 
     @Test
     public void nestedTest() {
-        propagationService.outSideWithTInsideWith_NESTED(outsideEntity, insideEntity, true, false);
-        //propagationService.outSideWithTAndCaptureInsideWith_NESTED(outsideEntity, insideEntity, true, true,false);
+        // propagationService.outSideWithTInsideWith_NESTED(outsideEntity, insideEntity, true, false);
+        propagationService.outSideWithTAndCaptureInsideWith_NESTED(outsideEntity, insideEntity, true, true,false);
 
     }
 }

@@ -38,6 +38,11 @@ public class ProgrammingTransactionManagerTest {
 
     @Test
     public void testTransactionTemplateRollback() {
-        programmingTransactionManager.saveTransaction();
+        programmingTransactionManager.saveTransactionTemplate();
+    }
+
+    @Test
+    public void testTransactionManagerRollback() {
+        programmingTransactionManager.saveTransactionManager();
     }
 }
