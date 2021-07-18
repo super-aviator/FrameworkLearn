@@ -79,6 +79,7 @@ spring:
       #      - elasticsearch
       #      - rabbitmq
       - feign
+      - mybatis
 
   #quartz配置
   quartz:
