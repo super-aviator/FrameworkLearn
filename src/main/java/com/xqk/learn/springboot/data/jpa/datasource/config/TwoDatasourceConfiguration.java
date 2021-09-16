@@ -1,5 +1,6 @@
 package com.xqk.learn.springboot.data.jpa.datasource.config;
 
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -23,6 +24,19 @@ import javax.sql.DataSource;
 @Configuration
 @Profile("datasource")
 class TwoDatasourceConfiguration {
+
+
+    /**
+     * 通过SpringBoot提供的DataSourceProperties，可以获取到配置文件中定义的配置或者拿到默认数据源的数据库配置
+     * 需要使用@Primary注解
+     * @return DataSourceProperties
+     */
+    //@Bean("oracleDataSourceProperties")
+    //@Primary
+    //@ConfigurationProperties(prefix = "spring.datasource.oracle")
+    //public DataSourceProperties getDataSourceProperties(){
+    //    return new DataSourceProperties();
+    //}
 
     @Bean("oracle")
     @ConfigurationProperties(prefix = "spring.datasource.oracle")
