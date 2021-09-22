@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.focusmedia.silvermoon.tunnel.mapper.rds.proceeds.ProceedsCollectionMapper">
+    <resultMap id="baseResultMap" type="cn.focusmedia.silvermoon.tunnel.dataobject.proceeds.ProceedsCollectionDO">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="marked" jdbcType="BIT" property="marked"/>
+        <result column="customer_proceeds_id" jdbcType="BIGINT" property="customerProceedsId"/>
+        <result column="status" jdbcType="CHAR" property="status"/>
+        <result column="classify" jdbcType="CHAR" property="classify"/>
+        <result column="source" jdbcType="CHAR" property="source"/>
+        <result column="payee_name" jdbcType="VARCHAR" property="payeeName"/>
+        <result column="payee_bank" jdbcType="VARCHAR" property="payeeBank"/>
+        <result column="payee_account" jdbcType="VARCHAR" property="payeeAccount"/>
+        <result column="payer_name" jdbcType="VARCHAR" property="payerName"/>
+        <result column="payer_bank" jdbcType="VARCHAR" property="payerBank"/>
+        <result column="payer_account" jdbcType="VARCHAR" property="payerAccount"/>
+        <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount"/>
+        <result column="batch_no" jdbcType="VARCHAR" property="batchNo"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="is_deleted" jdbcType="BIT" property="isDeleted"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+        <association property="customerProceedsInfo"
+                     javaType="cn.focusmedia.silvermoon.tunnel.dataobject.proceeds.CustomerProceedsInfoDO">
+            <id column="customer_id" jdbcType="BIGINT" property="id"/>
+            <result column="sign_customer_id" jdbcType="VARCHAR" property="signCustomerId"/>
+            <result column="payment_mode" jdbcType="CHAR" property="paymentMode"/>
+            <result column="accounting_subject" jdbcType="VARCHAR" property="accountingSubject"/>
+            <result column="accounting_subject_name" jdbcType="VARCHAR" property="accountingSubjectName"/>
+            <result column="proceeds_no" jdbcType="VARCHAR" property="proceedsNo"/>
+            <result column="proceeds_time" jdbcType="TIMESTAMP" property="proceedsTime"/>
+            <result column="finance_time" jdbcType="TIMESTAMP" property="financeTime"/>
+            <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime"/>
+            <result column="accounting_item" jdbcType="VARCHAR" property="accountingItem"/>
+            <result column="settlement_no" jdbcType="VARCHAR" property="settlementNo"/>
+            <result column="customer_remark" jdbcType="VARCHAR" property="remark"/>
+            <result column="digest" jdbcType="VARCHAR" property="digest"/>
+            <result column="approval_by" jdbcType="VARCHAR" property="approvalBy"/>
+            <result column="approval_time" jdbcType="TIMESTAMP" property="approvalTime"/>
+            <result column="customer_create_by" jdbcType="VARCHAR" property="createBy"/>
+            <result column="customer_create_time" jdbcType="TIMESTAMP" property="createTime"/>
+            <result column="customer_update_by" jdbcType="VARCHAR" property="updateBy"/>
+            <result column="customer_update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+            <result column="customer_is_deleted" jdbcType="BIT" property="isDeleted"/>
+            <result column="customer_version" jdbcType="INTEGER" property="version"/>
+            <collection property="contractInfos"
+                        ofType="cn.focusmedia.silvermoon.tunnel.dataobject.proceeds.CustomerContractAssociateDO">
+                <id column="contract_id" jdbcType="BIGINT" property="id"/>
+                <result column="contract_customer_proceeds_id" jdbcType="BIGINT" property="customerProceedsId"/>
+                <result column="contract_no" jdbcType="VARCHAR" property="contractNo"/>
+                <result column="contract_amount" jdbcType="DECIMAL" property="amount"/>
+                <result column="contract_create_by" jdbcType="VARCHAR" property="createBy"/>
+                <result column="contract_create_time" jdbcType="TIMESTAMP" property="createTime"/>
+                <result column="contract_update_by" jdbcType="VARCHAR" property="updateBy"/>
+                <result column="contract_update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+                <result column="contract_is_deleted" jdbcType="BIT" property="isDeleted"/>
+                <result column="contract_version" jdbcType="INTEGER" property="version"/>
+            </collection>
+        </association>
+    </resultMap>
+
+    <select id="searchProceedsRecords"
+            resultType="cn.focusmedia.silvermoon.tunnel.dataobject.proceeds.ProceedsCollectionDO">
+        SELECT * FROM proceeds_collection
+        WHERE is_deleted=0
+        <if test="paymentStartTime !=null">
+            AND payment_time &gt;= #{paymentStartTime}
+        </if>
+        <if test="paymentEndTime !=null">
+            AND payment_time &lt;= #{paymentEndTime}
+        </if>
+        <if test="status !=null">
+            AND status = #{status}
+        </if>
+        <if test="amount !=null">
+            AND amount = #{amount}
+        </if>
+        <if test="classify !=null">
+            AND classify = #{classify}
+        </if>
+        <if test="payerName !=null">
+            AND payer_name LIKE CONCAT('%',#{payerName},'%')
+        </if>
+        <if test="batchNo !=null">
+            AND batch_no = #{batchNo}
+        </if>
+        ORDER BY payment_time DESC
+    </select>
+
+    <select id="getProceedsDetailInfo" resultMap="baseResultMap">
+        SELECT proceeds.id,
+               proceeds.marked,
+               proceeds.customer_proceeds_id,
+               proceeds.status,
+               proceeds.classify,
+               proceeds.source,
+               proceeds.payee_name,
+               proceeds.payee_bank,
+               proceeds.payee_account,
+               proceeds.payer_name,
+               proceeds.payer_bank,
+               proceeds.payer_account,
+               proceeds.payment_time,
+               proceeds.amount,
+               proceeds.batch_no,
+               proceeds.remark,
+               proceeds.create_by,
+               proceeds.create_time,
+               proceeds.update_by,
+               proceeds.update_time,
+               proceeds.is_deleted,
+               proceeds.version,
+               customer.id                   AS customer_id,
+               customer.sign_customer_id,
+               customer.payment_mode,
+               customer.accounting_subject,
+               customer.accounting_subject_name,
+               customer.proceeds_no,
+               customer.proceeds_time,
+               customer.finance_time,
+               customer.expire_time,
+               customer.accounting_item,
+               customer.settlement_no,
+               customer.remark               AS customer_remark,
+               customer.digest,
+               customer.approval_by,
+               customer.approval_time,
+               customer.create_by            AS customer_create_by,
+               customer.create_time          AS customer_create_time,
+               customer.update_by            AS customer_update_by,
+               customer.update_time          AS customer_update_time,
+               customer.is_deleted           AS customer_is_deleted,
+               customer.version              AS customer_version,
+               contract.id                   AS contract_id,
+               contract.customer_proceeds_id AS contract_customer_proceeds_id,
+               contract.contract_no,
+               contract.amount               AS contract_amount,
+               contract.create_by            AS contract_create_by,
+               contract.create_time          AS contract_create_time,
+               contract.update_by            AS contract_update_by,
+               contract.update_time          AS contract_update_time,
+               contract.is_deleted           AS contract_is_deleted,
+               contract.version              AS contract_version
+        FROM proceeds_collectioN AS proceeds
+                 LEFT JOIN
+             customer_proceeds_info AS customer
+             ON proceeds.customer_proceeds_id = customer.id
+                 LEFT JOIN customer_contract_associate AS contract
+                           ON customer.id = contract.customer_proceeds_id
+        WHERE proceeds.is_deleted = 0
+          AND (customer.is_deleted IS NULL
+            OR customer.is_deleted = 0)
+          AND (contract.is_deleted IS NULL
+            OR contract.is_deleted = 0)
+          AND proceeds.id = #{id}
+    </select>
+</mapper>
