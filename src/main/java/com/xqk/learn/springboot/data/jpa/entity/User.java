@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -18,14 +19,9 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "user")
-@NamedEntityGraph(
-        name = "UserEntity",
-        attributeNodes = {
-                //@NamedAttributeNode("userDetail"),
-                @NamedAttributeNode("userFriends"),
-                @NamedAttributeNode("teachers"),
-        }
-)
+@NamedEntityGraph(name = "UserEntity", attributeNodes = {
+        //@NamedAttributeNode("userDetail"),
+        @NamedAttributeNode("userFriends"), @NamedAttributeNode("teachers"),})
 @DynamicInsert
 public class User {
     @Id
@@ -85,13 +81,29 @@ public class User {
      */
     @JsonIgnoreProperties(value = {"users"})
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "teacher_user_relation",
-            joinColumns = @JoinColumn(name = "UserId", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "TeacherId", referencedColumnName = "id")
-    )
+    @JoinTable(name = "teacher_user_relation",
+               joinColumns = @JoinColumn(name = "UserId", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "TeacherId", referencedColumnName = "id"))
     private Set<Teacher> teachers;
 
     @Transient
     private UserDetail userDetailDup;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return id.equals(user.id) && Objects.equals(version, user.version) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(address,
+                user.address) && gender == user.gender && Objects.equals(score, user.score) && Objects.equals(birthday, user.birthday);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, address, gender, score, birthday);
+    }
 }

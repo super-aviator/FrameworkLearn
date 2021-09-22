@@ -3,3 +3,17 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
+
+mybatis:
+  # mapper文件位置
+  mapper-locations: classpath:/mybatis/*.xml
+  type-aliases-package: com.xqk.learn.springboot.data.jpa.entity
+  configuration:
+    # mybatis使用枚举字符串
+    default-enum-type-handler: org.apache.ibatis.type.EnumTypeHandler
+    # 是否开启二级缓存（还需要在MyBatis的映射XML中配置cache或者 cache-ref ）
+    # cache-enabled: true
+    # 二级缓存范围
+    # local-cache-scope: session
+    # Mybatis增加控制台SQL日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

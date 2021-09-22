@@ -5,8 +5,7 @@ CREATE TABLE `transaction_propagation_outside`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 0
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+  DEFAULT CHARSET = utf8mb4;
 
 CREATE TABLE `transaction_propagation_inside`
 (
@@ -15,5 +14,4 @@ CREATE TABLE `transaction_propagation_inside`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 0
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci;
+  DEFAULT CHARSET = utf8mb4;
