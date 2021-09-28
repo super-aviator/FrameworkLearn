@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.security.config;
+package com.xqk.learn.springboot.security.encoder;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 

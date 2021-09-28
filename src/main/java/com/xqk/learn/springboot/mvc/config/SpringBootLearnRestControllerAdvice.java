@@ -26,7 +26,7 @@ public class SpringBootLearnRestControllerAdvice {
      */
     @ExceptionHandler(ElasticsearchException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseMessage elasticsearchExceptionHandler(Throwable throwable) {
+    public ResponseMessage<String> elasticsearchExceptionHandler(Throwable throwable) {
         log.error("服务器异常", throwable);
         return ResponseMessage.error("Elasticsearch异常：" + throwable.getMessage());
     }
@@ -38,7 +38,7 @@ public class SpringBootLearnRestControllerAdvice {
      */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseMessage handlerBadRequestException(Throwable throwable) {
+    public ResponseMessage<String> handlerBadRequestException(Throwable throwable) {
         log.error("服务器异常", throwable);
         return ResponseMessage.error("INTERNAL_SERVER_ERROR：" + throwable.getMessage());
     }

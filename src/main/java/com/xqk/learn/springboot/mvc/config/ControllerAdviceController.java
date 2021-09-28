@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.mvc.controller;
+package com.xqk.learn.springboot.mvc.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,7 @@ public class ControllerAdviceController {
      */
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity handlerException(Exception e) {
+    public ResponseEntity<String> handlerException(Exception e) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.toString());
     }
 }

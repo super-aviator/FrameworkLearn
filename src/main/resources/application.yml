@@ -1,5 +1,5 @@
 host:
-  101.37.172.37
+  49.235.67.7
 ###########################################################################################################
 server:
   port: 8000 #服务的端口
@@ -11,10 +11,12 @@ logging:
 
 spring:
   boot:
+    # 是否开启自动配置
     enableautoconfiguration: true
+
   #数据源配置
   datasource:
-#    url: jdbc:mysql://localhost:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    # url: jdbc:mysql://localhost:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     url: jdbc:mysql://49.235.67.7:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: 70baf77d7d80de7b
@@ -52,6 +54,8 @@ spring:
     servlet:
       #mvc是否懒加载
       load-on-startup: 1
+    # 静态资源路径
+    static-path-pattern: /**
 
   #Multipart文件上传配置
   servlet:
@@ -74,12 +78,13 @@ spring:
   #使用一个profile时，同时也使用另外一个profile
   profiles:
     include:
-#      - kafka
+      #      - kafka
       - redis
       #      - elasticsearch
       #      - rabbitmq
       - feign
       - mybatis
+      - security
 
   #quartz配置
   quartz:
@@ -126,6 +131,10 @@ spring:
         size: 8 #允许的最大线程个数
       thread-name-prefix: aviator-scheduling #自定义TaskScheduling线程名称
 
+  resources:
+    # 静态资源位置
+    static-locations: [ classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ ]
+
 hibernate:
   properties:
     hibernate:
@@ -147,7 +156,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: [health,info,env,beans,mappings,info,metrics,dump,refresh] #设置开启的Actuator节点，开启后的访问端点为http://localhost:8080/actuator/{endpoints}
+        include: [ health,info,env,beans,mappings,info,metrics,dump,refresh ] #设置开启的Actuator节点，开启后的访问端点为http://localhost:8080/actuator/{endpoints}
 #        include: * #设置开启所有的Actuator节点
 
 #      cors:
