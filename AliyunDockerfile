@@ -21,4 +21,4 @@ ADD target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar" ,"--spring.profiles.active=microservices-aliyun"]
 
 #暴露8080端口
-EXPOSE 8080
+EXPOSE 8000

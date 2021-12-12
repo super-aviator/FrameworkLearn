@@ -3,11 +3,11 @@ package com.xqk.learn.springboot;
 import com.xqk.learn.springboot.cloud.openfeign.config.BaseClientConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchAutoConfiguration;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 /**
@@ -24,14 +24,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 //开启Feign，并指定默认配置（也可以在配置文件中指定，配置文件的优先级更高）
 @EnableFeignClients(defaultConfiguration = BaseClientConfiguration.class)
 //开启Spring定时任务
-@EnableScheduling
+// @EnableScheduling
 //开启Spring异步线程池
 @EnableAsync
 //开启鉴权
 @EnableWebSecurity(debug = true)
 
-//@SpringBootApplication(exclude = {org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration.class,
-//        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class})
+@SpringBootApplication(exclude = {
+        // RedisAutoConfiguration.class,
+        // SecurityAutoConfiguration.class,
+        ElasticsearchAutoConfiguration.class})
 
 //开启Eureka客户端
 //@EnableDiscoveryClient
@@ -41,7 +43,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 //开启JPA Repository
 @EnableJpaRepositories
 //启动注解
-@SpringBootApplication
+// @SpringBootApplication
 public class LearnApplication {
 
     /**

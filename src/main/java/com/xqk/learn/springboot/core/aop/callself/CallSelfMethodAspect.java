@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.aop.callself;
+package com.xqk.learn.springboot.core.aop.callself;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class CallSelfMethodAspect {
-    @Pointcut("execution(* com.xqk.learn.springboot.aop.callself.CallSelfMethodService.*(..))")
+    @Pointcut("execution(* com.xqk.learn.springboot.core.aop.callself.CallSelfMethodService.*(..))")
     public void pointCut() {
     }
 

@@ -17,14 +17,14 @@ import javax.servlet.http.HttpServletRequest;
  * @author xiongqiankun
  * @since 2021/9/28 16:47
  */
-@Component
+// @Component
 public class VerifyCodeProvider extends DaoAuthenticationProvider {
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String code = request.getParameter("code");
-        String verify_code = (String) request.getSession().getAttribute("verify_code");
-        if (code == null || !code.equals(verify_code)) {
+        String verifyCode = (String) request.getSession().getAttribute("verify_code");
+        if (code == null || !code.equals(verifyCode)) {
             throw new AuthenticationServiceException("验证码错误");
         }
         super.additionalAuthenticationChecks(userDetails, authentication);

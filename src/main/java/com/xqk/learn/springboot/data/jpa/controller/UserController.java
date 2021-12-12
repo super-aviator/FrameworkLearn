@@ -100,15 +100,24 @@ public class UserController {
      * @param errors  the errors
      * @return the string
      */
-    @PostMapping("/add")
-    public String postUser(@Validated UserProjectionDTO userDTO, Errors errors) {
+    @PostMapping
+    public String postUser(@RequestBody @Validated UserProjectionDTO userDTO, Errors errors) {
         if (errors.hasErrors()) {
             log.info(userDTO.toString());
             return Objects.requireNonNull(errors.getFieldError()).getDefaultMessage();
         } else {
             log.info(userDTO.toString());
+            var userEntity=new User();
+            userEntity.setName(userDTO.getName());
+            userEntity.setEmail(userDTO.getEmail());
+            userRepository.save(userEntity);
             return "验证通过";
         }
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userRepository.deleteById(id);
     }
 
     /**

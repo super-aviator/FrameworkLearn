@@ -1,6 +1,7 @@
 package com.xqk.learn.springboot.zookeeper.demo.master_follower;
 
 import com.xqk.learn.springboot.zookeeper.demo.master_follower.constant.ZookeeperConstant;
+import com.xqk.learn.springboot.zookeeper.demo.master_follower.enums.MasterStatus;
 import com.xqk.learn.springboot.zookeeper.demo.master_follower.watcher.LogWatcher;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +9,10 @@ import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import static org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE;
 
@@ -20,8 +24,10 @@ import static org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE;
 @Getter
 public class Master {
     public final String masterPath = "/master";
+    public final String workerPath = "/workers";
     private final ZooKeeper zookeeper;
     private final int id;
+    private final Set<String> workers = new HashSet<>();
     private boolean isLeader;
     private MasterStatus status;
 
@@ -29,6 +35,8 @@ public class Master {
         zookeeper = new ZooKeeper(connectString, sessionTimeout, watcher);
         id = new Random().nextInt();
     }
+
+    /*--------------------------主节点选举--------------------------*/
 
     public static void main(String[] args) throws IOException, InterruptedException {
         // Master master = new Master(ZookeeperConstant.connectString, ZookeeperConstant.sessionTimeout, new LogWatcher());
@@ -43,21 +51,26 @@ public class Master {
 
         Master master = new Master(ZookeeperConstant.connectString, ZookeeperConstant.sessionTimeout, new LogWatcher());
         master.runForMasterAsync();
-        Thread.sleep(300000);
+        Thread.sleep(180000);
         master.close();
     }
 
+    /**
+     * 判断/master节点是否存在，并设置监听器
+     */
     public void masterExistsAsync() {
         AsyncCallback.StatCallback masterExistsCallback = (rc, path, ctx, stat)->{
             switch (KeeperException.Code.get(rc)) {
                 case OK:
-                    status = MasterStatus.ELECTED;
-                    break;
-                case NODEEXISTS:
-                    status = MasterStatus.NOT_ELECTED;
+                    if (stat == null) {
+                        //stat为null表示节点不存在
+                        runForMasterAsync();
+                    } else {
+                        status = MasterStatus.ELECTED;
+                    }
                     break;
                 case CONNECTIONLOSS:
-                    checkMaster();
+                    masterExistsAsync();
                     break;
                 default:
                     status = MasterStatus.NOT_ELECTED;
@@ -114,10 +127,17 @@ public class Master {
                 case OK:
                     isLeader = true;
                     break;
+                case NODEEXISTS:
+                    isLeader = false;
+                    masterExistsAsync();
+                    break;
                 default:
                     isLeader = false;
             }
             log.info(this.toString());
+            if (isLeader) {
+                getWorkerList();
+            }
         }, null);
     }
 
@@ -146,6 +166,11 @@ public class Master {
             }
         }
     }
+    /*-----------------------------------------------------------------*/
+
+
+
+    /*--------------------------获取子节点数据--------------------------*/
 
     /**
      * 检查当前节点是否是某路径的首领节点
@@ -162,10 +187,61 @@ public class Master {
                     runForMasterAsync();
                     break;
             }
+            //通过data判断是否是主节点
             this.isLeader = data != null && (Integer.parseInt(new String(data)) == this.id);
+            //注册监听器
+            masterExistsAsync();
             log.info(this.toString());
         }, null);
     }
+
+    /**
+     * 获取子节点并分配工作
+     */
+    private void getWorkerList() {
+        Watcher watcher = event->{
+            if (event.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
+                getWorkerList();
+            }
+        };
+        AsyncCallback.ChildrenCallback childrenCallback = (rc, path, ctx, children)->{
+            switch (KeeperException.Code.get(rc)) {
+                case OK:
+                    saveAndAssignWork(children);
+                    break;
+                case CONNECTIONLOSS:
+                    getWorkerList();
+                    break;
+                case NONODE:
+                    zookeeper.create(workerPath, null, OPEN_ACL_UNSAFE, CreateMode.PERSISTENT, (rc1, path1, ctx1, name1)->{
+                    }, null);
+                default:
+                    log.error("获取Worker异常{}", KeeperException.Code.get(rc));
+            }
+        };
+        zookeeper.getChildren(workerPath, watcher, childrenCallback, null);
+    }
+
+    /**
+     * 比对新增和失活的节点，并分配工作
+     *
+     * @param childrenList 新的节点列表
+     */
+    private void saveAndAssignWork(List<String> childrenList) {
+        childrenList.forEach(worker->{
+            if (!workers.contains(worker)) {
+                log.info("新增了Worker:[{}]", worker);
+            }
+        });
+        workers.forEach(worker->{
+            if (!childrenList.contains(worker)) {
+                log.info("删除了Worker:[{}]", worker);
+            }
+        });
+        workers.clear();
+        workers.addAll(childrenList);
+    }
+    /*-----------------------------------------------------------------*/
 
     public void close() throws InterruptedException {
         zookeeper.close();
@@ -178,9 +254,5 @@ public class Master {
     @Override
     public String toString() {
         return "ZK{isLeader=" + isLeader + ", zookeeper=" + zookeeper + ", id=" + id + "}";
-    }
-
-    public enum MasterStatus {
-        ELECTED, NOT_ELECTED;
     }
 }

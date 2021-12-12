@@ -15,7 +15,7 @@ spring:
         max.poll.interval.ms: 30000 #每俩次poll拉取数据时间间隔最大超时时间，超过这个值，broker就会认为你这个消费者挂了，并且重新平衡，这时候就消费不到信息了（默认三百秒）
         fetch.max.bytes: 52428800 #poll方法最大能拉取的数据量，默认50MB，
         spring.json.trusted.packages: "*" #将需要序列化的类所属的包添加到kafka信任的包路径下，否则Kafka反序列化会失败的！！！！！！！！！！
-        max.partition.fetch.bytes: 1048576‬  #服务器从每个分区返回给消费者的最大字节数，默认1MB
+        max.partition.fetch.bytes: 1048576  #服务器从每个分区返回给消费者的最大字节数，默认1MB
         connextions.max.idle.ms: 540000 #指定多久之后关闭限制的连接，默认9分钟
         exclude.internal.topics: true #__consumer_offsets和__transaction_status主题是否可以向消费者公开，如果为true，则只能通过subscribe(Collection)方法订阅，不能用subscribe(Collection)方法订阅，为false则没有这个限制
         receive.buffer.bytes: 65536 #指定TCP接收数据缓冲区大小，为-1使用系统默认值（默认64KB）
@@ -31,7 +31,7 @@ spring:
     producer:
       client-id: springboot-producer #随意配置，用于日志
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer #指定生产者发送的value的序列化器
-      acks: 1 #0,all    为1：只要分区的首领收到就算发送成功、为0：不管收没收到都算成功，为all（或者-1）：必须所有参与复制的节点都收到才算发送成功（默认为1）
+      acks: all #1,0,all    为1：只要分区的首领收到就算发送成功、为0：不管收没收到都算成功，为all（或者-1）：必须所有参与复制的节点都收到才算发送成功（默认为1）
       buffer-memory: 33554432 #发送者的缓冲区大小（默认为33554432B:32MB）
       compression-type: snappy #gzip,lz4   设置压缩的算法，snappy算法cpu占用少，压缩比小，gzip算法cpu占用多，压缩比大(如果对延迟有一定的要求，则不推荐压缩)
       retries: 3  #如果大于0，则开启发送失败后的重试,数字为重试的次数
@@ -40,7 +40,7 @@ spring:
         #partitioner.class: KafkaPartitioner #配置自定义分区器，指定分区器的包路径
         retry.backoff.ms: 200 #每次发送失败之后的等待时间。和retries配合使用
         linger.ms: 0 #发送ProducerBatch数据之前的等待时间；当发送数据时，如果ProducerBatch没满，继续等待更多数据加入ProducerBatch，知道达到linger.ms时间（默认为0）
-        max.in.flight.requests.per.connection: 10 #生产者接收到响应之前可以发送的消息数量，为1可以保证数据接收是按照发送的顺序来的(顺序要求严格，吞吐量较低，默认为5)
+        max.in.flight.requests.per.connection: 5 #生产者接收到响应之前可以发送的消息数量，为1可以保证数据接收是按照发送的顺序来的(顺序要求严格，吞吐量较低，默认为5)
         max.block.ms: 600000 #配置了在调用send方法或使用partitionsFor方法能获取元数据时生产者的阻塞时间。（默认600000ms:60s）
         max.request.size: 201400 #生产者一次能发送消息的最大值，最好与broker的配置匹配（默认为1048576B:1MB）
         receive.buffer.bytes: 32768 #指定Socket接收数据缓冲区大小，为-1使用系统默认值（默认为32768B:32KB）
@@ -50,7 +50,7 @@ spring:
         matadata.max.age.ms: 300000 #元数据如果在这个时间内未更新，则会强制更新（默认为300000ms:5分钟）
         enable.idempotence: true #是否开启幂等性，需要其他配置配合：（retries必须大于0、acks必须为-1、max.in.flight.requests.per.connection必须不大于5）
     #broker地址列表，不需要包含所有的broker地址，生产者会从给定的 broker查找到其他broker的信息。
-    bootstrap-servers: 101.37.172.37:9091,101.37.172.37:9092 #不必要全部列举出来，但建议至少要提供两个broker的信息，一且其中一个宕机，生产者仍然能够连接到集群上。
+    bootstrap-servers: 49.235.67.7:9092,49.235.67.7:9093,49.235.67.7:9094 #不必要全部列举出来，但建议至少要提供两个broker的信息，一且其中一个宕机，生产者仍然能够连接到集群上。
     template:
       default-topic: test #template默认的topic
     listener:

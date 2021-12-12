@@ -30,7 +30,7 @@ public class KafkaConcurrencyTest implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         ProducerThread pt = new ProducerThread(kafkaTemplate, "KafkaProducerTest");
         pt.start();
     }

@@ -1,5 +1,6 @@
 package com.xqk.learn.springboot.data.jpa.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -9,22 +10,11 @@ import lombok.ToString;
  *
  * @author Aviator
  */
-@Getter
+@Data
 @ToString
 public class UserProjectionDTO {
     /**
      * 使用Projection时，字段必须为final修饰
      */
-    private final String name, email;
-
-    /**
-     * Instantiates a new DatasourceUser projection dto.
-     *
-     * @param name  the name
-     * @param email the email
-     */
-    public UserProjectionDTO(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
+    private String name, email;
 }

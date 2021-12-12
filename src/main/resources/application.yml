@@ -24,6 +24,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       connection-timeout: 300000
+      idle-timeout: 100000
+      validation-timeout: 600000
+      connection-test-query: SELECT 1;
 
     #数据库脚本初始化
     data:
@@ -78,13 +81,14 @@ spring:
   #使用一个profile时，同时也使用另外一个profile
   profiles:
     include:
-      #      - kafka
+      - kafka
       - redis
-      #      - elasticsearch
-      #      - rabbitmq
+#      - elasticsearch
+#      - rabbitmq
       - feign
       - mybatis
       - security
+      - debezium
 
   #quartz配置
   quartz:

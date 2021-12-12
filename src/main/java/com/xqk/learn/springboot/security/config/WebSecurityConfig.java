@@ -2,6 +2,7 @@ package com.xqk.learn.springboot.security.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xqk.learn.springboot.common.ResponseMessage;
+import com.xqk.learn.springboot.security.encoder.MyPasswordEncoder;
 import com.xqk.learn.springboot.security.filter.JSONLoginFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,23 +41,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //基于内存的用于配置
-        // auth.inMemoryAuthentication()
-        //5.x版本的SpringSecurity需要自定义密码编码器
-        // .passwordEncoder(new MyPasswordEncoder())
-        // .withUser("xqk")
-        // .password("123456")
-        // .roles("USER")
-        // .and()
-        // .withUser("yxm")
-        // .password("654321")
-        // .roles("ADMIN")
-        // .and()
-        // .withUser("cr")
-        // .password("123321")
-        // .roles("ADMIN", "USER");
+        auth.inMemoryAuthentication()
+            // 5.x版本的SpringSecurity需要自定义密码编码器
+            .passwordEncoder(new MyPasswordEncoder())
+            .withUser("xqk")
+            .password("123456")
+            .roles("USER")
+            .and()
+            .withUser("yxm")
+            .password("654321")
+            .roles("ADMIN")
+            .and()
+            .withUser("cr")
+            .password("123321")
+            .roles("ADMIN", "USER");
 
         //自定义UserDetailService，用于从数据库获取用户信息
-        auth.userDetailsService(userDetailsService);
+        // auth.jdbcAuthentication();
+        // auth.userDetailsService(userDetailsService);
     }
 
     /**
@@ -70,19 +72,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             /* *********************************权限相关**********************************/
             //路径为/user开头的url只能被ROLEUSER访问（ROLE）是Spring自动添加的
-            .antMatchers("/user/**").hasRole("USER")
+            .antMatchers("/user/**")
+            .hasRole("USER")
             //路径为/time开头的url只能被ROLEADMIN访问（ROLE）是Spring自动添加的
-            .antMatchers("/admin/**").hasRole("ADMIN")
+            .antMatchers("/admin/**")
+            .hasRole("ADMIN")
             // 路径为/path-variable开头的url只能被同时拥有ROLEADMIN和ROLEUSER角色的用户访问（ROLE）是Spring自动添加的,可以通过（and、or控制）
-            .antMatchers("/all/**").access("hasRole('ADMIN') or hasRole('USER')")
+            .antMatchers("/all/**")
+            .access("hasRole('ADMIN') or hasRole('USER')")
             // 其它任何没有进行匹配的URLs只需要用户认证过即可访问。
-            .anyRequest().authenticated().and()
+            .anyRequest()
+            .authenticated()
+            .and()
 
             /* *********************************登录相关**********************************/
             //是否开启登录页面
-            .formLogin().and()
+            .formLogin()
+            .and()
             //增加自动登录功能，并指定key，防止服务器重启之后cookies失效，并使用令牌持久化功能
-            .rememberMe().key("aviator").tokenRepository(jdbcTokenRepository).and()
+            .rememberMe()
+            .key("aviator")
+            .tokenRepository(jdbcTokenRepository)
+            .and()
             //指定登录接口页面地址
             // .formLogin().loginPage("/login")
             //指定登录接口地址,允许所有用户通过表单的方式登录（POST请求）
@@ -114,11 +125,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             //清楚认证信息（默认清理）
             .clearAuthentication(true)
             //使HttpSession失效（默认失效）
-            .invalidateHttpSession(true).and()
+            .invalidateHttpSession(true)
+            .and()
 
             /* *********************************安全相关**********************************/
             // 关闭CSRF保护，否则POST请求必须带CSRF参数,不带的话请求会报403
-            .csrf().disable();
+            .csrf()
+            .disable();
         //使用HttpBasic认证（Basic认证是一种较为简单的HTTP认证方式，采用明文传输，是不安全的）
         // .httpBasic();
 
@@ -134,7 +147,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         //配置忽略的文件URL地址路径
-        web.ignoring().antMatchers("/js/**", "/css/**", "/images/**");
+        web.ignoring()
+           .antMatchers("/js/**", "/css/**", "/images/**");
     }
 
     /**

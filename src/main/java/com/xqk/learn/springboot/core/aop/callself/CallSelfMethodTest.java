@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.aop.callself;
+package com.xqk.learn.springboot.core.aop.callself;
 
 import com.xqk.learn.springboot.LearnApplication;
 import org.junit.Test;
