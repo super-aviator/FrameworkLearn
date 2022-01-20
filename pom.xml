@@ -25,7 +25,7 @@
         <com.oracle.ojdbc6.version>11.2.0.1.0</com.oracle.ojdbc6.version>
         <com.vladmihalcea.hibernate-types.version>2.9.4</com.vladmihalcea.hibernate-types.version>
         <cn.hutool.version>5.0.4</cn.hutool.version>
-        <org.apache.httpcomponents.version>4.5.9</org.apache.httpcomponents.version>
+        <org.apache.httpcomponents.version>4.5.13</org.apache.httpcomponents.version>
         <debezium.version>1.8.0.CR1</debezium.version>
         <mysql.connector.version>8.0.27</mysql.connector.version>
     </properties>
