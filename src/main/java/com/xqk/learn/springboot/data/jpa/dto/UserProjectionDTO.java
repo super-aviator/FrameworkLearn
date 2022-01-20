@@ -1,7 +1,6 @@
 package com.xqk.learn.springboot.data.jpa.dto;
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.ToString;
 
 

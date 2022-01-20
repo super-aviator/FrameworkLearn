@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.data.Stat;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -29,7 +28,7 @@ public class ClientAdmin {
     }
 
     public void listState() {
-        Stat stat = new Stat();
+        org.apache.zookeeper.data.Stat stat = new org.apache.zookeeper.data.Stat();
         String whiteSpace = " ";
         try {
             System.out.println("Master");

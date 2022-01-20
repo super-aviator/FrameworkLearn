@@ -8,8 +8,6 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.transaction.support.TransactionTemplate;
 
-import javax.transaction.TransactionManager;
-
 /**
  * @author 熊乾坤
  * @since 2021-05-08 19:54

@@ -6,12 +6,12 @@ package com.xqk.learn.springboot.elasticsearch.lowlevel.service;/**
 import cn.hutool.core.io.IoUtil;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.*;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.elasticsearch.ElasticsearchException;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
