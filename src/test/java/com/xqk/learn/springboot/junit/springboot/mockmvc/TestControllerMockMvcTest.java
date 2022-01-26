@@ -18,6 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * 通常@WebMvcTest只限于单个控制器（controller）使用，并结合@MockBean以提供需要的协作者（collaborators）的mock实现。
  * 注解@WebMvcTest也会自动配置MockMvc，Mock MVC为快速测试MVC控制器提供了一种强大的方式，并且不需要启动一个完整的HTTP服务器。
+ *
+ * 注解@WebMvcTest不能与@SpringBootTest一起使用思密达
  */
 @Slf4j
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
