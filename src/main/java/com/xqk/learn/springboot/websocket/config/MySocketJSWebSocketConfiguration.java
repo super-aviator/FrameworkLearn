@@ -12,10 +12,10 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
  */
 @Configuration
 @EnableWebSocket
-public class MySocketJSWebSocketConfigurer implements WebSocketConfigurer {
+public class MySocketJSWebSocketConfiguration implements WebSocketConfigurer {
     private final MyMessageHandler myMessageHandler;
 
-    public MySocketJSWebSocketConfigurer(MyMessageHandler myMessageHandler) {
+    public MySocketJSWebSocketConfiguration(MyMessageHandler myMessageHandler) {
         this.myMessageHandler = myMessageHandler;
     }
 

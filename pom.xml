@@ -20,7 +20,7 @@
         <org.apache.poi.version>3.17</org.apache.poi.version>
         <com.alibaba.fastjson.version>1.2.47</com.alibaba.fastjson.version>
         <net.sourceforge.jexcelapi.version>2.6.12</net.sourceforge.jexcelapi.version>
-        <org.junit.jupiter>4.12</org.junit.jupiter>
+        <!--<org.junit.jupiter>4.12</org.junit.jupiter>-->
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <com.oracle.ojdbc6.version>11.2.0.1.0</com.oracle.ojdbc6.version>
         <com.vladmihalcea.hibernate-types.version>2.9.4</com.vladmihalcea.hibernate-types.version>
@@ -181,10 +181,6 @@
         <!--    <groupId>org.springframework.cloud</groupId>-->
         <!--    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
 
         <!--flyway数据库版本管理-->
         <dependency>
@@ -324,6 +320,12 @@
             <groupId>io.debezium</groupId>
             <artifactId>debezium-connector-mysql</artifactId>
             <version>${debezium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

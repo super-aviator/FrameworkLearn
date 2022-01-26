@@ -1,5 +1,6 @@
 package com.xqk.learn.springboot.security.controller;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Aviator
  */
+@Profile("security")
 @RestController
 @RequestMapping("/security")
 public class UserSecurityController {

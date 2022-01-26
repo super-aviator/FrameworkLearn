@@ -81,42 +81,16 @@ spring:
   #使用一个profile时，同时也使用另外一个profile
   profiles:
     include:
-      - kafka
-      - redis
-#      - elasticsearch
-#      - rabbitmq
+      #      - datasource
+      #      - quartz
+      #      - kafka
+      #      - redis
+      #      - elasticsearch
+      #      - rabbitmq
       - feign
-      - mybatis
+      #      - mybatis
       - security
-      - debezium
-
-  #quartz配置
-  quartz:
-    startup-delay: 10s
-    job-store-type: memory
-    jdbc:
-      initialize-schema: never
-    properties:
-      org:
-        quartz:
-          #          scheduler:
-          #            instanceName: clusteredScheduler
-          #           jisua instanceId: AUTO
-          #          jobStore:
-          #            class: org.quartz.impl.jdbcjobstore.JobStoreTX
-          #            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-          #            tablePrefix: QRTZ_
-          #            isClustered: false
-          #            clusterCheckinInterval: 10000
-          #            #  org.quartz.jobStore.useProperties配置参数可以设置为“true”（默认为false），为了通知JDBCJobStore
-          #            # 所有在JobDataMaps的值都会为String类型，因此可以作为键值对存储，而不是在BLOB列中存储序列化的对象。
-          #            # 这从长远看来更安全，例如你可以避免将非String类对象序列化到BLOB中导致的类版本问题。
-          #            useProperties: false
-          threadPool:
-            class: org.quartz.simpl.SimpleThreadPool
-            threadCount: 5
-            threadPriority: 5
-            threadsInheritContextClassLoaderOfInitializingThread: true
+  #      - debezium
 
   task:
     #  ThreadPoolTaskExecutor配置（@EnableAsync注解开启）TaskExecutionProperties
@@ -154,6 +128,9 @@ info:
     age: 25
 
 management:
+  health:
+    elasticsearch:
+      enabled: false #是否开启elasticsearch健康检查
   endpoint:
     shutdown:
       enabled: true #开启actuator的shutdown端点

@@ -5,6 +5,7 @@ import com.xqk.learn.springboot.mybatis.dto.UserDTO;
 import com.xqk.learn.springboot.mybatis.mapper.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.entity.Condition;
 import tk.mybatis.mapper.util.Sqls;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Repository
 @AllArgsConstructor
+@Profile("mybatis")
 public class UserDAO {
     private final UserMapper userMapper;
 

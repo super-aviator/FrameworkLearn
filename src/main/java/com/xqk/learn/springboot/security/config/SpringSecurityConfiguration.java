@@ -7,6 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
@@ -21,10 +25,24 @@ import java.util.Properties;
  * @author xiongqiankun
  * @since 2021/9/23 16:40
  */
+@EnableWebSecurity(debug = true)
 @Configuration
+@Profile("security")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class SecurityBeanConfig {
+public class SpringSecurityConfiguration {
     private final DataSource dataSource;
+
+    /**
+     * 定义角色的继承关系，ADMIN角色继承USER角色的权限
+     *
+     * @return RoleHierarchy
+     */
+    @Bean
+    RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl hierarchy = new RoleHierarchyImpl();
+        hierarchy.setHierarchy("ROLE_ADMIN > ROLE_USER");
+        return hierarchy;
+    }
 
     /**
      * 自定义基于数据库的用户名密码存储方式
@@ -36,10 +54,16 @@ public class SecurityBeanConfig {
         JdbcUserDetailsManager manager = new JdbcUserDetailsManager();
         manager.setDataSource(dataSource);
         if (!manager.userExists("xqk")) {
-            manager.createUser(User.withUsername("xqk").password("123").roles("ADMIN").build());
+            manager.createUser(User.withUsername("xqk")
+                                   .password("123")
+                                   .roles("ADMIN")
+                                   .build());
         }
         if (!manager.userExists("yxm")) {
-            manager.createUser(User.withUsername("yxm").password("123").roles("USER").build());
+            manager.createUser(User.withUsername("yxm")
+                                   .password("123")
+                                   .roles("USER")
+                                   .build());
         }
         return manager;
     }

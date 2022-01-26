@@ -5,25 +5,26 @@ import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * @author 熊乾坤
  * @date 2020-02-18 21:19
  */
+@Profile("quartz")
 @Configuration
 public class MyScheduleTaskService {
 
     @Bean("mySimpleJobDetail1")
     public JobDetail getJobDetail1() {
-        return JobBuilder
-                .newJob(MyJob.class)
-                .withIdentity("abc", "def")
-                .withDescription("测试Quartz定时任务1")
-                //.withIdentity("MyJob1", "group1")
-                .usingJobData("key1", "value1")
-                //这行必须要加上，不然会报错
-                .storeDurably(true)
-                .build();
+        return JobBuilder.newJob(MyJob.class)
+                         .withIdentity("abc", "def")
+                         .withDescription("测试Quartz定时任务1")
+                         //.withIdentity("MyJob1", "group1")
+                         .usingJobData("key1", "value1")
+                         //这行必须要加上，不然会报错
+                         .storeDurably(true)
+                         .build();
     }
     //
     //@Bean("mySimpleTrigger1")

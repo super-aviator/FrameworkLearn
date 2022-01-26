@@ -1,6 +1,6 @@
 package com.xqk.learn.springboot.debezium;
 
-import com.xqk.learn.springboot.debezium.config.DebeziumConfig;
+import com.xqk.learn.springboot.debezium.config.DebeziumConfiguration;
 import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.format.Json;
 import io.debezium.engine.spi.OffsetCommitPolicy;
@@ -33,7 +33,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @ConditionalOnProperty(value = "debezium.enabled", havingValue = "true")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class DebeziumEngineManager {
-    private final DebeziumConfig debeziumConfig;
+    private final DebeziumConfiguration debeziumConfig;
     private final KafkaTemplate kafkaTemplate;
 
     private final ExecutorService executor = new ThreadPoolExecutor(1, 1, 0, TimeUnit.MINUTES, new LinkedBlockingQueue<>(), (r)->new Thread(r, "DebeziumEngineManager"));

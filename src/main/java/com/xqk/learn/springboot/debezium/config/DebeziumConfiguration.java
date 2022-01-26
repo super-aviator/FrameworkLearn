@@ -15,9 +15,9 @@ import java.util.Properties;
  */
 @Data
 @Configuration
-@EnableConfigurationProperties(DebeziumConfig.class)
+@EnableConfigurationProperties(DebeziumConfiguration.class)
 @ConfigurationProperties(prefix = "debezium")
-public class DebeziumConfig {
+public class DebeziumConfiguration {
     private String enabled;
     private String topic;
     private Properties properties;

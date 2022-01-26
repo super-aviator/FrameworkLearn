@@ -6,6 +6,7 @@ import org.quartz.DisallowConcurrentExecution;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
  * @date 2020-02-18 21:23
  */
 @Slf4j
+@Profile("quartz")
 @Component
 @DisallowConcurrentExecution
 public class MyJob extends QuartzJobBean {

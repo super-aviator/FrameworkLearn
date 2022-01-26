@@ -4,6 +4,7 @@ import com.xqk.learn.springboot.mybatis.dao.UserDAO;
 import com.xqk.learn.springboot.mybatis.dto.UserDTO;
 import com.xqk.learn.springboot.mybatis.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/mybatis")
 @AllArgsConstructor
+@Profile("mybatis")
 public class MybatisUserController {
     private final UserService userService;
     private final UserDAO userDAO;
