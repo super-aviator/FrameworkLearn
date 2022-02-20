@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "debezium.enabled",
+      "type": "java.lang.String",
+      "description": "Description for debezium.enabled."
+    },
+    {
+      "name": "debezium.properties.name",
+      "type": "java.lang.String",
+      "description": "Description for debezium.properties.name."
+    },
+    {
+      "name": "debezium.properties.connector.class",
+      "type": "java.lang.String",
+      "description": "Description for debezium.properties.connector.class."
+    }
+  ]
+}
