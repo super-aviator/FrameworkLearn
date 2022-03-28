@@ -26,7 +26,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 //开启Spring异步线程池
 @EnableAsync
 //启动注解
-@SpringBootApplication(exclude = {RedisAutoConfiguration.class,
+@SpringBootApplication(exclude = {
+        // RedisAutoConfiguration.class,
         // SecurityAutoConfiguration.class,
         ConfigClientAutoConfiguration.class, ElasticsearchAutoConfiguration.class})
 

@@ -84,7 +84,7 @@ spring:
       #      - datasource
       #      - quartz
       #      - kafka
-      #      - redis
+      - redis
       #      - elasticsearch
       #      - rabbitmq
       - feign
@@ -112,6 +112,12 @@ spring:
   resources:
     # 静态资源位置
     static-locations: [ classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ ]
+
+  cache:
+    redis:
+      time-to-live: 100000
+      cache-null-values: true
+    type: redis
 
 hibernate:
   properties:
