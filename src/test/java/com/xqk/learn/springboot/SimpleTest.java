@@ -2,6 +2,7 @@ package com.xqk.learn.springboot;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
@@ -75,5 +76,10 @@ public class SimpleTest {
 //            log.info(isNull + "");
 //        }
 //        System.out.println(1 + 1.1);
+    }
+
+    @Test
+    @DisplayName("😱")
+    public void testWithDisplayNameContainingEmoji() {
     }
 }

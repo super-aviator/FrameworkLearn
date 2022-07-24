@@ -88,7 +88,7 @@ spring:
       #      - elasticsearch
       #      - rabbitmq
       - feign
-      #      - mybatis
+      - mybatis
       - security
   #      - debezium
 

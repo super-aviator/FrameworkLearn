@@ -1,12 +1,11 @@
 package com.xqk.learn.springboot;
 
-import com.xqk.learn.springboot.cloud.openfeign.config.BaseClientConfiguration;
+import org.apache.ibatis.annotations.Mapper;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchAutoConfiguration;
-import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cloud.config.client.ConfigClientAutoConfiguration;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
 
@@ -36,6 +35,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 //开启AOP,proxyTargetClass表示是否使用基于cglib的代理,否则使用JDK基于接口的代理
 @EnableAspectJAutoProxy(exposeProxy = true)
+@MapperScan(value = "com.xqk.learn.springboot.mybatis.mapper")
 public class LearnApplication {
 
     /**

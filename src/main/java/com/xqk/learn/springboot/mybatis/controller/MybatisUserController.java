@@ -1,17 +1,17 @@
 package com.xqk.learn.springboot.mybatis.controller;
 
+import com.xqk.learn.springboot.data.jpa.entity.User;
 import com.xqk.learn.springboot.mybatis.dao.UserDAO;
 import com.xqk.learn.springboot.mybatis.dto.UserDTO;
 import com.xqk.learn.springboot.mybatis.service.UserService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/mybatis")
 @AllArgsConstructor
@@ -28,6 +28,17 @@ public class MybatisUserController {
 
     @GetMapping("/findUserByName")
     public List<UserDTO> findUserByName(@RequestParam String name) {
-        return userDAO.findUserByName(name);
+        // return userDAO.findUserByName(name);
+        return null;
+    }
+
+    @PostMapping("/insertUser")
+    public User insertUser() {
+        var user = new User();
+        user.setName("test1");
+        user.setAddress("test1");
+        userDAO.insertUser(user);
+        log.info("id:{}", user);
+        return user;
     }
 }

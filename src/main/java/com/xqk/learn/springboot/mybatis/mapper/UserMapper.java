@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.context.annotation.Profile;
 import tk.mybatis.mapper.common.base.BaseSelectMapper;
 import tk.mybatis.mapper.common.base.BaseUpdateMapper;
+import tk.mybatis.mapper.common.base.insert.InsertMapper;
 import tk.mybatis.mapper.common.base.select.SelectMapper;
 import tk.mybatis.mapper.common.condition.SelectByConditionMapper;
 import tk.mybatis.mapper.common.example.SelectByExampleMapper;
@@ -14,9 +15,8 @@ import tk.mybatis.mapper.common.example.SelectByExampleMapper;
 import java.util.List;
 
 @Mapper
-@Profile("mybatis")
-public interface UserMapper extends SelectMapper<User>, SelectByConditionMapper<User>,
-        SelectByExampleMapper<User>, BaseSelectMapper<User>, BaseUpdateMapper<User> {
+public interface UserMapper extends SelectMapper<User>, SelectByConditionMapper<User>, InsertMapper<User>, SelectByExampleMapper<User>, BaseSelectMapper<User>,
+        BaseUpdateMapper<User> {
     @Select("SELECT * FROM user")
     List<UserDTO> findAllUser();
 }
