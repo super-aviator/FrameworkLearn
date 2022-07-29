@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Profile("redis")
-public class RedisUtilBean {
+public class RedisUtil {
     /**
      * The String redis template.
      */
