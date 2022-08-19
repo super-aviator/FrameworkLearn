@@ -83,7 +83,7 @@ spring:
     include:
       #      - datasource
       #      - quartz
-      #      - kafka
+      - kafka
       - redis
       #      - elasticsearch
       #      - rabbitmq

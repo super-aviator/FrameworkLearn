@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.data.kafka.service;
+package com.xqk.learn.springboot.data.kafka.dto;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2020-05-31 15:32
  */
 @Data
-public class SendKafkaVO {
+public class SendKafkaDTO {
     String topic;
     String key;
     String data;

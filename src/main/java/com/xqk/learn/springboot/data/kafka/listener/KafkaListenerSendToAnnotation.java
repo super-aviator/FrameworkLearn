@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.data.kafka.service;
+package com.xqk.learn.springboot.data.kafka.listener;
 
 import com.xqk.learn.springboot.data.jpa.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -39,8 +39,8 @@ public class KafkaListenerSendToAnnotation {
      */
     @KafkaListener(topics = "test", groupId = "test-listener1")
     //@SendTo("sendto")
-    public UserDTO consume1Partition2(UserDTO user, ConsumerRecord<String, UserDTO> record) {
+    public void consume1Partition2(String user, ConsumerRecord<String, UserDTO> record) {
         log.info("group:test-listener1 partition:{} consume a UserDTO msg:{} from topic:test and then send to topic :{}", record.partition(), user.toString(), "sendto");
-        return user;
+        // return user;
     }
 }

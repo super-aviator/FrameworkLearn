@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.data.kafka.service;
+package com.xqk.learn.springboot.data.kafka.producer;
 
 import com.xqk.learn.springboot.data.jpa.dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;

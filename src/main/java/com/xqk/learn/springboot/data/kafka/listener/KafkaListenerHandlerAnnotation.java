@@ -1,4 +1,4 @@
-package com.xqk.learn.springboot.data.kafka.service;
+package com.xqk.learn.springboot.data.kafka.listener;
 
 
 import com.xqk.learn.springboot.data.jpa.dto.UserDTO;
@@ -26,7 +26,7 @@ public class KafkaListenerHandlerAnnotation {
      * @param record  the record
      */
     @KafkaHandler(isDefault = true)
-    public void consume2Partition1(UserDTO userDTO, ConsumerRecord<String, UserDTO> record) {
+    public void consume2Partition1(UserDTO userDTO, ConsumerRecord<String, String> record) {
         log.info("group:{} partition:{} consume a UserDTO msg:{}", "test-listener2", record.partition(), userDTO);
     }
 
@@ -37,7 +37,7 @@ public class KafkaListenerHandlerAnnotation {
      * @param record the record
      */
     @KafkaHandler
-    public void consume2Partition2(String data, ConsumerRecord<String, UserDTO> record) {
+    public void consume2Partition2(String data, ConsumerRecord<String, String> record) {
         log.info("group:{} partition:{} consume a string msg:{}", "test-listener2", record.partition(), data);
     }
 }

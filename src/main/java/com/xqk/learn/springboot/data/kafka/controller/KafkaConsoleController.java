@@ -1,8 +1,8 @@
 package com.xqk.learn.springboot.data.kafka.controller;
 
 import com.xqk.learn.springboot.data.jpa.dto.UserDTO;
-import com.xqk.learn.springboot.data.kafka.service.KafkaProducer;
-import com.xqk.learn.springboot.data.kafka.service.SendKafkaVO;
+import com.xqk.learn.springboot.data.kafka.producer.KafkaProducer;
+import com.xqk.learn.springboot.data.kafka.dto.SendKafkaDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -57,9 +57,9 @@ public class KafkaConsoleController {
      * Send str.
      */
     @PostMapping("/send-str")
-    public void sendStr(@RequestBody SendKafkaVO sendKafkaVO) {
-        log.info("Get a Post request---topic: " + sendKafkaVO.getTopic() + "---msg: " + sendKafkaVO.getData());
-        kafkaProducerBean.produceStr(sendKafkaVO.getTopic(), sendKafkaVO.getKey(), sendKafkaVO.getData());
+    public void sendStr(@RequestBody SendKafkaDTO sendKafkaDTO) {
+        log.info("Get a Post request---topic: " + sendKafkaDTO.getTopic() + "---msg: " + sendKafkaDTO.getData());
+        kafkaProducerBean.produceStr(sendKafkaDTO.getTopic(), sendKafkaDTO.getKey(), sendKafkaDTO.getData());
     }
 
     /**

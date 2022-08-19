@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchAu
 import org.springframework.cloud.config.client.ConfigClientAutoConfiguration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * The type Learn application.
@@ -21,7 +22,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @author Aviator
  */
 //开启Spring定时任务
-// @EnableScheduling
+@EnableScheduling
 //开启Spring异步线程池
 @EnableAsync
 //启动注解
