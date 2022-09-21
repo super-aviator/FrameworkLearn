@@ -7,7 +7,7 @@ pagehelper:
 mybatis:
   # mapper文件位置
   mapper-locations: classpath:/mybatis/*.xml
-  type-aliases-package: com.xqk.learn.springboot.data.jpa.entity
+  type-aliases-package: com.xqk.learn.framework.data.jpa.entity
   configuration:
     # mybatis使用枚举字符串
     default-enum-type-handler: org.apache.ibatis.type.EnumTypeHandler

@@ -12,7 +12,7 @@ spring:
       max-poll-records: 500  #pall方法能够返回的最大记录数量，默认为500条（如果消息的大小都比较小，则可以增大该值提升消费速度）
       heartbeat-interval: 1000ms #消费者心跳发送的间隔，必须小于heartbeat-interval的配置，一般为session.timeout.ms的1/3左右
       properties:
-        interceptor.classes: com.xqk.learn.springboot.kafka.interceptor.TTLConsumerInterceptor
+        interceptor.classes: com.xqk.learn.framework.kafka.interceptor.TTLConsumerInterceptor
         max.poll.interval.ms: 30000 #每俩次poll拉取数据时间间隔最大超时时间，超过这个值，broker就会认为你这个消费者挂了，并且重新平衡，这时候就消费不到信息了（默认三百秒）
         fetch.max.bytes: 52428800 #poll方法最大能拉取的数据量，默认50MB，
         spring.json.trusted.packages: "*" #将需要序列化的类所属的包添加到kafka信任的包路径下，否则Kafka反序列化会失败的！！！！！！！！！！

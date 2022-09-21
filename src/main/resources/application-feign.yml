@@ -1,6 +1,6 @@
 logging:
   level:
-    com.xqk.learn.springboot.cloud.openfeign.client: DEBUG
+    com.xqk.learn.framework.cloud.openfeign.client: DEBUG
 
 feign:
   #使用OkHttpClient
