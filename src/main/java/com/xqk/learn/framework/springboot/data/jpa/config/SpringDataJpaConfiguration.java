@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @author xiongqiankun
  * @since 2022/1/26 10:30
  */
-@EntityScan("com.xqk.learn.framework.data.jpa.entity")
-@EnableJpaRepositories("com.xqk.learn.framework.data.jpa.repository")
+@EntityScan("com.xqk.learn.framework.springboot.data.jpa.entity")
+@EnableJpaRepositories("com.xqk.learn.framework.springboot.data.jpa.repository")
 @Configuration
 public class SpringDataJpaConfiguration {
 }

@@ -48,7 +48,7 @@ spring:
     show-sql: false #打印jpa的sql语句
     properties:
       hibernate:
-        dialect: com.xqk.learn.framework.data.jpa.config.MyDialect
+        dialect: com.xqk.learn.framework.springboot.data.jpa.config.MyDialect
         enable_lazy_load_no_trans: true #解决懒加载时，缺少session的问题
         format_sql: true #格式化sql语句
         ddl_auto: false #生成数据库定义语句
@@ -89,7 +89,7 @@ spring:
       #      - rabbitmq
       - feign
       - mybatis
-      - security
+#      - security
   #      - debezium
 
   task:

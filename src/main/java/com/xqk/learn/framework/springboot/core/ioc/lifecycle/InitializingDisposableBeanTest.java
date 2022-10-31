@@ -2,12 +2,8 @@ package com.xqk.learn.framework.springboot.core.ioc.lifecycle;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.*;
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +21,20 @@ import javax.servlet.ServletContext;
  * @author 熊乾坤
  */
 @Slf4j
-public class InitializingDisposableBeanTest implements BeanFactoryPostProcessor, BeanNameAware, BeanClassLoaderAware, BeanFactoryAware,
-        EnvironmentAware, EmbeddedValueResolverAware, ResourceLoaderAware, ApplicationEventPublisherAware, MessageSourceAware,
-        ApplicationContextAware, ServletContextAware, InitializingBean, DisposableBean,BeanPostProcessor, InstantiationAwareBeanPostProcessor {
+public class InitializingDisposableBeanTest implements BeanNameAware, BeanClassLoaderAware, ApplicationContextAware, BeanFactoryAware,
+        EnvironmentAware, EmbeddedValueResolverAware, ResourceLoaderAware, ApplicationEventPublisherAware, MessageSourceAware, ServletContextAware,
+        InitializingBean, DisposableBean {
+
+
+    public InitializingDisposableBeanTest(){
+        log.info("InitializingDisposableBeanTest#Constructor");
+    }
+
+    @Autowired
+    public void setMyBeanPostProcessor(MyBeanPostProcessor myBeanPostProcessor) {
+        log.info("InitializingDisposableBeanTest#setProperties");
+    }
+
 
     @Override
     public void setBeanName(String name) {
@@ -89,36 +96,6 @@ public class InitializingDisposableBeanTest implements BeanFactoryPostProcessor,
         log.info("@PostConstruct");
     }
 
-    @Override
-    public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
-        log.info("InstantiationAwareBeanPostProcessor#postProcessBeforeInstantiation");
-        return InstantiationAwareBeanPostProcessor.super.postProcessBeforeInstantiation(beanClass, beanName);
-    }
-
-    @Override
-    public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
-        log.info("InstantiationAwareBeanPostProcessor#postProcessAfterInstantiation");
-        return InstantiationAwareBeanPostProcessor.super.postProcessAfterInstantiation(bean, beanName);
-    }
-
-    @Override
-    public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
-        log.info("InstantiationAwareBeanPostProcessor#postProcessProperties");
-        return InstantiationAwareBeanPostProcessor.super.postProcessProperties(pvs, bean, beanName);
-    }
-
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        log.info("BeanPostProcessor#postProcessBeforeInitialization");
-        return bean;
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        log.info("BeanPostProcessor#postProcessAfterInitialization");
-        return bean;
-    }
-
     @PreDestroy
     public void preDestroy() {
         log.info("@PreDestroy");
@@ -127,11 +104,6 @@ public class InitializingDisposableBeanTest implements BeanFactoryPostProcessor,
     @Override
     public void destroy() {
         log.info("DisposableBean-destroy()");
-    }
-
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.info("BeanFactoryPostProcessor-postProcessBeanFactory()");
     }
 
     /**
@@ -143,13 +115,11 @@ public class InitializingDisposableBeanTest implements BeanFactoryPostProcessor,
      *
      * @author 熊乾坤
      */
-    public static class MyBeanPostProcessor {
         public static void main(String[] args) {
             //可以在AnnotationConfigApplicationContext的构造方法中传入配置的Class
             AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(
-                    "com.xqk.learn.framework.core.ioc.lifecycle");
-            InitializingDisposableBeanTest initializingDisposableBeanTest = applicationContext.getBean(
-                    InitializingDisposableBeanTest.class);
+                    "com.xqk.learn.framework.springboot.core.ioc.lifecycle");
+            InitializingDisposableBeanTest initializingDisposableBeanTest = applicationContext.getBean(InitializingDisposableBeanTest.class);
             applicationContext.registerShutdownHook();
 
             // log.info("******************************************************************");
@@ -162,7 +132,6 @@ public class InitializingDisposableBeanTest implements BeanFactoryPostProcessor,
             // initializingDisposableBeanTest = annotationConfigApplicationContext.getBean(InitializingDisposableBeanTest.class);
             // annotationConfigApplicationContext.close();
         }
-    }
 
     @Configuration
     public static class MyConfiguration {
