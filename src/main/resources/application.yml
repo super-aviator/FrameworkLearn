@@ -81,16 +81,16 @@ spring:
   #使用一个profile时，同时也使用另外一个profile
   profiles:
     include:
-      #      - datasource
-      #      - quartz
-      - kafka
+#      - datasource
+#      - quartz
+#      - kafka
       - redis
-      #      - elasticsearch
-      #      - rabbitmq
+#      - elasticsearch
+#      - rabbitmq
       - feign
       - mybatis
 #      - security
-  #      - debezium
+#      - debezium
 
   task:
     #  ThreadPoolTaskExecutor配置（@EnableAsync注解开启）TaskExecutionProperties

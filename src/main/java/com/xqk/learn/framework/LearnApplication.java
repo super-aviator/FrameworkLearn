@@ -21,7 +21,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @author Aviator
  */
 //开启Spring定时任务
-@EnableScheduling
+// @EnableScheduling
 //开启Spring异步线程池
 @EnableAsync
 //启动注解
