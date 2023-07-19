@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: 101.37.172.37
+    host: ${host}
     database: 0
     ssl: false
     port: 6379
