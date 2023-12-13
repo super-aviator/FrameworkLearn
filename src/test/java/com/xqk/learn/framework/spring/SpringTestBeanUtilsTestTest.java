@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Spring工具类，BeanUtils类测试
  *
  * @author 熊乾坤
- * @date 2020-03-05 0:26
+ * @since 2020-03-05 0:26
  */
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)

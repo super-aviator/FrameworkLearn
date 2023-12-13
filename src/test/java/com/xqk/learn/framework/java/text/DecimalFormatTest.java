@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 
 /**
  * @author Aviator
- * @date 2019-9-1
+ * @since 2019-9-1
  */
 @Slf4j
 public class DecimalFormatTest {

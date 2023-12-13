@@ -25,7 +25,7 @@ import java.util.Optional;
  * 使用Hibernate-Type包，如果数据类型是List、Set这种集合形式，需要确保存入List中的数据都是非null的，否则在持久化的时候会抛出异常
  *
  * @author 熊乾坤
- * @date 2020-03-01 13:20
+ * @since 2020-03-01 13:20
  */
 @Slf4j
 @SpringBootTest

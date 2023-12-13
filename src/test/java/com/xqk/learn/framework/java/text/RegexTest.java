@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * 正则表达式测试
  *
  * @author 熊乾坤
- * @date 2020-03-05 18:39
+ * @since 2020-03-05 18:39
  */
 public class RegexTest {
     private static final Pattern PERSON_ATTR_PATTERN = Pattern.compile("\\d+[Xx]?");

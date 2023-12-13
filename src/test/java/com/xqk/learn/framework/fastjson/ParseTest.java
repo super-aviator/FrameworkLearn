@@ -10,7 +10,7 @@ import org.junit.Test;
  * 2. FastJSON支持yyyyMMddHHmmss这种数据格式
  *
  * @author 熊乾坤
- * @date 2020-03-08 20:15
+ * @since 2020-03-08 20:15
  */
 public class ParseTest {
 

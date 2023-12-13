@@ -16,7 +16,7 @@ import java.math.BigDecimal;
  * 对于MySQL中的Decimal数据类型，可以使用BigDecimal或者Double、Float类型存取，会自动进行四舍五入
  *
  * @author 熊乾坤
- * @date 2020-04-16 14:39
+ * @since 2020-04-16 14:39
  */
 @Slf4j
 @SpringBootTest

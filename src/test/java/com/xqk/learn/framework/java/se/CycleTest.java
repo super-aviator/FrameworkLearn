@@ -8,7 +8,7 @@ import java.util.Arrays;
  * lambda表达式的forEach方法中的return不会使方法返回，而是相当于continue方法
  *
  * @author 熊乾坤
- * @date 2020-03-13 16:53
+ * @since 2020-03-13 16:53
  */
 public class CycleTest {
 

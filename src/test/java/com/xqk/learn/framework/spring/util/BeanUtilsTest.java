@@ -14,7 +14,7 @@ import org.springframework.beans.BeanUtils;
  * 2. BeanUtils工具类可以拷贝父类的属性
  *
  * @author 熊乾坤
- * @date 2020-03-08 11:25
+ * @since 2020-03-08 11:25
  */
 @Slf4j
 public class BeanUtilsTest {

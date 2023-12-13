@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * 测试String类型的数据结构的用法
  *
  * @author 熊乾坤
- * @date 2020-05-07 15:14
+ * @since 2020-05-07 15:14
  */
 @Slf4j
 @SpringBootTest

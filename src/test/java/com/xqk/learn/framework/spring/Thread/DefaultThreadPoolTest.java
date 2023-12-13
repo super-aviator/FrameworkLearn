@@ -24,7 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * 默认pool-szie为1
  *
  * @author 熊乾坤
- * @date 2020-03-27 9:46
+ * @since 2020-03-27 9:46
  */
 @ActiveProfiles("default")
 @SpringBootTest
