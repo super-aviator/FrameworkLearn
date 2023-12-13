@@ -7,7 +7,7 @@ import lombok.Data;
  * 老板详细信息pojo类
  *
  * @author 熊乾坤
- * @date 2020-03-01 13:02
+ * @since 2020-03-01 13:02
  */
 @Data
 @Builder

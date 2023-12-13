@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * 3. 使用jobStore时，如果想要删除任务，需要将数据库表里面持久化的Trigger和JobDetail都删除，否则任务依旧会运行
  *
  * @author 熊乾坤
- * @date 2020-02-18 21:23
+ * @since 2020-02-18 21:23
  */
 @Slf4j
 @Profile("quartz")

@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  * 所以为了确保所有的 logger 都有一个层级，root logger 会有一个默认层级 --- DEBUG
  *
  * @author 熊乾坤
- * @date 2019-9-2
+ * @since 2019-9-2
  */
 public class LogLevelTest {
     /**

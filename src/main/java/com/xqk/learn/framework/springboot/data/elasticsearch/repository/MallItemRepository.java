@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author 熊乾坤
- * @date 2020-05-18 20:50
+ * @since 2020-05-18 20:50
  */
 @Repository
 @Profile("elasticsearch")

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author 熊乾坤
- * @date 2020-03-30 10:02
+ * @since 2020-03-30 10:02
  */
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {

@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
  * 使用EncodeResource对资源文件进行编码
  *
  * @author 熊乾坤
- * @date 2019/10/8 10:04
+ * @since 2019/10/8 10:04
  */
 public class EncodeResourceTest {
     public static void main(String[] args) throws IOException {

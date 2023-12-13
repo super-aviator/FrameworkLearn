@@ -11,7 +11,7 @@ import java.util.List;
  * 后端接收不同的Http方法传递的参数
  *
  * @author 熊乾坤
- * @date 2019/9/23 14:25
+ * @since 2019/9/23 14:25
  */
 @RestController
 @RequestMapping(value = "http_method_test")

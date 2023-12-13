@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author 熊乾坤
- * @date 2020-03-30 10:03
+ * @since 2020-03-30 10:03
  */
 @RestController
 @RequestMapping("/product")

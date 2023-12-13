@@ -12,7 +12,7 @@ import java.io.*;
  * 通过ServletContextResource类,可以直接读取容器类路径下的文件
  *
  * @author 熊乾坤
- * @date 2019/10/8 8:42
+ * @since 2019/10/8 8:42
  */
 public class AccessClassPathResource {
     public static void main(String[] args) throws IOException {

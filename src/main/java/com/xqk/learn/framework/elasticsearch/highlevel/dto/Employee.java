@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * @author 熊乾坤
- * @date 2020-06-28 20:37
+ * @since 2020-06-28 20:37
  */
 @Data
 public class Employee {

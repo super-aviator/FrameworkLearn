@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Career Repository类
  *
  * @author 熊乾坤
- * @date 2020-03-01 13:17
+ * @since 2020-03-01 13:17
  */
 @Repository
 public interface CareerRepository extends JpaRepository<CareerEntity, Long> {

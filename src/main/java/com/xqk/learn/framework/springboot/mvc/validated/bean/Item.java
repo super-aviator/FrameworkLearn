@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
  * 注解@Length的字段，可以为空。
  *
  * @author 熊乾坤
- * @date 2020-05-24 18:51
+ * @since 2020-05-24 18:51
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

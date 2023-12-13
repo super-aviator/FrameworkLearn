@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @author 熊乾坤
- * @date 2020-05-24 22:03
+ * @since 2020-05-24 22:03
  */
 @Data
 public class ItemBase {

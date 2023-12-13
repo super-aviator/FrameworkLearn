@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 测试并发消费kafka分区数据
  *
  * @author 熊乾坤
- * @date 2020-11-18 14:51
+ * @since 2020-11-18 14:51
  */
 @Slf4j
 @Component

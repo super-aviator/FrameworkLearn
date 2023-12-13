@@ -14,7 +14,7 @@ import java.util.Date;
  * JobDataMap数据对象，后面的对象会把前面对象相同键值对象的值覆盖。
  *
  * @author 熊乾坤
- * @date 2020-02-17 18:17
+ * @since 2020-02-17 18:17
  */
 @Data
 public class HelloWorldJob implements Job {

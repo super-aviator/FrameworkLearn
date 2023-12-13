@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * 使用注解@EnableScheduling开启配置
  *
  * @author 熊乾坤
- * @date 2019-9-15
+ * @since 2019-9-15
  */
 
 @Configuration
