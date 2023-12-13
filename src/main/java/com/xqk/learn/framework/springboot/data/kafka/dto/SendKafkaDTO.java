@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * @author 熊乾坤
- * @date 2020-05-31 15:32
+ * @since 2020-05-31 15:32
  */
 @Data
 public class SendKafkaDTO {

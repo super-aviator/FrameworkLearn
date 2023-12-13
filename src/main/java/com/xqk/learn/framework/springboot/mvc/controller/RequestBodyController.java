@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
  * 不能使用@RequestBody注解。
  *
  * @author 熊乾坤
- * @date 2019-9-2
+ * @since 2019-9-2
  */
 @RestController
 @RequestMapping("/requestBody")

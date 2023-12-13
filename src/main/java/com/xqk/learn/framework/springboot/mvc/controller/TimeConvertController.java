@@ -32,12 +32,12 @@ public class TimeConvertController {
     }
 
     /**
-     * 使用@DateTimeFormat注解指定前端的时间格式为yyyy@MM@dd
+     * 使用@sinceTimeFormat注解指定前端的时间格式为yyyy@MM@dd
      *
      * @param date 前端传过来的date字符串
      */
     @GetMapping(value = "/format-time")
-    public void formatTime(@DateTimeFormat(pattern = "yyyy@MM@dd") Date date) {
+    public void formatTime(@sinceTimeFormat(pattern = "yyyy@MM@dd") Date date) {
         log.info(date.toString());
     }
 

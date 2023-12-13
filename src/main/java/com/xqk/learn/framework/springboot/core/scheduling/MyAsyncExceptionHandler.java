@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  * 捕获Async注解的方法抛出的异常
  *
  * @author 熊乾坤
- * @date 2020-04-25 12:53
+ * @since 2020-04-25 12:53
  */
 @Slf4j
 public class MyAsyncExceptionHandler implements AsyncUncaughtExceptionHandler {

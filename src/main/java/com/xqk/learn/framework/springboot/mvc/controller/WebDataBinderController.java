@@ -46,7 +46,7 @@ public class WebDataBinderController {
     public void bindData(WebDataBinder binder) {
         //取消name字段的绑定(貌似未生效。。)
         binder.setDisallowedFields("name");
-        //设置前端传过来的时间的格式，和@DateTimeFormat功能类似
+        //设置前端传过来的时间的格式，和@sinceTimeFormat功能类似
         binder.addCustomFormatter(new DateFormatter("yyyy*mm*dd"));
     }
 }

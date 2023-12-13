@@ -17,7 +17,7 @@ import java.util.Set;
  * 职业生涯实体类
  *
  * @author 熊乾坤
- * @date 2020-03-01 12:58
+ * @since 2020-03-01 12:58
  */
 @Data
 @Entity

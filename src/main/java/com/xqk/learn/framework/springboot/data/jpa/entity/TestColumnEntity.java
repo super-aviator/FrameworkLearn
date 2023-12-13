@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * 测试实体类
  *
  * @author 熊乾坤
- * @date 2020-01-12 12:56
+ * @since 2020-01-12 12:56
  */
 @Data
 @Entity

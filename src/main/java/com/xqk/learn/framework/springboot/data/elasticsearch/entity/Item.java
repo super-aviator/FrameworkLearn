@@ -7,7 +7,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
  * @author 熊乾坤
- * @date 2020-05-18 20:44
+ * @since 2020-05-18 20:44
  */
 @Data
 @Profile("elasticsearch")

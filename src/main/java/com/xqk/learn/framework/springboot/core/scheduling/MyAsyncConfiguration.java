@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @author 熊乾坤
- * @date 2020-02-21 17:06
+ * @since 2020-02-21 17:06
  */
 @Configuration
 public class MyAsyncConfiguration implements AsyncConfigurer {

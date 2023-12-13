@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * @author Aviator
- * @date 2019-9-15
+ * @since 2019-9-15
  */
 @Configuration
 public class MyRedisConfiguration {

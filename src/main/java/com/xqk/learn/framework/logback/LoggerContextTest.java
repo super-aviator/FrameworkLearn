@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author 熊乾坤
- * @date 2019-9-3
+ * @since 2019-9-3
  */
 @Slf4j
 public class LoggerContextTest {
