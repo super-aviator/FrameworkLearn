@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,7 @@ public class SimpleTest {
      */
     @Test
     public void testCastNull() {
+        System.out.println(BigDecimal.ZERO.toString());
         //log.info(dataSource.toString());
         //log.info((String) null);
         //

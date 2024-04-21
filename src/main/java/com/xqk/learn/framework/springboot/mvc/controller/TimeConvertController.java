@@ -37,7 +37,7 @@ public class TimeConvertController {
      * @param date 前端传过来的date字符串
      */
     @GetMapping(value = "/format-time")
-    public void formatTime(@sinceTimeFormat(pattern = "yyyy@MM@dd") Date date) {
+    public void formatTime(@DateTimeFormat(pattern = "yyyy@MM@dd") Date date) {
         log.info(date.toString());
     }
 
