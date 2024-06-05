@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +40,7 @@ public class SimpleTest {
 
         //System.out.println(UUID.randomUUID().toString());
         //List<String> list1=Arrays.asList(null,"12.0",null,"10.5",null,"30.5","20.4");
-        List<String> list1 = Arrays.asList("1");
+        List<String> list1 = Collections.singletonList("1");
         Optional optional = list1.stream()
                 .reduce((val1, val2) -> {
                     if (val1 == null) {
