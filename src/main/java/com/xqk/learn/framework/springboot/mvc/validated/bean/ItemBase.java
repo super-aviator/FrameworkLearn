@@ -1,8 +1,8 @@
 package com.xqk.learn.framework.springboot.mvc.validated.bean;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * @author 熊乾坤

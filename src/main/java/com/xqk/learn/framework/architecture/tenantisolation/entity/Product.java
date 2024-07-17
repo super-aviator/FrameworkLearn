@@ -1,8 +1,8 @@
 package com.xqk.learn.framework.architecture.tenantisolation.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**

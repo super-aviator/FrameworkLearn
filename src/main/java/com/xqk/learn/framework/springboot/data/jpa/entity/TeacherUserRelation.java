@@ -1,8 +1,8 @@
 package com.xqk.learn.framework.springboot.data.jpa.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.persistence.*;
 
 /**
  * The type Teacher user relation.

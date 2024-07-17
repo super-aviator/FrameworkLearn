@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFuture;
-import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * The type Kafka producer.
@@ -44,8 +44,8 @@ public class KafkaProducer {
      * @param key   the key
      * @param user  the user
      */
-    public void produce(String topic, String key, UserDTO user) {
-        ListenableFuture<SendResult<String, UserDTO>> listenableFuture;
+    public void produce(String topic, String key, UserDTO user) throws ExecutionException, InterruptedException {
+        CompletableFuture<SendResult<String, UserDTO>> listenableFuture;
         log.info("Produce a UserDTO msg:{} to topic:{} key is {}", user.toString(), topic, key);
         if (Objects.isNull(key)) {
             listenableFuture = template.send(topic, user);
@@ -53,17 +53,7 @@ public class KafkaProducer {
             listenableFuture = template.send(topic, key, user);
         }
         template.flush();
-        listenableFuture.addCallback(new ListenableFutureCallback<SendResult<String, UserDTO>>() {
-            @Override
-            public void onFailure(Throwable throwable) {
-                log.info("发送失败------>{}", throwable.getMessage());
-            }
-
-            @Override
-            public void onSuccess(SendResult<String, UserDTO> stringUserDTOSendResult) {
-                log.info("发送成功------>{}", stringUserDTOSendResult.getProducerRecord().value());
-            }
-        });
+        listenableFuture.get();
     }
 
     /**

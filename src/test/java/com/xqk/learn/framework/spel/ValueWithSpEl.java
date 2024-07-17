@@ -1,13 +1,12 @@
 package com.xqk.learn.framework.spel;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
+@SpringBootTest
 public class ValueWithSpEl {
 
     @Value("#{ systemProperties['user.name'] }")

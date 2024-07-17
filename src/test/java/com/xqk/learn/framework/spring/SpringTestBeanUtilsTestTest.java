@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * Spring工具类，BeanUtils类测试
@@ -16,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @since 2020-03-05 0:26
  */
 @Slf4j
-@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 public class SpringTestBeanUtilsTestTest {
     @Data
     @AllArgsConstructor

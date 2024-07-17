@@ -5,7 +5,6 @@ import com.xqk.learn.framework.springboot.core.condition.mybean.TestBean1Impl;
 import com.xqk.learn.framework.springboot.core.condition.mybean.TestBean2Impl;
 import com.xqk.learn.framework.springboot.core.condition.mycondition.TestBean1Condition;
 import com.xqk.learn.framework.springboot.core.condition.mycondition.TestBean2Condition;
-import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
@@ -25,7 +24,6 @@ public class ConditionBeanConfigTest {
         return new TestBean1Impl();
     }
 
-    @Test(timeout = 1)
     @Bean
     @Conditional(TestBean2Condition.class)
     public TestBean bean2() {

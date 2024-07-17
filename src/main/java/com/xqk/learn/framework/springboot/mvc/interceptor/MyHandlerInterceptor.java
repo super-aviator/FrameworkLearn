@@ -1,12 +1,16 @@
 package com.xqk.learn.framework.springboot.mvc.interceptor;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.context.request.WebRequestInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapter;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -15,18 +19,15 @@ import java.util.Calendar;
  *
  * @author 熊乾坤
  */
-@Component
 @Slf4j
-public class MyHandlerInterceptor extends HandlerInterceptorAdapter {
+@Setter
+@Component
+public class MyHandlerInterceptor extends WebRequestHandlerInterceptorAdapter {
     private int beginHourOfDay = 8;
     private int endHourOfDay = 9;
 
-    public MyHandlerInterceptor() {
-    }
-
-    public MyHandlerInterceptor(int startTime, int endTime) {
-        beginHourOfDay = startTime;
-        endHourOfDay = endTime;
+    public MyHandlerInterceptor(WebRequestInterceptor requestInterceptor) {
+        super(requestInterceptor);
     }
 
     public void setBeginHourOfDay(int beginHourOfDay) {

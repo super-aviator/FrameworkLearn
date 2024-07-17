@@ -3,7 +3,6 @@ package com.xqk.learn.framework;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchAutoConfiguration;
 import org.springframework.cloud.config.client.ConfigClientAutoConfiguration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -28,7 +27,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication(exclude = {
         // RedisAutoConfiguration.class,
         // SecurityAutoConfiguration.class,
-        ConfigClientAutoConfiguration.class, ElasticsearchAutoConfiguration.class})
+        ConfigClientAutoConfiguration.class
+        // , ElasticsearchAutoConfiguration.class
+})
 
 //开启Eureka客户端
 //@EnableDiscoveryClient

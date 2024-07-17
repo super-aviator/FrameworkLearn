@@ -1,6 +1,6 @@
 package com.xqk.learn.framework.springboot.core.condition.mycondition;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Condition;

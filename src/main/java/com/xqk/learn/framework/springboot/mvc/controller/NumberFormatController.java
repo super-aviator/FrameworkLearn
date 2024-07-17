@@ -1,6 +1,5 @@
 package com.xqk.learn.framework.springboot.mvc.controller;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpEntity;
@@ -29,10 +28,8 @@ public class NumberFormatController {
     @AllArgsConstructor
     private static class ContainNumber {
 
-        @JSONField(serialize = false)
         private Double number;
 
-        @JSONField(name = "number")
         private String numberStr;
 
         ContainNumber(String str) {

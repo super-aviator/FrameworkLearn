@@ -3,10 +3,10 @@ package com.xqk.learn.framework.springboot.data.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.xqk.learn.framework.springboot.data.jpa.common.Gender;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;

@@ -1,22 +1,15 @@
 package com.xqk.learn.framework.logback;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 
 
 /**
  * @author 熊乾坤
  * @since 2019-9-3
  */
+@Slf4j
 public class FormatLogMsgTest {
-    private Logger logger;
-
-    @Before
-    public void before() {
-        logger = LoggerFactory.getLogger(FormatLogMsgTest.class);
-    }
 
     /**
      * 打印log日志时，使用{}占位符的方式比字符串拼接的方式性能更好，只有在需要打印该级别的日志信息的时候，
@@ -28,11 +21,11 @@ public class FormatLogMsgTest {
     @Test
     public void logMsgFormatTest() {
         //下面两行输出的结果是一样的，但是一旦禁止日志打印，第二个变量的性能至少比第一个变量好上 30 倍。
-        logger.info("hello" + "log");
-        logger.info("hello {}", "log");
+        log.info("hello" + "log");
+        log.info("hello {}", "log");
 
         //多个参数可以使用数组的方式
         Object[] args = {"a", "b", "c"};
-        logger.info("hello,{},this is {},this is {}", args);
+        log.info("hello,{},this is {},this is {}", args);
     }
 }

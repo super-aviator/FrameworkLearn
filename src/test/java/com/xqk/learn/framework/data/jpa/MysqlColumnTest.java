@@ -3,11 +3,9 @@ package com.xqk.learn.framework.data.jpa;
 import com.xqk.learn.framework.springboot.data.jpa.entity.TestColumnEntity;
 import com.xqk.learn.framework.springboot.data.jpa.repository.TestColumnRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 
@@ -20,7 +18,6 @@ import java.math.BigDecimal;
  */
 @Slf4j
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 public class MysqlColumnTest {
     @Autowired
     private TestColumnRepository testColumnRepository;

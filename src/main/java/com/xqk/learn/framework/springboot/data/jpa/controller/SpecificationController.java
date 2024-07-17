@@ -3,6 +3,7 @@ package com.xqk.learn.framework.springboot.data.jpa.controller;
 import com.xqk.learn.framework.common.ResponseMessage;
 import com.xqk.learn.framework.springboot.data.jpa.repository.UserJpaRepository;
 import com.xqk.learn.framework.springboot.data.jpa.vo.UserRequest;
+import jakarta.persistence.EntityManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.persistence.EntityManager;
 
 /**
  * 测试Specification接口

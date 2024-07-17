@@ -1,13 +1,11 @@
 package com.xqk.learn.framework.spring.Thread;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Spring 会自动生成一个ThreadPoolTaskExecutor用于异步执行@Async注解的方法；可以通过实现AsyncConfigurer接口来自定义线程池
@@ -28,7 +26,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @ActiveProfiles("default")
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 public class DefaultThreadPoolTest {
     @Autowired
     ThreadPoolTaskExecutor threadPoolTaskExecutor;

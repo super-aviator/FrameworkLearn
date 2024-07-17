@@ -1,11 +1,11 @@
 package com.xqk.learn.framework.springboot.mvc.interceptor;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.context.request.WebRequestInterceptor;
+import org.springframework.web.servlet.handler.WebRequestHandlerInterceptorAdapter;
 
 /**
  * @author 熊乾坤
@@ -13,7 +13,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Slf4j
 @Component
-public class BaseHandlerInterceptor extends HandlerInterceptorAdapter {
+public class BaseHandlerInterceptor extends WebRequestHandlerInterceptorAdapter {
+
+    public BaseHandlerInterceptor(WebRequestInterceptor requestInterceptor) {
+        super(requestInterceptor);
+    }
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("interceptor request ,Authorization header: {}", request.getHeader("Authorization"));
@@ -22,4 +27,5 @@ public class BaseHandlerInterceptor extends HandlerInterceptorAdapter {
         response.setHeader("Authorization21", "999");
         return super.preHandle(request, response, handler);
     }
+
 }

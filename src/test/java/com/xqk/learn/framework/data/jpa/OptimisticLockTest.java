@@ -2,17 +2,14 @@ package com.xqk.learn.framework.data.jpa;
 
 import com.xqk.learn.framework.springboot.data.jpa.entity.User;
 import com.xqk.learn.framework.springboot.data.jpa.repository.UserJpaRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * The type Optimistic lock test.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class OptimisticLockTest {
     /**

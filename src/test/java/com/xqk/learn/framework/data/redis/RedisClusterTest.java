@@ -3,16 +3,14 @@ package com.xqk.learn.framework.data.redis;
 import com.xqk.learn.framework.springboot.data.jpa.common.Gender;
 import com.xqk.learn.framework.springboot.data.jpa.entity.User;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -22,9 +20,8 @@ import java.util.Objects;
 /**
  * RedisCluster测试
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
 @Slf4j
+@SpringBootTest
 public class RedisClusterTest {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
@@ -50,7 +47,7 @@ public class RedisClusterTest {
         user.setEmail("237238@qq.com");
         user.setGender(Gender.MALE);
         userRedisTemplate.opsForValue().set("user:xqk", user);
-        Assert.assertEquals(user.toString(), Objects.requireNonNull(userRedisTemplate.opsForValue().get("user:xqk")).toString());
+        Assertions.assertEquals(user.toString(), Objects.requireNonNull(userRedisTemplate.opsForValue().get("user:xqk")).toString());
     }
 
     /**
@@ -63,9 +60,9 @@ public class RedisClusterTest {
         opt.add("zw", 2);
         opt.add("yxm", 50);
         opt.add("cr", 10);
-        Assert.assertEquals(opt.rank("yxm"), Long.valueOf(3));
-        Assert.assertEquals(opt.range(0, 3), new HashSet<>(Arrays.asList("xqk", "zw", "yxm", "cr")));
-        Assert.assertEquals(Objects.requireNonNull(opt.rangeByScore(0, 100)).toString(), new LinkedHashSet<>(Arrays.asList("xqk", "zw", "cr", "yxm")).toString());
+        Assertions.assertEquals(opt.rank("yxm"), Long.valueOf(3));
+        Assertions.assertEquals(opt.range(0, 3), new HashSet<>(Arrays.asList("xqk", "zw", "yxm", "cr")));
+        Assertions.assertEquals(Objects.requireNonNull(opt.rangeByScore(0, 100)).toString(), new LinkedHashSet<>(Arrays.asList("xqk", "zw", "cr", "yxm")).toString());
 
 
     }
@@ -86,6 +83,6 @@ public class RedisClusterTest {
         valOpt.set("user3", "ghi");
         valOpt.set("user4", "jkl");
         valOpt.set("user5", "mno");
-        Assert.assertEquals(valOpt.multiGet(Arrays.asList("user1", "user2", "user3", "user4", "user5")), Arrays.asList("abc", "def", "ghi", "jkl", "mno"));
+        Assertions.assertEquals(valOpt.multiGet(Arrays.asList("user1", "user2", "user3", "user4", "user5")), Arrays.asList("abc", "def", "ghi", "jkl", "mno"));
     }
 }

@@ -6,11 +6,9 @@ import com.xqk.learn.framework.springboot.data.jpa.pojo.WorkPojo;
 import com.xqk.learn.framework.springboot.data.jpa.repository.CareerRepository;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -30,7 +28,6 @@ import java.util.Optional;
 @Slf4j
 @SpringBootTest
 @NoArgsConstructor
-@RunWith(SpringRunner.class)
 public class MysqlJsonDataTypeTest {
     @Autowired
     private CareerRepository careerRepository;

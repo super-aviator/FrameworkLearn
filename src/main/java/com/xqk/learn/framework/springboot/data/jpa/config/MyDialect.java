@@ -1,8 +1,6 @@
 package com.xqk.learn.framework.springboot.data.jpa.config;
 
 import org.hibernate.dialect.MySQL8Dialect;
-import org.hibernate.dialect.function.SQLFunctionTemplate;
-import org.hibernate.type.StandardBasicTypes;
 
 /**
  * 配置数据库方言，目前使用的场景为新增函数，例如group_concat函数在JPA中需要使用方言去注册进去
@@ -16,6 +14,6 @@ import org.hibernate.type.StandardBasicTypes;
 public class MyDialect extends MySQL8Dialect {
     public MyDialect() {
         super();
-        registerFunction("group_concat", new SQLFunctionTemplate(StandardBasicTypes.STRING, "group_concat(?1)"));
+        // registerFunction("group_concat", new SQLFunctionTemplate(StandardBasicTypes.STRING, "group_concat(?1)"));
     }
 }

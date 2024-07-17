@@ -1,7 +1,7 @@
 package com.xqk.learn.framework.springboot.mvc.validated.util;
 
-import javax.validation.Validation;
-import javax.validation.Validator;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 
 /**
  * 测试手动校验表单

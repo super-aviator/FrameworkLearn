@@ -1,9 +1,8 @@
 package com.xqk.learn.framework.java.util;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.ResourceUtils;
 
 import java.io.FileNotFoundException;
@@ -11,8 +10,8 @@ import java.io.FileNotFoundException;
 /**
  * The type Resource test.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @Slf4j
+@SpringBootTest
 public class ResourceTest {
     /**
      * Test.

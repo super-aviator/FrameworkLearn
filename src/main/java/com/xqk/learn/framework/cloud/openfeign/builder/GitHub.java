@@ -1,7 +1,8 @@
 package com.xqk.learn.framework.cloud.openfeign.builder;
 
 import cn.hutool.core.io.IoUtil;
-import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import feign.Feign;
 import feign.Param;
 import feign.RequestLine;
@@ -36,9 +37,10 @@ interface GitHub {
 
     class MyApp {
         public static void main(String... args) {
+            ObjectMapper mapper = JsonMapper.builder().build();
             GitHub github = Feign.builder()
                     //读取响应体中的String，并转换为JSOn格式
-                    .decoder((response, type) -> JSONObject.parseObject(IoUtil.read(response.body().asReader()), type))
+                    // .decoder((response, type) -> JSONObject.parseObject(IoUtil.read(response.body().asReader()), type))
                     .target(GitHub.class, "https://api.github.com");
 
             // Fetch and print a list of the contributors to this library.

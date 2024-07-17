@@ -1,13 +1,11 @@
 package com.xqk.learn.framework.data.redis;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * 测试String类型的数据结构的用法
@@ -17,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @Slf4j
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 public class StringTest {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
@@ -27,6 +24,6 @@ public class StringTest {
         String key = "string-key";
         Integer len = redisTemplate.opsForValue().append(key, "abc");
         log.info(len.toString());
-        Assert.assertEquals("abc", redisTemplate.opsForValue().get(key));
+        Assertions.assertEquals("abc", redisTemplate.opsForValue().get(key));
     }
 }

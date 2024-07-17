@@ -2,7 +2,7 @@ package com.xqk.learn.framework.springboot.data.elasticsearch.repository;
 
 import com.xqk.learn.framework.springboot.data.elasticsearch.entity.Item;
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Profile("elasticsearch")
-public interface MallItemRepository extends ElasticsearchCrudRepository<Item, Long> {
+public interface MallItemRepository extends ElasticsearchRepository<Item, Long> {
 }

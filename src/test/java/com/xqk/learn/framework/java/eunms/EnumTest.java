@@ -1,6 +1,6 @@
 package com.xqk.learn.framework.java.eunms;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author 熊乾坤

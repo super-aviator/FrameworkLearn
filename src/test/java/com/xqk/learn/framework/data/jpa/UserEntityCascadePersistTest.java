@@ -6,11 +6,9 @@ import com.xqk.learn.framework.springboot.data.jpa.entity.UserDetail;
 import com.xqk.learn.framework.springboot.data.jpa.repository.UserDetailJpaRepository;
 import com.xqk.learn.framework.springboot.data.jpa.repository.UserJpaRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 import java.util.Optional;
@@ -21,7 +19,6 @@ import java.util.Optional;
  */
 @Slf4j
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 public class UserEntityCascadePersistTest {
     @Autowired
     UserJpaRepository userJpaRepository;

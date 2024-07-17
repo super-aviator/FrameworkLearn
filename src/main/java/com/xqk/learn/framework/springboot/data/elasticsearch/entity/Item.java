@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
  */
 @Data
 @Profile("elasticsearch")
-@Document(indexName = "mall", type = "goods")
+@Document(indexName = "mall")
 public class Item {
     /** id */
     @Id

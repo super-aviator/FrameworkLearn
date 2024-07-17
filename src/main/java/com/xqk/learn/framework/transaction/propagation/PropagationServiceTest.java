@@ -6,42 +6,40 @@ import com.xqk.learn.framework.transaction.dao.OutsideDAO;
 import com.xqk.learn.framework.transaction.entity.InsideEntity;
 import com.xqk.learn.framework.transaction.entity.OutsideEntity;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author 熊乾坤
  * @since 2021-05-06 19:49
  */
 @Slf4j
-@RunWith(SpringRunner.class)
+
 @SpringBootTest(classes = LearnApplication.class)
 public class PropagationServiceTest {
     private final OutsideEntity outsideEntity = new OutsideEntity(1L, "OutSide");
     private final InsideEntity insideEntity = new InsideEntity(1L, "InSide");
 
     @Autowired
-    private OutsideDAO outsideDAO;
+    private static OutsideDAO outsideDAO;
 
     @Autowired
-    private InsideDAO insideDAO;
+    private static InsideDAO insideDAO;
 
     @Autowired
     private PropagationService propagationService;
 
-    @Before
-    public void clearTable() {
+    @BeforeAll
+    public static void clearTable() {
         outsideDAO.deleteAll();
         insideDAO.deleteAll();
     }
 
-    @After
-    public void search(){
+    @AfterAll
+    public static void search() {
         outsideDAO.findAll().forEach(e->log.info("outside：[{}]",e.getId()));
         insideDAO.findAll().forEach(e->log.info("inside：[{}]",e.getId()));
     }

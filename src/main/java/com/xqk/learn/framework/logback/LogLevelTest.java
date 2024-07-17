@@ -1,7 +1,7 @@
 package com.xqk.learn.framework.logback;
 
 import ch.qos.logback.classic.Level;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,6 +1,7 @@
 package com.xqk.learn.framework.springboot.mvc.controller;
 
 import com.xqk.learn.framework.common.ResponseMessage;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -8,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 import java.util.List;
 
 /**
@@ -22,7 +21,7 @@ import java.util.List;
 @RequestMapping("/formValid")
 public class FormValidController {
     @GetMapping("/test1")
-    public ResponseMessage validTest1(@Valid FormValidController.FormValidVO formValidVO, BindingResult bindingResult) {
+    public ResponseMessage validTest1(@Validated FormValidController.FormValidVO formValidVO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseMessage.error(bindingResult.getFieldError().getDefaultMessage());
         }

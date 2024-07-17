@@ -1,13 +1,15 @@
 package com.xqk.learn.framework.springboot.data.kafka.controller;
 
 import com.xqk.learn.framework.springboot.data.jpa.dto.UserDTO;
-import com.xqk.learn.framework.springboot.data.kafka.producer.KafkaProducer;
 import com.xqk.learn.framework.springboot.data.kafka.dto.SendKafkaDTO;
+import com.xqk.learn.framework.springboot.data.kafka.producer.KafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * The type Kafka console controller.
@@ -47,7 +49,7 @@ public class KafkaConsoleController {
      * @param user  发送的user对象
      */
     @PostMapping("/send-user")
-    public void send(@RequestParam("topic") String topic, String key, @ModelAttribute UserDTO user) {
+    public void send(@RequestParam("topic") String topic, String key, @ModelAttribute UserDTO user) throws ExecutionException, InterruptedException {
         log.info("Get a Post request---topic: " + topic + "---msg: " + user);
         kafkaProducerBean.produce(topic, key, user);
     }

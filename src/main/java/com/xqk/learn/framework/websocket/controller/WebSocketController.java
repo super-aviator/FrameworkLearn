@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.NotNull;
-
 /**
  * @author 熊乾坤
  * @since 2020-08-14 13:26
@@ -42,7 +40,7 @@ public class WebSocketController {
      */
     @MessageMapping("stomp/side")
     @SendTo("/web-socket/subscribe/1")
-    public Message<String> getMessage(Message<String> message, MessageHeaders headers) {
+    public Message<String> getMessage(@Validated Message<String> message, MessageHeaders headers) {
         log.info("stomp服务端接收到消息：{}，并将消息转发到destination：[{}]", message.getPayload(), "/subscribe/1");
         return message;
     }
@@ -89,10 +87,7 @@ public class WebSocketController {
 
     @Data
     public static class WebSocketMessage {
-        @NotNull
         private String topicSuffix;
-
-        @NotNull
         private String message;
     }
 }

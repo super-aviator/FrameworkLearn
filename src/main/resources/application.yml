@@ -10,9 +10,9 @@ logging:
     org.springframework: info
 
 spring:
-  boot:
-    # 是否开启自动配置
-    enableautoconfiguration: true
+  cloud:
+    config:
+      enabled: false
 
   #数据源配置
   datasource:
@@ -27,19 +27,6 @@ spring:
       idle-timeout: 100000
       validation-timeout: 600000
       connection-test-query: SELECT 1;
-
-    #数据库脚本初始化
-    data:
-      - classpath:SpringBootLearnDML.sql
-    #    data-username: ''      #执行DML时的用户名
-    #    data-password: ''      #执行DML时的密码
-    schema:
-      - classpath:SpringBootLearnDDL.sql
-    #    schema-username: '' # 执行DDL时的用户名
-    #    schema-password: '' # 执行DML时的密码
-    continue-on-error: true
-    separator: ;
-    initialization-mode: never   # always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化
 
   banner:
     location: banner.txt  #指定banner的文件位置
@@ -109,15 +96,27 @@ spring:
         size: 8 #允许的最大线程个数
       thread-name-prefix: aviator-scheduling #自定义TaskScheduling线程名称
 
-  resources:
-    # 静态资源位置
-    static-locations: [ classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ ]
-
   cache:
     redis:
       time-to-live: 100000
       cache-null-values: true
     type: redis
+  web:
+    resources:
+      static-locations:
+        [ classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ ]
+  sql:
+    init:
+      continue-on-error: true
+      schema-locations:
+        - classpath:SpringBootLearnDDL.sql
+      separator: ;
+      mode: never
+      #数据库脚本初始化
+      # username: ''      #执行DML时的用户名
+      # password: ''      #执行DML时的密码
+      data-locations:
+        - classpath:SpringBootLearnDML.sql
 
 hibernate:
   properties:
@@ -154,3 +153,4 @@ management:
 eureka:
   client:
     enabled: true #关闭eureka
+

@@ -2,12 +2,10 @@ package com.xqk.learn.framework.junit.framework.mockmvc;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 @AutoConfigureWebTestClient
-@RunWith(SpringRunner.class)
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TestControllerWebTestClientTest {
     /** 用于获取运行时的端口（运行模式为WebEnvironment.MOCK时无法使用） */

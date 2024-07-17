@@ -1,21 +1,19 @@
 package com.xqk.learn.framework;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
 
 /**
  * The type Learn application tests.
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+
 @Slf4j
+@SpringBootTest
 public class LearnApplicationTests {
 
     /**

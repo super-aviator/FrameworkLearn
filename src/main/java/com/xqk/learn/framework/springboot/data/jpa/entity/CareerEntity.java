@@ -1,14 +1,11 @@
 package com.xqk.learn.framework.springboot.data.jpa.entity;
 
-import com.vladmihalcea.hibernate.type.json.JsonStringType;
 import com.xqk.learn.framework.springboot.data.jpa.pojo.WorkPojo;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 
-import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +21,6 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "career")
-@TypeDef(name = "json", typeClass = JsonStringType.class)
 public class CareerEntity {
     /** 自增主键 */
     @Id
@@ -36,12 +32,10 @@ public class CareerEntity {
     private String name;
 
     /** 个人爱好 */
-    @Type(type = "json")
     @Column(name = "hobbies", columnDefinition = "json")
     private Set<String> hobbies;
 
     /** 工作经历 */
-    @Type(type = "json")
     @Column(name = "works", columnDefinition = "json")
     private List<WorkPojo> works;
 }

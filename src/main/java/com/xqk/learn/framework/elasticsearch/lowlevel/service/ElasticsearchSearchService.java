@@ -4,14 +4,14 @@ package com.xqk.learn.framework.elasticsearch.lowlevel.service;/**
  */
 
 import cn.hutool.core.io.IoUtil;
-import com.alibaba.fastjson.JSONObject;
+import co.elastic.clients.elasticsearch._types.ElasticsearchException;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.*;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.data.elasticsearch.ElasticsearchException;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -62,16 +62,16 @@ public class ElasticsearchSearchService {
      * @param mapping 索引映射Map
      * @throws IOException 网络IO异常
      */
-    public void createIndex(String index, JSONObject mapping) throws IOException {
-        if (StringUtils.isEmpty(index) || CollectionUtils.isEmpty(mapping)) {
-            log.warn("非法的索引或映射，将忽略该索引映射的创建！");
-            return;
-        }
+    public void createIndex(String index, Object mapping) throws IOException {
+        // if (StringUtils.isEmpty(index) || CollectionUtils.isEmpty(mapping)) {
+        //     log.warn("非法的索引或映射，将忽略该索引映射的创建！");
+        //     return;
+        // }
         if (indexExists(index)) {
             log.warn("索引[{}]已存在，请确认是否需要手动删除索引后再启动项目", index);
         }
         Request request = new Request(HttpMethod.PUT.name(), "/" + index);
-        request.setJsonEntity(mapping.toJSONString());
+        // request.setJsonEntity(mapping.toJSONString());
         try {
             Response response = restClient.performRequest(request);
             if (response.getStatusLine().getStatusCode() == HttpStatus.OK.value()) {
@@ -101,7 +101,7 @@ public class ElasticsearchSearchService {
             return;
         }
         try (InputStream is = mappingResource.getInputStream()) {
-            createIndex(index, JSONObject.parseObject(IoUtil.read(new InputStreamReader(is))));
+            // createIndex(index, JSONObject.parseObject(IoUtil.read(new InputStreamReader(is))));
         } catch (IOException e) {
             log.error("映射文件读取异常", e);
         }
