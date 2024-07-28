@@ -1,18 +1,17 @@
 spring:
-  redis:
-    host: ${host}
-    database: 0
-    ssl: false
-    port: 6379
-    timeout: 1000ms #链接超时时间
-    password: GWr6Ym3QYHbvWR
-    #    cluster:
-    #      # redis集群的ip和端口列表
-    #      nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
-    #      max-redirects: 1 #集群中重定向时最大跳转的次数
-    jedis:
-      pool:
-        max-active: 8 #线程池中最大线程数
-        min-idle: 2 #最小空闲线程数
-        max-idle: 8 #最大空闲线程数
-        max-wait: 1000ms #最大空闲时间
+  data:
+    redis:
+      #    cluster:
+      #      # redis集群的ip和端口列表
+      #      nodes: 127.0.0.1:7000,127.0.0.1:7001,127.0.0.1:7002,127.0.0.1:7003,127.0.0.1:7004,127.0.0.1:7005
+      #      max-redirects: 1 #集群中重定向时最大跳转的次数
+      jedis:
+        pool:
+          max-active: 8 #线程池中最大线程数
+          min-idle: 2 #最小空闲线程数
+          max-idle: 8 #最大空闲线程数
+          max-wait: 1000ms #最大空闲时间
+      host: ${host}
+      database: 0
+      port: 6379
+      timeout: 1000ms

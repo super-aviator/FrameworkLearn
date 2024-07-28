@@ -1,7 +1,7 @@
 package com.xqk.learn.framework.java.text;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
@@ -16,7 +16,7 @@ public class DecimalFormatTest {
 
     @Test
     public void test() {
-        Assert.assertEquals("" + 3.5, df.format(3.45));
-        Assert.assertNotEquals("" + 3.56, df.format(3.55));
+        Assertions.assertEquals("" + 3.5, df.format(3.45));
+        Assertions.assertNotEquals("" + 3.56, df.format(3.55));
     }
 }

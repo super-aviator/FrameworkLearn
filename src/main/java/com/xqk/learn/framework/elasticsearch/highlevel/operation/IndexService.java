@@ -15,6 +15,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.rest.RestStatus;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ import java.io.IOException;
  */
 @Slf4j
 @Component
+@Profile("elasticsearch")
 public class IndexService {
     private final RestHighLevelClient client;
     private final ObjectMapper objectMapper;

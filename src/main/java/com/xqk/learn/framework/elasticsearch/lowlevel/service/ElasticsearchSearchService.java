@@ -3,28 +3,26 @@ package com.xqk.learn.framework.elasticsearch.lowlevel.service;/**
  * @since 2020-09-12 18:03
  */
 
-import cn.hutool.core.io.IoUtil;
 import co.elastic.clients.elasticsearch._types.ElasticsearchException;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.*;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Map;
 
 @Slf4j
 @Component
+@Profile("elasticsearch")
 public class ElasticsearchSearchService {
     private final RestClient restClient;
     private final RestHighLevelClient highLevelClient;

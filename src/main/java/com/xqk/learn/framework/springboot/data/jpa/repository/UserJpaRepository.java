@@ -18,13 +18,6 @@ import java.util.List;
  * @author Aviator
  */
 public interface UserJpaRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
-    /**
-     * 查询所有name的用户
-     *
-     * @param name 字符串类型
-     * @return projection ，查询特定字段的值
-     */
-    List<UserProjectionDTO> findByName(String name);
 
     /**
      * 使用模糊查询
@@ -39,11 +32,10 @@ public interface UserJpaRepository extends JpaRepository<User, Long>, JpaSpecifi
      * 通过姓名查询用户列表
      *
      * @param name   字符串类型
-     * @param tClass 类型信息
      * @return 用户列表 list
      */
     @EntityGraph("UserEntity")
-    List<User> findByName(String name, Class<User> tClass);
+    List<User> findByName(String name);
 
     /**
      * 通过姓名查询用户列表

@@ -1,6 +1,5 @@
 package com.xqk.learn.framework.data.jpa;
 
-import com.alibaba.fastjson.JSONObject;
 import com.xqk.learn.framework.springboot.data.jpa.entity.User;
 import com.xqk.learn.framework.springboot.data.jpa.entity.UserDetail;
 import com.xqk.learn.framework.springboot.data.jpa.repository.UserDetailJpaRepository;
@@ -47,7 +46,6 @@ public class UserEntityCascadePersistTest {
         Optional<UserDetail> userDetailOptional = userDetailJpaRepository.findById(109L);
         userDetailOptional.ifPresent(userDetail -> {
             //User user=userDetail.getUser();
-            log.info(JSONObject.toJSONString(userDetail));
         });
         log.info("完毕");
     }
@@ -56,7 +54,6 @@ public class UserEntityCascadePersistTest {
     public void testCascadeSearchUser() {
         Optional<User> userDetailOptional = userJpaRepository.findById(103L);
         userDetailOptional.ifPresent(user -> {
-            log.info(JSONObject.toJSONString(user));
         });
         log.info("完毕");
     }

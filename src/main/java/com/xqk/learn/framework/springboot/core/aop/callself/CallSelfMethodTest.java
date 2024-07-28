@@ -4,11 +4,13 @@ import com.xqk.learn.framework.LearnApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 
 /**
  * @author 熊乾坤
  * @since 2021-05-06 16:41
  */
+@Profile("callself")
 @SpringBootTest(classes = LearnApplication.class)
 public class CallSelfMethodTest {
     @Autowired

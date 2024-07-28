@@ -10,6 +10,7 @@ import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.rest.RestStatus;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.io.IOException;
  */
 @Slf4j
 @Service
+@Profile("elasticsearch")
 public class GetService {
     private final RestHighLevelClient client;
     private final ObjectMapper objectMapper;

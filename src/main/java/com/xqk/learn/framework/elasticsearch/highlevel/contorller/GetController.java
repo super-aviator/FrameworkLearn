@@ -2,6 +2,7 @@ package com.xqk.learn.framework.elasticsearch.highlevel.contorller;
 
 import com.xqk.learn.framework.common.ResponseMessage;
 import com.xqk.learn.framework.elasticsearch.highlevel.operation.GetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.io.IOException;
  * @since 2020-07-04 23:36
  */
 @RestController
+@Profile("elasticsearch")
 @RequestMapping("es/get")
 public class GetController {
     private final GetService getService;

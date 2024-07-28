@@ -1,5 +1,4 @@
-host:
-  49.235.67.7
+host: localhost
 ###########################################################################################################
 server:
   port: 8000 #服务的端口
@@ -17,9 +16,9 @@ spring:
   #数据源配置
   datasource:
     # url: jdbc:mysql://localhost:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
-    url: jdbc:mysql://49.235.67.7:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://${host}:3306/springbootlearn?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
-    password: 70baf77d7d80de7b
+    password: 123456
     #    name: jpa
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:

@@ -3,6 +3,7 @@ package com.xqk.learn.framework.elasticsearch.highlevel.contorller;
 import com.xqk.learn.framework.common.ResponseMessage;
 import com.xqk.learn.framework.elasticsearch.highlevel.dto.Employee;
 import com.xqk.learn.framework.elasticsearch.highlevel.operation.IndexService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import java.io.IOException;
  * @since 2020-06-28 20:42
  */
 @RestController
+@Profile("elasticsearch")
 @RequestMapping("es/index")
 public class IndexController {
     private final IndexService indexService;

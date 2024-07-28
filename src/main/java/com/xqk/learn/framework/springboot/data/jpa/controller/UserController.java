@@ -79,7 +79,7 @@ public class UserController {
      */
     @GetMapping("/dynamic")
     public List getDynamicUser() {
-        return userRepository.findByName("熊乾坤", User.class);
+        return userRepository.findByName("熊乾坤");
     }
 
     /**

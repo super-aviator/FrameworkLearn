@@ -5,7 +5,7 @@ import com.xqk.learn.framework.transaction.dao.OutsideDAO;
 import com.xqk.learn.framework.transaction.entity.InsideEntity;
 import com.xqk.learn.framework.transaction.entity.OutsideEntity;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,8 +23,6 @@ public class PropagationService {
     /**
      * 使用自我注入的方法解决内部方法调用产生事务不生效的问题
      */
-    @Autowired
-    PropagationService propagationService;
 
     public PropagationService(OutsideDAO outsideDAO, InsideDAO insideDAO) {
         this.outsideDAO = outsideDAO;
@@ -35,7 +33,7 @@ public class PropagationService {
 
     public void outSideWithoutT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.insideWithoutT(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).insideWithoutT(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -46,7 +44,7 @@ public class PropagationService {
                                                   boolean insideException,
                                                   boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_SUPPORTS(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_SUPPORTS(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -57,7 +55,7 @@ public class PropagationService {
                                                        boolean insideException,
                                                        boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_REQUIRES_NEW(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_REQUIRES_NEW(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -69,7 +67,7 @@ public class PropagationService {
                                                     boolean insideException,
                                                     boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_REQUIRES_NEW(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_REQUIRES_NEW(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -81,7 +79,7 @@ public class PropagationService {
                                                    boolean insideException,
                                                    boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_REQUIRED(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_REQUIRED(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -94,7 +92,7 @@ public class PropagationService {
                                                 boolean insideException,
                                                 boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_REQUIRED(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_REQUIRED(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -109,11 +107,11 @@ public class PropagationService {
         outsideDAO.save(outsideEntity);
         if (captureInsideException) {
             try {
-                propagationService.inside_REQUIRED(insideEntity, insideException);
+                ((PropagationService) AopContext.currentProxy()).inside_REQUIRED(insideEntity, insideException);
             } catch (Exception ignored) {
             }
         } else {
-            propagationService.inside_REQUIRED(insideEntity, insideException);
+            ((PropagationService) AopContext.currentProxy()).inside_REQUIRED(insideEntity, insideException);
         }
         if (outsideException) {
             throw new RuntimeException();
@@ -127,7 +125,7 @@ public class PropagationService {
                                                 boolean insideException,
                                                 boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_SUPPORTS(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_SUPPORTS(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -140,7 +138,7 @@ public class PropagationService {
                                                      boolean insideException,
                                                      boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_NOT_SUPPORTED(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_NOT_SUPPORTED(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -151,7 +149,7 @@ public class PropagationService {
                                                         boolean insideException,
                                                         boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_NOT_SUPPORTED(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_NOT_SUPPORTED(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -164,7 +162,7 @@ public class PropagationService {
                                                  boolean insideException,
                                                  boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_MANDATORY(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_MANDATORY(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -175,7 +173,7 @@ public class PropagationService {
                                                     boolean insideException,
                                                     boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_MANDATORY(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_MANDATORY(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -184,7 +182,7 @@ public class PropagationService {
     @Transactional(propagation = Propagation.REQUIRED)
     public void outSideWithT(OutsideEntity outsideEntity, InsideEntity insideEntity, boolean insideException, boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.insideWithoutT(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).insideWithoutT(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -198,7 +196,7 @@ public class PropagationService {
                                              boolean insideException,
                                              boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_NEVER(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_NEVER(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -209,7 +207,7 @@ public class PropagationService {
                                                 boolean insideException,
                                                 boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.inside_NEVER(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).inside_NEVER(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -222,7 +220,7 @@ public class PropagationService {
                                               boolean insideException,
                                               boolean outsideException) {
         outsideDAO.save(outsideEntity);
-        propagationService.insideWith_NESTED(insideEntity, insideException);
+        ((PropagationService) AopContext.currentProxy()).insideWith_NESTED(insideEntity, insideException);
         if (outsideException) {
             throw new RuntimeException();
         }
@@ -237,12 +235,12 @@ public class PropagationService {
         outsideDAO.save(outsideEntity);
         if (captureInsideException) {
             try {
-                propagationService.insideWith_NESTED(insideEntity, insideException);
+                ((PropagationService) AopContext.currentProxy()).insideWith_NESTED(insideEntity, insideException);
             } catch (Exception e) {
                 log.error("", e);
             }
         } else {
-            propagationService.insideWith_NESTED(insideEntity, insideException);
+            ((PropagationService) AopContext.currentProxy()).insideWith_NESTED(insideEntity, insideException);
         }
         if (outsideException) {
             throw new RuntimeException();

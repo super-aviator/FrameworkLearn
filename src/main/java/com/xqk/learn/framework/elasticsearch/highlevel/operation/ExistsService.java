@@ -6,6 +6,7 @@ import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.io.IOException;
  */
 @Slf4j
 @Service
+@Profile("elasticsearch")
 public class ExistsService {
     private final RestHighLevelClient client;
 
