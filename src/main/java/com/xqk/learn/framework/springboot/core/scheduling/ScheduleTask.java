@@ -1,6 +1,7 @@
 package com.xqk.learn.framework.springboot.core.scheduling;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -8,8 +9,9 @@ import org.springframework.stereotype.Component;
  * @author Aviator
  * @since 2019-9-15
  */
-@Component
 @Slf4j
+@Component
+@Profile("schedule")
 public class ScheduleTask {
 
     //@Scheduled(fixedDelay = 5000)

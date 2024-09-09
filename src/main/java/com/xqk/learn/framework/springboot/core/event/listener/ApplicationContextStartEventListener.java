@@ -1,6 +1,7 @@
 package com.xqk.learn.framework.springboot.core.event.listener;
 
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
  * @since 2020-12-20 0:02
  */
 @Component
+@Profile("event")
 public class ApplicationContextStartEventListener implements ApplicationListener<ContextStartedEvent> {
     @Override
     public void onApplicationEvent(ContextStartedEvent event) {

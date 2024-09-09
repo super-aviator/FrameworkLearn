@@ -8,10 +8,10 @@ spring:
       jedis:
         pool:
           max-active: 8 #线程池中最大线程数
-          min-idle: 2 #最小空闲线程数
-          max-idle: 8 #最大空闲线程数
-          max-wait: 1000ms #最大空闲时间
+          min-idle: 0 #最小空闲线程数
+          max-idle: 0 #最大空闲线程数
+          max-wait: 10000ms #最大空闲时间
       host: ${host}
       database: 0
       port: 6379
-      timeout: 1000ms
+      timeout: 10000ms

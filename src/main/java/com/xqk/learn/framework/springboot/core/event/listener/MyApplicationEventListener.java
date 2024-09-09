@@ -2,6 +2,7 @@ package com.xqk.learn.framework.springboot.core.event.listener;
 
 import com.xqk.learn.framework.springboot.core.event.message.MyApplicationEventMessage;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
  * @since 2020-12-20 0:02
  */
 @Component
+@Profile("event")
 public class MyApplicationEventListener implements ApplicationListener<MyApplicationEventMessage> {
     @Override
     public void onApplicationEvent(MyApplicationEventMessage event) {

@@ -6,6 +6,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
+@Profile("schedule")
 public class AsyncService {
 
     public static void main(String[] args) {

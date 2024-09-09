@@ -32,7 +32,7 @@ public class MyLockRegistryService {
     /**
      * 每分钟执行一次锁回收任务, 避免内存泄露
      */
-    @Scheduled(fixedDelayString = "${base.lock.expireUnusedDelay:60000}")
+    @Scheduled(fixedDelayString = "${base.lock.expireUnusedDelay:60000000}")
     public void cleanLocks() {
         log.info("expiring unused redis locks");
         registries.values()

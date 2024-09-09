@@ -5,6 +5,7 @@ import com.xqk.learn.framework.springboot.core.event.message.MyMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,7 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @Slf4j
 @Component
+@Profile("event")
 public class MyApplicationEventPublisher implements ApplicationEventPublisherAware {
     private final AtomicLong atomicLong = new AtomicLong();
     private ApplicationEventPublisher applicationEventPublisher;

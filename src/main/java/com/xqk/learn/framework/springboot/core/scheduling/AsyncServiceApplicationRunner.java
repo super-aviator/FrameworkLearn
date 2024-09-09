@@ -3,6 +3,7 @@ package com.xqk.learn.framework.springboot.core.scheduling;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.annotation.Profile;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -12,6 +13,7 @@ import java.util.concurrent.CompletableFuture;
  */
 @Slf4j
 //@Component
+@Profile("schedule")
 public class AsyncServiceApplicationRunner implements ApplicationRunner {
     private final AsyncService asyncService;
 

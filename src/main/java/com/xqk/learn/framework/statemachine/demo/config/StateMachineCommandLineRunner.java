@@ -5,7 +5,7 @@ import com.xqk.learn.framework.statemachine.demo.state.States;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.statemachine.StateMachine;
+import org.springframework.statemachine.config.StateMachineFactory;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
@@ -17,12 +17,26 @@ import reactor.core.publisher.Mono;
  */
 @Component
 public class StateMachineCommandLineRunner implements CommandLineRunner {
+    // @Autowired
+    // private StateMachine<States, Events> stateMachine;
     @Autowired
-    private StateMachine<States, Events> stateMachine;
+    private StateMachineFactory<States, Events> stateMachineFactory;
 
     @Override
     public void run(String... args) throws Exception {
-        stateMachine.sendEvent(Mono.just(MessageBuilder.withPayload(Events.E1).build()));
-        stateMachine.sendEvent(Mono.just(MessageBuilder.withPayload(Events.E1).build()));
+        // stateMachine.sendEvent(Events.E1);
+        // Thread.sleep(1000);
+        // stateMachine.sendEvent(Events.E2);
+
+        // stateMachine.sendEvent(Mono.just(MessageBuilder.withPayload(Events.E1).build())).subscribe();
+        // // Thread.sleep(1000);
+        // stateMachine.sendEvent(Mono.just(MessageBuilder.withPayload(Events.E2).build())).subscribe();
+
+        String machineId = "xqk-state-machine";
+        var stateMachine = stateMachineFactory.getStateMachine(machineId);
+        stateMachine.startReactively().subscribe();
+        stateMachine.sendEvent(Mono.just(MessageBuilder.withPayload(Events.E1).build())).subscribe();
+        Thread.sleep(1000);
+        stateMachine.sendEvent(Mono.just(MessageBuilder.withPayload(Events.E2).build())).subscribe();
     }
 }
