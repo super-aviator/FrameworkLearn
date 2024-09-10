@@ -3,7 +3,7 @@ package com.xqk.learn.framework.statemachine.demo.config;
 import com.xqk.learn.framework.statemachine.demo.event.Events;
 import com.xqk.learn.framework.statemachine.demo.state.States;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.action.StateDoActionPolicy;
 import org.springframework.statemachine.config.EnableStateMachine;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @since 2024/7/6 16:23
  */
 @Slf4j
-// @Configuration
+@Configuration
 @EnableStateMachine(name = "xqk-state-machine", contextEvents = false)
 public class DemoStateMachineConfig extends EnumStateMachineConfigurerAdapter<States, Events> {
     @Override
@@ -99,7 +99,6 @@ public class DemoStateMachineConfig extends EnumStateMachineConfigurerAdapter<St
 
     }
 
-    @Bean
     public StateMachineListener<States, Events> listener() {
         return new StateMachineListenerAdapter<>() {
             @Override

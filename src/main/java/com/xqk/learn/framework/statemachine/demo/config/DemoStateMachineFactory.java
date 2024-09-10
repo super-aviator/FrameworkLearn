@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Configuration
-@EnableStateMachineFactory(contextEvents = false)
+@EnableStateMachineFactory(contextEvents = false, name = "xqk-state-machine-factory")
 public class DemoStateMachineFactory extends StateMachineConfigurerAdapter<States, Events> {
     @Override
     public void configure(StateMachineConfigurationConfigurer<States, Events> config) throws Exception {
@@ -60,7 +60,6 @@ public class DemoStateMachineFactory extends StateMachineConfigurerAdapter<State
                 .event(Events.E2);
     }
 
-    @Bean
     public StateMachineListener<States, Events> listener() {
         return new StateMachineListenerAdapter<>() {
             @Override

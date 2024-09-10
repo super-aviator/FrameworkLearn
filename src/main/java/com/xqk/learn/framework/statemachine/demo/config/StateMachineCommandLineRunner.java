@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
  * @author qiankun.xiong
  * @since 2024/7/7 13:36
  */
-@Component
+// @Component
 public class StateMachineCommandLineRunner implements CommandLineRunner {
     // @Autowired
     // private StateMachine<States, Events> stateMachine;
