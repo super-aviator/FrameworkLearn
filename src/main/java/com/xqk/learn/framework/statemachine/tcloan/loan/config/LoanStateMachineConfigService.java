@@ -2,11 +2,10 @@ package com.xqk.learn.framework.statemachine.tcloan.loan.config;
 
 import com.xqk.learn.framework.statemachine.tcloan.loan.enums.LoanEvents;
 import com.xqk.learn.framework.statemachine.tcloan.loan.enums.LoanStates;
-import lombok.NonNull;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.statemachine.config.StateMachineBuilder;
+import org.springframework.statemachine.persist.StateMachineRuntimePersister;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,35 +14,47 @@ import org.springframework.stereotype.Component;
  * @author qiankun.xiong
  * @since 2024/9/10 15:02
  */
+@Slf4j
 @Component
-public class LoanStateMachineConfigService implements ApplicationContextAware {
-    private ApplicationContext applicationContext;
+public class LoanStateMachineConfigService {
+    @Autowired
+    private StateMachineRuntimePersister<LoanStates, LoanEvents, String> stateMachineRuntimePersister;
 
-    @Override
-    public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
 
     /**
      * 借款状态机Builder
      */
     public StateMachineBuilder.Builder<LoanStates, LoanEvents> getLoanStateMachineBuilder(String machineId) throws Exception {
         var builder = StateMachineBuilder.<LoanStates, LoanEvents>builder();
+        // builder.configureConfiguration()
+        //        .withPersistence()
+        //        .runtimePersister(stateMachineRuntimePersister);
+
         builder.configureConfiguration()
                .withConfiguration()
-               .beanFactory(applicationContext)
                .machineId(machineId);
 
         builder.configureStates()
                .withStates()
-               .state(LoanStates.I000)
-               .state(LoanStates.I005);
+               .initial(LoanStates.I000)
+               .state(LoanStates.I005)
+               .state(LoanStates.I010)
+               .state(LoanStates.I015);
 
         builder.configureTransitions()
                .withExternal()
                .source(LoanStates.I000)
                .target(LoanStates.I005)
-               .event(LoanEvents.APPLY);
+               .event(LoanEvents.APPLY)
+               .and()
+               .withExternal()
+               .source(LoanStates.I005)
+               .target(LoanStates.I010)
+               .and()
+               .withExternal()
+               .source(LoanStates.I010)
+               .target(LoanStates.I015)
+               .event(LoanEvents.LOAN_PRE_APPLY_RESULT);
         return builder;
     }
 
@@ -54,7 +65,6 @@ public class LoanStateMachineConfigService implements ApplicationContextAware {
         var builder = StateMachineBuilder.builder();
         builder.configureConfiguration()
                .withConfiguration()
-               .beanFactory(applicationContext)
                .machineId(machineId);
         return null;
     }

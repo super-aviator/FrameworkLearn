@@ -19,7 +19,7 @@ public class TcLoanStateMachineConfig {
     @Autowired
     private LoanStateMachineConfigService loanStateMachineConfigService;
 
-    @Bean
+    @Bean(name = StateMachineConst.LOAN_STATE_MACHINE)
     public StateMachine<LoanStates, LoanEvents> stateMachine() throws Exception {
         return loanStateMachineConfigService.getLoanStateMachineBuilder(StateMachineConst.LOAN_STATE_MACHINE).build();
     }

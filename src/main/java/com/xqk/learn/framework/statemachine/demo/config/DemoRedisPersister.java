@@ -36,8 +36,8 @@ import java.util.concurrent.TimeUnit;
  * @since 2024/9/8 23:14
  */
 @Slf4j
-@Configuration
-@EnableStateMachine(name = "redis-state-machine")
+// @Configuration
+// @EnableStateMachine(name = "redis-state-machine")
 public class DemoRedisPersister extends EnumStateMachineConfigurerAdapter<States, Events> implements CommandLineRunner {
     @Override
     public void configure(StateMachineConfigurationConfigurer<States, Events> config) throws Exception {
