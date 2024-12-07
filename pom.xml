@@ -19,7 +19,7 @@
         <java.version>17</java.version>
         <jakarta.validation.version>3.0.1</jakarta.validation.version>
         <org.apache.poi.version>3.17</org.apache.poi.version>
-        <com.alibaba.fastjson.version>1.2.47</com.alibaba.fastjson.version>
+        <com.alibaba.fastjson.version>1.2.83</com.alibaba.fastjson.version>
         <net.sourceforge.jexcelapi.version>2.6.12</net.sourceforge.jexcelapi.version>
         <com.oracle.ojdbc6.version>11.2.0.1.0</com.oracle.ojdbc6.version>
         <spring-cloud.version>2023.0.2</spring-cloud.version>
