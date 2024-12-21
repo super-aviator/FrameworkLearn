@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.springboot.data.jpa;
 
-import com.xqk.learn.framework.springboot.data.jpa.entity.TestColumnEntity;
-import com.xqk.learn.framework.springboot.data.jpa.repository.TestColumnRepository;
+import com.xqk.lean.framework.springboot.data.jpa.entity.TestColumnEntity;
+import com.xqk.lean.framework.springboot.data.jpa.repository.TestColumnRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

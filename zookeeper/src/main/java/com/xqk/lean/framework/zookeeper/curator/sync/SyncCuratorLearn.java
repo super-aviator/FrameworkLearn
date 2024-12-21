@@ -6,7 +6,8 @@ import org.apache.zookeeper.data.Stat;
 
 import java.nio.charset.StandardCharsets;
 
-import static com.xqk.learn.framework.zookeeper.common.ZookeeperConstant.CLIENT;
+import static com.xqk.lean.framework.zookeeper.common.ZookeeperConstant.CLIENT;
+
 
 /**
  * CuratorLearn

@@ -1,7 +1,8 @@
 package com.xqk.lean.framework.zookeeper.curator.retry;
 
-import com.netflix.curator.RetryPolicy;
-import com.netflix.curator.RetrySleeper;
+
+import org.apache.curator.RetryPolicy;
+import org.apache.curator.RetrySleeper;
 
 /**
  * MyRetryPolicy

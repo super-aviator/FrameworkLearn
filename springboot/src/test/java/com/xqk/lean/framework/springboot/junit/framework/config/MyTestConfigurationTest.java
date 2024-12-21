@@ -1,6 +1,6 @@
 package com.xqk.lean.framework.springboot.junit.framework.config;
 
-import com.xqk.learn.framework.common.Foo;
+import com.xqk.lean.framework.springboot.common.Foo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

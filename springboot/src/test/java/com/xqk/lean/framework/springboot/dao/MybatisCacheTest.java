@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.springboot.dao;
 
-import com.xqk.learn.framework.mybatis.mapper.UserMapper;
-import com.xqk.learn.framework.springboot.data.jpa.entity.User;
+import com.xqk.lean.framework.springboot.data.jpa.entity.User;
+import com.xqk.lean.framework.springboot.mybatis.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Assertions;

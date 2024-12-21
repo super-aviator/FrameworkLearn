@@ -1,17 +1,18 @@
 package com.xqk.lean.framework.zookeeper.curator.tools;
 
-import com.netflix.curator.framework.CuratorFramework;
-import com.netflix.curator.framework.CuratorFrameworkFactory;
-import com.netflix.curator.framework.recipes.leader.LeaderSelector;
-import com.netflix.curator.framework.recipes.leader.LeaderSelectorListener;
-import com.netflix.curator.framework.state.ConnectionState;
-import com.netflix.curator.retry.ExponentialBackoffRetry;
-import com.xqk.learn.framework.zookeeper.common.ZookeeperConstant;
+import com.xqk.lean.framework.zookeeper.common.ZookeeperConstant;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.leader.LeaderSelector;
+import org.apache.curator.framework.recipes.leader.LeaderSelectorListener;
+import org.apache.curator.framework.state.ConnectionState;
+import org.apache.curator.retry.ExponentialBackoffRetry;
 
 import java.nio.charset.StandardCharsets;
 
-import static com.xqk.learn.framework.zookeeper.common.ZookeeperConstant.MASTER_ELECTION_PATH;
+import static com.xqk.lean.framework.zookeeper.common.ZookeeperConstant.MASTER_ELECTION_PATH;
+
 
 /**
  * LeaderElection

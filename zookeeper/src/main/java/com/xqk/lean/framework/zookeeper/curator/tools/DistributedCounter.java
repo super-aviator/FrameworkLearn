@@ -1,12 +1,13 @@
 package com.xqk.lean.framework.zookeeper.curator.tools;
 
-import com.netflix.curator.framework.recipes.atomic.DistributedAtomicInteger;
-import com.netflix.curator.retry.RetryNTimes;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.curator.framework.recipes.atomic.DistributedAtomicInteger;
+import org.apache.curator.retry.RetryNTimes;
 
-import static com.xqk.learn.framework.zookeeper.common.ZookeeperConstant.CLIENT;
-import static com.xqk.learn.framework.zookeeper.common.ZookeeperConstant.DISTRIBUTED_COUNTER;
+import static com.xqk.lean.framework.zookeeper.common.ZookeeperConstant.CLIENT;
+import static com.xqk.lean.framework.zookeeper.common.ZookeeperConstant.DISTRIBUTED_COUNTER;
+
 
 /**
  * DistributedCounter

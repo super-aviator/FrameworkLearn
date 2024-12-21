@@ -1,9 +1,9 @@
 package com.xqk.lean.framework.springboot.data.jpa;
 
-import com.xqk.learn.framework.springboot.data.jpa.entity.User;
-import com.xqk.learn.framework.springboot.data.jpa.entity.UserDetail;
-import com.xqk.learn.framework.springboot.data.jpa.repository.UserDetailJpaRepository;
-import com.xqk.learn.framework.springboot.data.jpa.repository.UserJpaRepository;
+import com.xqk.lean.framework.springboot.data.jpa.entity.User;
+import com.xqk.lean.framework.springboot.data.jpa.entity.UserDetail;
+import com.xqk.lean.framework.springboot.data.jpa.repository.UserDetailJpaRepository;
+import com.xqk.lean.framework.springboot.data.jpa.repository.UserJpaRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

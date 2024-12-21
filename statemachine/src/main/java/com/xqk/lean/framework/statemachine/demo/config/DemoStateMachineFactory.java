@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.statemachine.demo.config;
 
-import com.xqk.learn.framework.statemachine.demo.event.Events;
-import com.xqk.learn.framework.statemachine.demo.state.States;
+import com.xqk.lean.framework.statemachine.demo.event.Events;
+import com.xqk.lean.framework.statemachine.demo.state.States;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.action.StateDoActionPolicy;

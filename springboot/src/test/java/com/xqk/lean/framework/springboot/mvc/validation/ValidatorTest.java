@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.springboot.mvc.validation;
 
-import com.xqk.learn.framework.springboot.mvc.validated.bean.Item;
-import com.xqk.learn.framework.springboot.mvc.validated.util.ValidatorUtils;
+import com.xqk.lean.framework.springboot.mvc.validated.bean.Item;
+import com.xqk.lean.framework.springboot.mvc.validated.util.ValidatorUtils;
 import jakarta.validation.ConstraintViolation;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

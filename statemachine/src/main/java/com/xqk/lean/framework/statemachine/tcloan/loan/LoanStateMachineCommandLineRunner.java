@@ -1,8 +1,8 @@
 package com.xqk.lean.framework.statemachine.tcloan.loan;
 
-import com.xqk.learn.framework.statemachine.tcloan.consts.StateMachineConst;
-import com.xqk.learn.framework.statemachine.tcloan.loan.enums.LoanEvents;
-import com.xqk.learn.framework.statemachine.tcloan.loan.enums.LoanStates;
+import com.xqk.lean.framework.statemachine.tcloan.consts.StateMachineConst;
+import com.xqk.lean.framework.statemachine.tcloan.loan.enums.LoanEvents;
+import com.xqk.lean.framework.statemachine.tcloan.loan.enums.LoanStates;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

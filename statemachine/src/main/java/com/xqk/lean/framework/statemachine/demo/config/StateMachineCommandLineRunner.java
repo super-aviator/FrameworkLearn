@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.statemachine.demo.config;
 
-import com.xqk.learn.framework.statemachine.demo.event.Events;
-import com.xqk.learn.framework.statemachine.demo.state.States;
+import com.xqk.lean.framework.statemachine.demo.event.Events;
+import com.xqk.lean.framework.statemachine.demo.state.States;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.messaging.support.MessageBuilder;

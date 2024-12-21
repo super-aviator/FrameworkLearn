@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.springboot.data.jpa;
 
-import com.xqk.learn.framework.springboot.data.jpa.entity.User;
-import com.xqk.learn.framework.springboot.data.jpa.repository.UserJpaRepository;
+import com.xqk.lean.framework.springboot.data.jpa.entity.User;
+import com.xqk.lean.framework.springboot.data.jpa.repository.UserJpaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

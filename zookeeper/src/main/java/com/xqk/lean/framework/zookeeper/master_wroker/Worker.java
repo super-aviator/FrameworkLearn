@@ -1,8 +1,8 @@
 package com.xqk.lean.framework.zookeeper.master_wroker;
 
-import com.xqk.learn.framework.zookeeper.master_wroker.constant.ZookeeperConstant;
-import com.xqk.learn.framework.zookeeper.master_wroker.enums.WorkerStatusEnum;
-import com.xqk.learn.framework.zookeeper.master_wroker.watcher.LogWatcher;
+import com.xqk.lean.framework.zookeeper.master_wroker.constant.ZookeeperConstant;
+import com.xqk.lean.framework.zookeeper.master_wroker.enums.WorkerStatusEnum;
+import com.xqk.lean.framework.zookeeper.master_wroker.watcher.LogWatcher;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.*;
 

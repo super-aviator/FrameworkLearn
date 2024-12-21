@@ -1,6 +1,6 @@
 package com.xqk.lean.framework.statemachine.tcloan.annotations;
 
-import com.xqk.learn.framework.statemachine.tcloan.loan.enums.LoanStates;
+import com.xqk.lean.framework.statemachine.tcloan.loan.enums.LoanStates;
 import org.springframework.statemachine.annotation.OnStateChanged;
 
 import java.lang.annotation.*;

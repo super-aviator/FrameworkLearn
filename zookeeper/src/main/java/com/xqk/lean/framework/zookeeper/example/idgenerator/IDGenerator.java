@@ -6,7 +6,8 @@ import org.apache.zookeeper.CreateMode;
 
 import java.util.concurrent.Executors;
 
-import static com.xqk.learn.framework.zookeeper.common.ZookeeperConstant.CLIENT;
+import static com.xqk.lean.framework.zookeeper.common.ZookeeperConstant.CLIENT;
+
 
 /**
  * IDGenerator

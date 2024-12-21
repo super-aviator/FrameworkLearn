@@ -1,6 +1,6 @@
 package com.xqk.lean.framework.springboot.junit.framework.config;
 
-import com.xqk.learn.framework.common.Foo;
+import com.xqk.lean.framework.springboot.common.Foo;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;

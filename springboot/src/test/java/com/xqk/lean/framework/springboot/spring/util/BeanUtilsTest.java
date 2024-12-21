@@ -1,10 +1,9 @@
 package com.xqk.lean.framework.springboot.spring.util;
 
-import cn.hutool.core.bean.BeanUtil;
-import com.xqk.learn.framework.spring.util.pojo.Cla1;
-import com.xqk.learn.framework.spring.util.pojo.Cla1Derived;
-import com.xqk.learn.framework.spring.util.pojo.Cla2;
-import com.xqk.learn.framework.spring.util.pojo.ContainCla1AndCla2;
+import com.xqk.lean.framework.springboot.spring.util.pojo.Cla1;
+import com.xqk.lean.framework.springboot.spring.util.pojo.Cla1Derived;
+import com.xqk.lean.framework.springboot.spring.util.pojo.Cla2;
+import com.xqk.lean.framework.springboot.spring.util.pojo.ContainCla1AndCla2;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.BeanUtils;
@@ -41,7 +40,7 @@ public class BeanUtilsTest {
         derived.setAge(20);
         derived.setName("xqk");
         ContainCla1AndCla2 contain = new ContainCla1AndCla2();
-        BeanUtil.copyProperties(derived, contain);
+        BeanUtils.copyProperties(derived, contain);
         System.out.println(contain);
     }
 }

@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.statemachine.tcloan.loan.config;
 
-import com.xqk.learn.framework.statemachine.tcloan.loan.enums.LoanEvents;
-import com.xqk.learn.framework.statemachine.tcloan.loan.enums.LoanStates;
+import com.xqk.lean.framework.statemachine.tcloan.loan.enums.LoanEvents;
+import com.xqk.lean.framework.statemachine.tcloan.loan.enums.LoanStates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

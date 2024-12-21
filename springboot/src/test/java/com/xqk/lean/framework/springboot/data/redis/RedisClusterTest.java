@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.springboot.data.redis;
 
-import com.xqk.learn.framework.springboot.data.jpa.common.Gender;
-import com.xqk.learn.framework.springboot.data.jpa.entity.User;
+import com.xqk.lean.framework.springboot.data.jpa.common.Gender;
+import com.xqk.lean.framework.springboot.data.jpa.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
 package com.xqk.lean.framework.springboot.data.jpa;
 
-import com.xqk.learn.framework.springboot.data.jpa.entity.CareerEntity;
-import com.xqk.learn.framework.springboot.data.jpa.repository.CareerRepository;
+import com.xqk.lean.framework.springboot.data.jpa.entity.CareerEntity;
+import com.xqk.lean.framework.springboot.data.jpa.repository.CareerRepository;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

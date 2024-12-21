@@ -1,13 +1,14 @@
 package com.xqk.lean.framework.zookeeper.curator.tools;
 
-import com.netflix.curator.framework.recipes.locks.InterProcessMutex;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
-import static com.xqk.learn.framework.zookeeper.common.ZookeeperConstant.CLIENT;
-import static com.xqk.learn.framework.zookeeper.common.ZookeeperConstant.DISTRIBUTED_LOCK_PATH;
+import static com.xqk.lean.framework.zookeeper.common.ZookeeperConstant.CLIENT;
+import static com.xqk.lean.framework.zookeeper.common.ZookeeperConstant.DISTRIBUTED_LOCK_PATH;
+
 
 /**
  * DistributedLock
