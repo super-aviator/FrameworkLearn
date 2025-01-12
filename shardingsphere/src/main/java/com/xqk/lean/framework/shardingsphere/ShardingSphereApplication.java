@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ShardingsphereApplication {
+public class ShardingSphereApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShardingsphereApplication.class, args);
+		SpringApplication.run(ShardingSphereApplication.class, args);
 	}
 
 }
