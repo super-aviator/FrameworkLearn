@@ -1,6 +1,5 @@
-package com.xqk.learn.nonnull;
+package com.xqk.learn.examples;
 
-import lombok.Data;
 import lombok.NonNull;
 
 /**
