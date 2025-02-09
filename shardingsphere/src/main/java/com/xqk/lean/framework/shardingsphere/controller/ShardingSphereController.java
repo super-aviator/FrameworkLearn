@@ -29,4 +29,9 @@ public class ShardingSphereController {
     public String selectName2(@RequestParam("id") Long id) {
         return shardingSphereTableMapper.selectNameById2(id);
     }
+
+    @GetMapping("/insert")
+    public long selectName(@RequestParam("name") String name) {
+        return shardingSphereTableMapper.insert(name);
+    }
 }

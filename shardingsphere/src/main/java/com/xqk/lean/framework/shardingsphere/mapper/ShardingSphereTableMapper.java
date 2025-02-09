@@ -1,5 +1,6 @@
 package com.xqk.lean.framework.shardingsphere.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -13,6 +14,9 @@ import org.apache.ibatis.annotations.Select;
  */
 @Mapper
 public interface ShardingSphereTableMapper{
+    @Insert("INSERT INTO sharding_sphere_table (name) VALUES (#{name})")
+    long insert(@Param("name") String name);
+
     /**
      * 根据ID查找名称
      *
@@ -27,6 +31,6 @@ public interface ShardingSphereTableMapper{
      * @param id id
      * @return name
      */
-    @Select("SELECT name FROM shardingsphere.sharding_sphere_table WHERE id = #{id}")
+    @Select("SELECT name FROM sharding_sphere_table WHERE id = #{id}")
     String selectNameById2(@Param("id") Long id);
 }

@@ -1,0 +1,42 @@
+databaseName: ds
+mode:
+  type: Standalone
+props:
+  sql-show: true
+dataSources:
+  write_ds:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://localhost:3306/shardingsphere?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  read_ds_0:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://localhost:3307/shardingsphere?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+rules:
+- !READWRITE_SPLITTING
+  dataSources:
+    read_write_splitting_ds:
+      writeDataSourceName: write_ds
+      readDataSourceNames:
+        - read_ds_0
+      transactionalReadQueryStrategy: PRIMARY
+      loadBalancerName: random
+  loadBalancers:
+    random:
+      type: RANDOM
+
+- !SINGLE
+  tables:
+    # MySQL 风格
+    - read_write_splitting_ds.* # 加载指定数据源中的全部单表
+  defaultDataSource: read_write_splitting_ds # 默认数据源，仅在执行 CREATE TABLE 创建单表时有效。缺失值为空，表示随机单播路由。
+
+#- !SHARDING
+#  tables:
+#    sharding_sphere_table:
+#      actualDataNodes: read_write_splitting_ds.sharding_sphere_table

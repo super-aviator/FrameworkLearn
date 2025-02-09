@@ -8,11 +8,10 @@ import org.apache.shardingsphere.mode.repository.standalone.StandalonePersistRep
 import org.apache.shardingsphere.readwritesplitting.api.ReadwriteSplittingRuleConfiguration;
 import org.apache.shardingsphere.readwritesplitting.api.rule.ReadwriteSplittingDataSourceRuleConfiguration;
 import org.apache.shardingsphere.sharding.api.config.ShardingRuleConfiguration;
-import org.apache.shardingsphere.sharding.api.config.rule.ShardingTableReferenceRuleConfiguration;
 import org.apache.shardingsphere.sharding.api.config.rule.ShardingTableRuleConfiguration;
 import org.apache.shardingsphere.sharding.api.config.strategy.audit.ShardingAuditStrategyConfiguration;
 import org.apache.shardingsphere.sharding.api.config.strategy.keygen.KeyGenerateStrategyConfiguration;
-import org.apache.shardingsphere.sharding.api.config.strategy.sharding.StandardShardingStrategyConfiguration;
+import org.apache.shardingsphere.single.api.config.SingleRuleConfiguration;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +39,7 @@ public class ReadWriteSplittingConfig {
                 createDataSourceMap(),
                 List.of(createReadwriteSplittingRuleConfiguration()
                         // , createShardingRuleConfiguration()
+                        , createSingleRuleConfiguration()
                 ),
                 props);
     }
@@ -91,10 +91,10 @@ public class ReadWriteSplittingConfig {
     /**
      * 读写分离配置
      *
-     * @return 读写分离配置
+     * @return 读写分离配置write_ds
      */
     public ReadwriteSplittingRuleConfiguration createReadwriteSplittingRuleConfiguration() {
-        var dataSourceConfig = new ReadwriteSplittingDataSourceRuleConfiguration("read_query_ds", "write_ds", List.of("read_ds_0"), "weight_lb");
+        var dataSourceConfig = new ReadwriteSplittingDataSourceRuleConfiguration("read_write_splitting_ds", "write_ds", List.of("read_ds_0"), "weight_lb");
 
         var algorithmProps = new Properties();
         algorithmProps.setProperty("read_ds_0", "1");
@@ -104,6 +104,10 @@ public class ReadWriteSplittingConfig {
         return new ReadwriteSplittingRuleConfiguration(Collections.singleton(dataSourceConfig), algorithmConfigMap);
     }
 
+    public SingleRuleConfiguration createSingleRuleConfiguration() {
+        return new SingleRuleConfiguration(Collections.singleton("read_write_splitting_ds.*"),"read_write_splitting_ds");
+    }
+
     /**
      * 分库分表配置
      *
@@ -111,20 +115,28 @@ public class ReadWriteSplittingConfig {
      */
     private ShardingRuleConfiguration createShardingRuleConfiguration() {
         var result = new ShardingRuleConfiguration();
-        result.getTables().add(getOrderTableRuleConfiguration());
-        result.getTables().add(getOrderItemTableRuleConfiguration());
-        //绑定表规则
-        result.getBindingTableGroups().add(new ShardingTableReferenceRuleConfiguration("foo", "t_order, t_order_item"));
-        // 默认分库策略
-        result.setDefaultDatabaseShardingStrategy(new StandardShardingStrategyConfiguration("user_id", "inline"));
-        // 默认分表策略
-        result.setDefaultTableShardingStrategy(new StandardShardingStrategyConfiguration("order_id", "standard_test_tbl"));
-        var props = new Properties();
-        props.setProperty("algorithm-expression", "demo_ds_${user_id % 2}");
-        result.getShardingAlgorithms().put("inline", new AlgorithmConfiguration("INLINE", props));
-        result.getShardingAlgorithms().put("standard_test_tbl", new AlgorithmConfiguration("STANDARD_TEST_TBL", new Properties()));
-        result.getKeyGenerators().put("snowflake", new AlgorithmConfiguration("SNOWFLAKE", new Properties()));
-        result.getAuditors().put("sharding_key_required_auditor", new AlgorithmConfiguration("DML_SHARDING_CONDITIONS", new Properties()));
+        result.setTables(getShardingTableRuleConfigurations());
+        // result.getTables().add(getOrderTableRuleConfiguration());
+        // result.getTables().add(getOrderItemTableRuleConfiguration());
+        // //绑定表规则
+        // result.getBindingTableGroups().add(new ShardingTableReferenceRuleConfiguration("foo", "t_order, t_order_item"));
+        // // 默认分库策略
+        // result.setDefaultDatabaseShardingStrategy(new StandardShardingStrategyConfiguration("user_id", "inline"));
+        // // 默认分表策略
+        // result.setDefaultTableShardingStrategy(new StandardShardingStrategyConfiguration("order_id", "standard_test_tbl"));
+        // var props = new Properties();
+        // props.setProperty("algorithm-expression", "demo_ds_${user_id % 2}");
+        // result.getShardingAlgorithms().put("inline", new AlgorithmConfiguration("INLINE", props));
+        // result.getShardingAlgorithms().put("standard_test_tbl", new AlgorithmConfiguration("STANDARD_TEST_TBL", new Properties()));
+        // result.getKeyGenerators().put("snowflake", new AlgorithmConfiguration("SNOWFLAKE", new Properties()));
+        // result.getAuditors().put("sharding_key_required_auditor", new AlgorithmConfiguration("DML_SHARDING_CONDITIONS", new Properties()));
+        return result;
+    }
+
+    private Collection<ShardingTableRuleConfiguration> getShardingTableRuleConfigurations() {
+        var result = new ArrayList<ShardingTableRuleConfiguration>(1);
+        var table = new ShardingTableRuleConfiguration("sharding_sphere_table", "read_write_splitting_ds.sharding_sphere_table");
+        result.add(table);
         return result;
     }
 
